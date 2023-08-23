@@ -14,5 +14,4 @@ class M_CRUD extends CI_Model
     {
         $this->db->update($table, $data, $where);
     }
-
 }

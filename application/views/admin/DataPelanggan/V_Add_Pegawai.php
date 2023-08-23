@@ -111,10 +111,8 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Foto </label>
                         <div class="col-sm-12 col-md-10">
-                            <input type="file" name="photo" class="form-control-file form-control height-auto" />
-                            <div class="bg-danger">
-                                <small class="text-white"><?php echo form_error('photo'); ?></small>
-                            </div>
+                            <input type="file" name="photo" accept="image/*" class="form-control-file form-control height-auto" required>
+
                         </div>
                     </div>
                     <div class="form-group row">
