@@ -12,6 +12,15 @@ class M_DataPegawai extends CI_Model
         return $query->result_array();
     }
 
+
+    public function DeletePegawai($where, $table)
+    {
+        $this->db->where($where);
+        $this->db->delete($table);
+
+        return ($this->db->affected_rows() > 0) ? true : false;
+    }
+
     // Edit Data Login
     public function EditLogin($id_login)
     {

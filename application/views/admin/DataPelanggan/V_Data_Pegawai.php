@@ -28,7 +28,7 @@
 									Fitur
 								</a>
 								<div class="dropdown-menu dropdown-menu-right">
-									<a class="dropdown-item" href="<?php echo base_url('admin/DataPegawai/C_Add_Pegawai') ?>">Tambah Pelanggan</a>
+									<a class="dropdown-item" href="<?php echo base_url('admin/DataPegawai/C_Add_Pegawai') ?>">Tambah Pegawai</a>
 								</div>
 							</div>
 						</div>
@@ -42,26 +42,23 @@
 							<h4 class="text-blue text-center">Data Pegawai - Infly Networks</h4>
 						</div>
 						<div class="pb-20">
-							<table id="example" class="table table-bordered responsive nowrap">
+							<table id="example" class="table table-bordered responsive nowrap" style="width: 100%;">
 								<thead>
 									<tr>
-										<th>No</th>
-										<th>Nama Pegawai</th>
-										<th>NIK Pegawai</th>
-										<th>Telepon</th>
-										<th>Jabatan</th>
-										<th>Action</th>
+										<th width="5%">No</th>
+										<th width="20%">Nama Pegawai</th>
+										<th width="20%">NIK Pegawai</th>
+										<th width="20%">Telepon</th>
+										<th width="20%">Jabatan</th>
+										<th width="15%">Action</th>
 									</tr>
 								</thead>
-								<tbody>
-
-								</tbody>
 							</table>
+
+
 						</div>
-
 					</div>
+					<!-- End Table Data Pegawai -->
+
+
 				</div>
-				<!-- End Table Data Pegawai -->
-
-
-			</div>

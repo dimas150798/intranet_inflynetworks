@@ -28,11 +28,11 @@ class C_Data_Pegawai extends CI_Controller
             $row[] =
                 '<div class="text-center">
                     <a class="btn btn-info btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown">
-                        Opsion
+                        Option
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a onclick="EditDataPelanggan(' . $dataPegawai['id_pegawai'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit</a>
-                        <a onclick="TerminatedPelanggan(' . $dataPegawai['id_pegawai'] . ')" class="dropdown-item text-black"><i class="bi bi-trash3-fill"></i> Terminated</a>
+                        <a onclick="EditDataPegawai(' . $dataPegawai['id_pegawai'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit</a>
+                        <a onclick="DeleteDataPegawai(' . $dataPegawai['id_pegawai'] . ')"class="dropdown-item text-black"><i class="bi bi-trash3-fill"></i> Hapus</a>
                     </div>
                 </div>';
 
@@ -45,4 +45,5 @@ class C_Data_Pegawai extends CI_Controller
 
         $this->output->set_content_type('application/json')->set_output(json_encode($ouput));
     }
+
 }

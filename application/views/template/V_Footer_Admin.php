@@ -29,6 +29,10 @@
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
 
+<!-- sweet alert 2 -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.all.min.js"></script>
+
+
 <!-- Ajax Show Data Pegawai -->
 <script>
     $(document).ready(function() {
@@ -47,7 +51,45 @@
         })
     })
 </script>
-<!-- Ajax Show Data Pegawai -->
+
+<!-- Add Data Pegawai -->
+<script>
+    function TambahDataPegawai(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Tambah Data ?',
+            text: "Data akan ditambahkan",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Tambah Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Add_Pegawai/TambahPegawai') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Delete Data Pegawai -->
+<script>
+    function DeleteDataPegawai(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Delete Data ?',
+            text: "Data yang dihapus tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Delete_Pegawai/DeleteDataPegawai') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
 
 
 </body>

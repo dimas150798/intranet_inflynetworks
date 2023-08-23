@@ -4,7 +4,7 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 $config['base_url'] = env('baseurl');
 
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 $config['uri_protocol']    = 'REQUEST_URI';
 
