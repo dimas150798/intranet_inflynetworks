@@ -7,7 +7,7 @@ class C_Add_Pegawai extends CI_Controller
     {
         $this->load->view('template/V_Header_Admin');
         $this->load->view('template/V_Sidebar_Admin');
-        $this->load->view('admin/DataPelanggan/V_Add_Pegawai');
+        $this->load->view('admin/DataPegawai/V_Add_Pegawai');
         $this->load->view('template/V_Footer_Admin');
     }
 
@@ -24,12 +24,10 @@ class C_Add_Pegawai extends CI_Controller
         $this->form_validation->set_rules('gaji', 'Gaji', 'required');
         $this->form_validation->set_message('required', 'Masukan data terlebih dahulu...');
 
-
-
         if ($this->form_validation->run() == false) {
             $this->load->view('template/V_Header_Admin');
             $this->load->view('template/V_Sidebar_Admin');
-            $this->load->view('admin/DataPelanggan/V_Add_Pegawai');
+            $this->load->view('admin/DataPegawai/V_Add_Pegawai');
             $this->load->view('template/V_Footer_Admin');
         } else {
             // mengambil data post pada view
@@ -41,7 +39,7 @@ class C_Add_Pegawai extends CI_Controller
             $jabatan               = $this->input->post('jabatan');
             $tanggal_masuk         = $this->input->post('tanggal_masuk');
             $gaji                  = $this->input->post('gaji');
-            $photo                  = $_FILES['photo']['name'];
+            $photo                 = $_FILES['photo']['name'];
 
             $dataPegawai = array(
                 'NIK'                   => $nik,
@@ -50,7 +48,7 @@ class C_Add_Pegawai extends CI_Controller
                 'alamat_pegawai'        => $alamat_pegawai,
                 'pendidikan_pegawai'    => $pendidikan_pegawai,
                 'jabatan'               => $jabatan,
-                'tanggal_masuk'         => $tanggal_masuk,
+                'tanggal_masuk'         => date('Y-m-d'),
                 'gaji'                  => $gaji,
                 'photo'                 => $photo
             );
@@ -69,10 +67,10 @@ class C_Add_Pegawai extends CI_Controller
             }
 
             $this->M_CRUD->insertData($dataPegawai, 'data_pegawai');
-            $this->session->set_flashdata('pesan', '<div class="alert alert-success alert-dismissible fade show" role="alert">
-               <strong>UPDATE DATA BERHASIL</strong>
-               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-               </div>');
+            $this->session->set_flashdata('Tambah_icon', 'success');
+            $this->session->set_flashdata('Tambah_title', 'Tambah Data Berhasil');
+
+            
             redirect('admin/DataPegawai/C_Data_Pegawai');
         }
     }

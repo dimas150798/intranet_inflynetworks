@@ -12,7 +12,17 @@ class M_DataPegawai extends CI_Model
         return $query->result_array();
     }
 
+    //Edit Data Pegawai
+    public function EditPegawai($id_pegawai)
+    {
+        $query   = $this->db->query("SELECT id_pegawai, NIK, nama_pegawai, no_telpon, alamat_pegawai, pendidikan_pegawai, jabatan, tanggal_masuk, gaji, photo
+        FROM data_pegawai
+        WHERE id_pegawai = '$id_pegawai'
+        ");
 
+        return $query->result_array();
+    }
+    //Delete Data Pegawai
     public function DeletePegawai($where, $table)
     {
         $this->db->where($where);

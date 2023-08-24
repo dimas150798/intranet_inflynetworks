@@ -52,25 +52,102 @@
     })
 </script>
 
-<!-- Add Data Pegawai -->
+<!-- Allert Add Data Pegawai -->
 <script>
-    function TambahDataPegawai(parameter_id) {
-        Swal.fire({
-            title: 'Yakin Melakukan Tambah Data ?',
-            text: "Data akan ditambahkan",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Tambah Data!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Add_Pegawai/TambahPegawai') ?>/" + parameter_id;
+    <?php if ($this->session->flashdata('Tambah_icon')) { ?>
+        var toastMixin = Swal.mixin({
+            toast: true,
+            icon: 'success',
+            title: 'General Title',
+            animation: false,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
             }
-        })
-    }
+        });
+
+        toastMixin.fire({
+            animation: true,
+            title: '<?php echo $this->session->flashdata('Tambah_title') ?>'
+        });
+
+    <?php } ?>
+</script>
+<!-- Alert delete -->
+<script>
+    <?php if ($this->session->flashdata('Delete_icon')) { ?>
+        var toastMixin = Swal.mixin({
+            toast: true,
+            icon: 'success',
+            title: 'General Title',
+            animation: false,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+
+        toastMixin.fire({
+            animation: true,
+            title: '<?php echo $this->session->flashdata('Delete_title') ?>'
+        });
+
+    <?php } ?>
 </script>
 
+<!-- Alert Edit -->
+<script>
+	<?php if ($this->session->flashdata('Edit_icon')) { ?>
+		var toastMixin = Swal.mixin({
+			toast: true,
+			icon: 'success',
+			title: 'General Title',
+			animation: false,
+			position: 'top-right',
+			showConfirmButton: false,
+			timer: 2000,
+			timerProgressBar: true,
+			didOpen: (toast) => {
+				toast.addEventListener('mouseenter', Swal.stopTimer)
+				toast.addEventListener('mouseleave', Swal.resumeTimer)
+			}
+		});
+
+		toastMixin.fire({
+			animation: true,
+			title: '<?php echo $this->session->flashdata('Edit_title') ?>'
+		});
+
+	<?php } ?>
+</script>
+
+<!-- Edit Data Pegawai -->
+
+<script>
+	function EditDataPegawai(parameter_id) {
+		Swal.fire({
+			title: 'Yakin Melakukan Edit Data ?',
+			text: "Data yang diedit tidak akan kembali",
+			icon: 'warning',
+			showCancelButton: true,
+			confirmButtonColor: '#3085d6',
+			cancelButtonColor: '#d33',
+			confirmButtonText: 'Ya, Edit Data!'
+		}).then((result) => {
+			if (result.isConfirmed) {
+				window.location.href = "<?php echo site_url('admin/DataPegawai/C_Edit_Pegawai/EditPegawai') ?>/" + parameter_id;
+			}
+		})
+	}
+</script>
 <!-- Delete Data Pegawai -->
 <script>
     function DeleteDataPegawai(parameter_id) {

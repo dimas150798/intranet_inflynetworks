@@ -14,7 +14,7 @@
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="<?php echo base_url('admin/DataPegawai/C_Data_Pegawai') ?>">Data Pelanggan</a>
+                                    <a href="<?php echo base_url('admin/DataPegawai/C_Data_Pegawai') ?>">Data Pegawai</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Form

@@ -7,11 +7,8 @@ class C_Delete_Pegawai extends CI_Controller
     {
         $where = array('id_pegawai' => $id_pegawai);
         $this->M_DataPegawai->DeletePegawai($where, 'data_pegawai');
-        $this->session->set_flashdata('pesan', '<div class="alert alert-susses alert-dismissible fade show" role="alert">
-        
-        <strong>Data Berhasil Dihapus</strong>
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>');
+        $this->session->set_flashdata('Delete_icon', 'success');
+        $this->session->set_flashdata('Delete_title', 'Hapus Data Berhasil');
 
         redirect('admin/DataPegawai/C_Data_Pegawai');
     }
