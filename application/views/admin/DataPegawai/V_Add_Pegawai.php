@@ -93,7 +93,7 @@
                     <div class="form-group row">
                         <label class="col-sm-12 col-md-2 col-form-label">Tanggal Masuk</label>
                         <div class="col-sm-12 col-md-10">
-                            <input class="form-control date-picker" name="tanggal_masuk" placeholder="Tanggal Masuk..." />
+                            <input class="form-control" type="date" name="tanggal_masuk" placeholder="Tanggal Masuk..." />
                             <div class="bg-danger">
                                 <small class="text-white"><?php echo form_error('tanggal_masuk'); ?></small>
                             </div>

@@ -48,7 +48,7 @@ class C_Add_Pegawai extends CI_Controller
                 'alamat_pegawai'        => $alamat_pegawai,
                 'pendidikan_pegawai'    => $pendidikan_pegawai,
                 'jabatan'               => $jabatan,
-                'tanggal_masuk'         => date('Y-m-d'),
+                'tanggal_masuk'         => $tanggal_masuk,
                 'gaji'                  => $gaji,
                 'photo'                 => $photo
             );
@@ -70,7 +70,6 @@ class C_Add_Pegawai extends CI_Controller
             $this->session->set_flashdata('Tambah_icon', 'success');
             $this->session->set_flashdata('Tambah_title', 'Tambah Data Berhasil');
 
-            
             redirect('admin/DataPegawai/C_Data_Pegawai');
         }
     }
