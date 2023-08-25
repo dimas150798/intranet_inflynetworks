@@ -25,7 +25,7 @@ class C_Edit_Pegawai extends CI_Controller
         $jabatan               = $this->input->post('jabatan');
         $tanggal_masuk         = $this->input->post('tanggal_masuk');
         $gaji                  = $this->input->post('gaji');
-        $photo                 = $_FILES['photo']['name'];
+        // $photo                 = $_FILES['photo']['name'];
 
         //menyimpan data pegawai ke dalam array
         $dataPegawai = array(
@@ -37,7 +37,7 @@ class C_Edit_Pegawai extends CI_Controller
             'jabatan'               => $jabatan,
             'tanggal_masuk'         => date('Y-m-d'),
             'gaji'                  => $gaji,
-            'photo'                 => $photo
+            // 'photo'                 => $photo
         );
         //update menggunakan id_pegawai
         $id_pegawai = array(

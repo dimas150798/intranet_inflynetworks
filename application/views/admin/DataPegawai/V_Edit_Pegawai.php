@@ -115,7 +115,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="form-group row">
+                        <!-- <div class="form-group row">
                             <label class="col-sm-12 col-md-2 col-form-label">Foto </label>
                             <div class="col-sm-12 col-md-10">
                                 <input type="file" name="photo" accept="image/*" class="form-control-file form-control height-auto">
@@ -126,7 +126,7 @@
                                     <small class="text-white"><?php echo form_error('photo'); ?></small>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <div class="form-group row">
                             <div class="col-sm-12 d-flex justify-content-end">
                                 <button type="submit" class="btn btn-success mt-2 justify-content-end"><i class="bi bi-plus-circle"></i> Simpan</button>
