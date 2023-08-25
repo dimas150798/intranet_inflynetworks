@@ -146,7 +146,7 @@
                             <span class="micon bi-person-lines-fill"></span><span class="mtext">Data Customer</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="introduction.html">Nama Customer</a></li>
+                            <li><a href="<?php echo base_url('admin/DataCustomer/C_Data_Customer') ?>">Nama Customer</a></li>
                             <li><a href="getting-started.html">Aktivasi</a></li>
                             <li><a href="color-settings.html">Terminasi</a></li>
                         </ul>
