@@ -1,6 +1,6 @@
 <?php
 
-class M_DataCustomer extends CI_Model
+class M_DataAktivasi extends CI_Model
 {
 
     // Menampilkan Data Pegawai
