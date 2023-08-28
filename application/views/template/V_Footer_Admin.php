@@ -51,6 +51,24 @@
         })
     })
 </script>
+<!-- Ajax Show Data Customer -->
+<script>
+    $(document).ready(function() {
+        $('#datacustomer').DataTable({
+            "autoFill": true,
+            "pagingType": 'numbers',
+            "searching": true,
+            "paging": true,
+            "stateSave": true,
+            "processing": true,
+            "serverside": true,
+            "ajax": {
+                "url": "<?= base_url('admin/DataCustomer/C_Data_Customer/GetDataAjaxCustomer'); ?>",
+            },
+            "bDestroy": true
+        })
+    })
+</script>
 
 <!-- Allert Add Data Pegawai -->
 <script>
@@ -105,50 +123,88 @@
 
 <!-- Alert Edit -->
 <script>
-	<?php if ($this->session->flashdata('Edit_icon')) { ?>
-		var toastMixin = Swal.mixin({
-			toast: true,
-			icon: 'success',
-			title: 'General Title',
-			animation: false,
-			position: 'top-right',
-			showConfirmButton: false,
-			timer: 2000,
-			timerProgressBar: true,
-			didOpen: (toast) => {
-				toast.addEventListener('mouseenter', Swal.stopTimer)
-				toast.addEventListener('mouseleave', Swal.resumeTimer)
-			}
-		});
+    <?php if ($this->session->flashdata('Edit_icon')) { ?>
+        var toastMixin = Swal.mixin({
+            toast: true,
+            icon: 'success',
+            title: 'General Title',
+            animation: false,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
 
-		toastMixin.fire({
-			animation: true,
-			title: '<?php echo $this->session->flashdata('Edit_title') ?>'
-		});
+        toastMixin.fire({
+            animation: true,
+            title: '<?php echo $this->session->flashdata('Edit_title') ?>'
+        });
 
-	<?php } ?>
+    <?php } ?>
 </script>
 
 <!-- Edit Data Pegawai -->
 
 <script>
-	function EditDataPegawai(parameter_id) {
-		Swal.fire({
-			title: 'Yakin Melakukan Edit Data ?',
-			text: "Data yang diedit tidak akan kembali",
-			icon: 'warning',
-			showCancelButton: true,
-			confirmButtonColor: '#3085d6',
-			cancelButtonColor: '#d33',
-			confirmButtonText: 'Ya, Edit Data!'
-		}).then((result) => {
-			if (result.isConfirmed) {
-				window.location.href = "<?php echo site_url('admin/DataPegawai/C_Edit_Pegawai/EditPegawai') ?>/" + parameter_id;
-			}
-		})
-	}
+    function EditDataPegawai(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Edit Data ?',
+            text: "Data yang diedit tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Edit Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Edit_Pegawai/EditPegawai') ?>/" + parameter_id;
+            }
+        })
+    }
 </script>
 <!-- Delete Data Pegawai -->
+<script>
+    function DeleteDataPegawai(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Delete Data ?',
+            text: "Data yang dihapus tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Delete_Pegawai/DeleteDataPegawai') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Edit Data Customer -->
+
+<script>
+    function EditDataPegawai(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Edit Data ?',
+            text: "Data yang diedit tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Edit Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Edit_Pegawai/EditPegawai') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+<!-- Delete Data Customer -->
 <script>
     function DeleteDataPegawai(parameter_id) {
         Swal.fire({
