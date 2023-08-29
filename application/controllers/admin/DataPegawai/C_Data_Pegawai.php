@@ -45,5 +45,4 @@ class C_Data_Pegawai extends CI_Controller
 
         $this->output->set_content_type('application/json')->set_output(json_encode($ouput));
     }
-
 }

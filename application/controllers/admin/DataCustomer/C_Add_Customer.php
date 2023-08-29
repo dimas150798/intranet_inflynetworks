@@ -33,15 +33,25 @@ class C_Add_Customer extends CI_Controller
             $this->load->view('template/V_Footer_Admin');
         } else {
             // mengambil data post pada view
-            $nama_pegawai          = $this->input->post('nama_pegawai');
-            $nik                   = $this->input->post('nik');
-            $no_telpon             = $this->input->post('no_telpon');
-            $alamat_pegawai        = $this->input->post('alamat_pegawai');
-            $pendidikan_pegawai    = $this->input->post('pendidikan_pegawai');
-            $jabatan               = $this->input->post('jabatan');
-            $tanggal_masuk         = $this->input->post('tanggal_masuk');
-            $gaji                  = $this->input->post('gaji');
-            $photo                 = $_FILES['photo']['name'];
+            $nama_customer      = $this->input->post('nama_customer');
+            $pembelian_paket    = $this->input->post('nama_paket');
+            $nik_customer       = $this->input->post('nik_customer');
+            $tlp_customer       = $this->input->post('tlp_customer');
+            $alamat_customer    = $this->input->post('alamat_customer');
+            $date               = $this->input->post('date');
+            $kode_barang        = $this->input->post('kode_barang');
+            $kode_barang_stb    = $this->input->post('kode_barang_stb');
+
+
+            $dataCustomer = array(
+                'nik_customer'       => $nik_customer,
+                'nama_customer'      => $nama_customer,
+                'pembelian_paket'    => $pembelian_paket,
+                'tlp_customer'       => $tlp_customer,
+                'alamat_customer'    => $alamat_customer,
+                'date'               => $date,
+                'kode_barang'        => $kode_barang,
+                'kode_barang_stb'    => $kode_barang_stb
 
             );
 

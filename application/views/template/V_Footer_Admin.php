@@ -1,8 +1,7 @@
-<div class="main-container">
-    <div class="footer-wrap pd-20 mb-20 card-box">
-        <div>Copyright &copy; My Infly Networks 2022</div>
-    </div>
+<div class="footer-wrap pd-20 mb-20 bg-white mt-4">
+    <div>Copyright &copy; My Infly Networks 2022</div>
 </div>
+
 
 <!-- welcome modal end -->
 <!-- js -->

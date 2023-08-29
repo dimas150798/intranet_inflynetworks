@@ -1,6 +1,6 @@
 	<div class="mobile-menu-overlay"></div>
 
-	<div class="main-container">
+	<div class="main-container flex-grow-1">
 		<div class="pd-ltr-20 xs-pd-20-10">
 			<div class="min-height-200px">
 				<div class="page-header">
@@ -36,7 +36,7 @@
 				</div>
 
 				<!-- Table Data Pegawai -->
-				<div class="card-box mb-30">
+				<div class="card-box">
 					<div class="container-fluid">
 						<div class="pd-20">
 							<h4 class="text-blue text-center">Data Pegawai - Infly Networks</h4>
@@ -54,11 +54,10 @@
 									</tr>
 								</thead>
 							</table>
-
-
 						</div>
 					</div>
-					<!-- End Table Data Pegawai -->
-
-
 				</div>
+				<!-- End Table Data Pegawai -->
+			</div>
+		</div>
+	</div>
