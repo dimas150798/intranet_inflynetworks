@@ -8,7 +8,8 @@ class M_DataCustomer extends CI_Model
         $query   = $this->db->query("SELECT data_customer.id_customer, data_customer.pembelian_paket, data_customer.nama_customer, data_customer.nik_customer, data_customer.alamat_customer, data_customer.tlp_customer, data_customer.date, data_customer.kode_barang, data_customer.kode_barang_stb
 
         FROM data_customer
-             LEFT JOIN data_paket ON data_customer.pembelian_paket = data_paket.id_paket");
+             LEFT JOIN data_paket ON data_customer.pembelian_paket = data_paket.id_paket
+             ");
 
         return $query->result_array();
     }

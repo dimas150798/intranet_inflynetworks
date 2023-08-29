@@ -34,7 +34,7 @@ class C_Add_Customer extends CI_Controller
         } else {
             // mengambil data post pada view
             $nama_customer      = $this->input->post('nama_customer');
-            $pembelian_paket    = $this->input->post('id_paket');
+            $pembelian_paket    = $this->input->post('nama_paket');
             $nik_customer       = $this->input->post('nik_customer');
             $tlp_customer       = $this->input->post('tlp_customer');
             $alamat_customer    = $this->input->post('alamat_customer');
