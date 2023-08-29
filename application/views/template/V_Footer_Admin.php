@@ -92,7 +92,7 @@
     })
 </script>
 
-<!-- Allert Add Data Pegawai -->
+<!-- Allert Add Data -->
 <script>
     <?php if ($this->session->flashdata('Tambah_icon')) { ?>
         var toastMixin = Swal.mixin({
@@ -210,7 +210,7 @@
 <!-- Edit Data Customer -->
 
 <script>
-    function EditDataPegawai(parameter_id) {
+    function EditDataCustomer(parameter_id) {
         Swal.fire({
             title: 'Yakin Melakukan Edit Data ?',
             text: "Data yang diedit tidak akan kembali",
@@ -221,7 +221,7 @@
             confirmButtonText: 'Ya, Edit Data!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Edit_Pegawai/EditPegawai') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/DataCustomer/C_Edit_Customer/EditCustomer') ?>/" + parameter_id;
             }
         })
     }
@@ -246,7 +246,7 @@
 
 <!-- Delete Data Aktivasi -->
 <script>
-    function DeleteDataAktivasi(parameter_id) {
+    function DeleteDataPegawai(parameter_id) {
         Swal.fire({
             title: 'Yakin Melakukan Delete Data ?',
             text: "Data yang dihapus tidak akan kembali",
@@ -257,7 +257,7 @@
             confirmButtonText: 'Ya, Hapus Data!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/DataAktivasi/C_Delete_Aktivasi/DeleteDataAktivasi') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Delete_Pegawai/DeleteDataPegawai') ?>/" + parameter_id;
             }
         })
     }
