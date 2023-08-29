@@ -210,7 +210,7 @@
 <!-- Edit Data Customer -->
 
 <script>
-    function EditDataPegawai(parameter_id) {
+    function EditDataCustomer(parameter_id) {
         Swal.fire({
             title: 'Yakin Melakukan Edit Data ?',
             text: "Data yang diedit tidak akan kembali",
@@ -221,7 +221,7 @@
             confirmButtonText: 'Ya, Edit Data!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Edit_Pegawai/EditPegawai') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/DataCustomer/C_Edit_Customer/EditCustomer') ?>/" + parameter_id;
             }
         })
     }

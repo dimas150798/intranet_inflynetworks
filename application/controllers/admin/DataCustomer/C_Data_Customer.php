@@ -5,6 +5,10 @@ class C_Data_Customer extends CI_Controller
 {
     public function index()
     {
+        $result = $this->M_DataCustomer->DataCustomer();
+        // var_dump($result);
+        // die;
+
         $this->load->view('template/V_Header_Admin');
         $this->load->view('template/V_Sidebar_Admin');
         $this->load->view('admin/DataCustomer/V_Data_Customer');
@@ -14,6 +18,7 @@ class C_Data_Customer extends CI_Controller
     public function GetDataAjaxCustomer()
     {
         $result = $this->M_DataCustomer->DataCustomer();
+
 
         $no = 0;
 

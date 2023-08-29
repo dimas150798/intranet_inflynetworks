@@ -5,72 +5,62 @@ class C_Add_Customer extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('template/V_Header_Admin');
-        $this->load->view('template/V_Sidebar_Admin');
-        $this->load->view('admin/DataCustomer/V_Add_Customer');
-        $this->load->view('template/V_Footer_Admin');
+        $data['DataPaket']      = $this->M_Paket->DataPaket();
+
+        $this->load->view('template/V_Header_Admin', $data);
+        $this->load->view('template/V_Sidebar_Admin', $data);
+        $this->load->view('admin/DataCustomer/V_Add_Customer', $data);
+        $this->load->view('template/V_Footer_Admin', $data);
     }
 
     public function TambahCustomer()
     {
         // Rules form validation
         $this->form_validation->set_rules('nama_customer', 'Nama Customer', 'required');
-        $this->form_validation->set_rules('pembelian_paket', 'NIK', 'required');
-        $this->form_validation->set_rules('alamat_customer', 'Telephone', 'required');
-        $this->form_validation->set_rules('alamat_pegawai', 'Alamat', 'required');
-        $this->form_validation->set_rules('pendidikan_pegawai', 'Pendidikan', 'required');
-        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
-        $this->form_validation->set_rules('tanggal_masuk', 'Tanggal Masuk', 'required');
-        $this->form_validation->set_rules('gaji', 'Gaji', 'required');
+        $this->form_validation->set_rules('nama_paket', 'Paket', 'required');
+        $this->form_validation->set_rules('nik_customer', 'NIK Customer', 'required');
+        $this->form_validation->set_rules('tlp_customer', 'Telephon', 'required');
+        $this->form_validation->set_rules('alamat_customer', 'Alamat', 'required');
+        $this->form_validation->set_rules('date', 'Tanggal Registrasi', 'required');
+        $this->form_validation->set_rules('kode_barang', 'Kode Barang', 'required');
+        $this->form_validation->set_rules('kode_barang_stb', 'Kode Barang STB', 'required');
         $this->form_validation->set_message('required', 'Masukan data terlebih dahulu...');
 
         if ($this->form_validation->run() == false) {
             $this->load->view('template/V_Header_Admin');
             $this->load->view('template/V_Sidebar_Admin');
-            $this->load->view('admin/DataPegawai/V_Add_Pegawai');
+            $this->load->view('admin/DataCustomer/V_Add_Customer');
             $this->load->view('template/V_Footer_Admin');
         } else {
             // mengambil data post pada view
-            $nama_pegawai          = $this->input->post('nama_pegawai');
-            $nik                   = $this->input->post('nik');
-            $no_telpon             = $this->input->post('no_telpon');
-            $alamat_pegawai        = $this->input->post('alamat_pegawai');
-            $pendidikan_pegawai    = $this->input->post('pendidikan_pegawai');
-            $jabatan               = $this->input->post('jabatan');
-            $tanggal_masuk         = $this->input->post('tanggal_masuk');
-            $gaji                  = $this->input->post('gaji');
-            $photo                 = $_FILES['photo']['name'];
+            $nama_customer      = $this->input->post('nama_customer');
+            $pembelian_paket    = $this->input->post('id_paket');
+            $nik_customer       = $this->input->post('nik_customer');
+            $tlp_customer       = $this->input->post('tlp_customer');
+            $alamat_customer    = $this->input->post('alamat_customer');
+            $date               = $this->input->post('date');
+            $kode_barang        = $this->input->post('kode_barang');
+            $kode_barang_stb    = $this->input->post('kode_barang_stb');
 
-            $dataPegawai = array(
-                'NIK'                   => $nik,
-                'nama_pegawai'          => $nama_pegawai,
-                'no_telpon'             => $no_telpon,
-                'alamat_pegawai'        => $alamat_pegawai,
-                'pendidikan_pegawai'    => $pendidikan_pegawai,
-                'jabatan'               => $jabatan,
-                'tanggal_masuk'         => $tanggal_masuk,
-                'gaji'                  => $gaji,
-                'photo'                 => $photo
+
+            $dataCustomer = array(
+                'nik_customer'       => $nik_customer,
+                'nama_customer'      => $nama_customer,
+                'pembelian_paket'    => $pembelian_paket,
+                'tlp_customer'       => $tlp_customer,
+                'alamat_customer'    => $alamat_customer,
+                'date'               => $date,
+                'kode_barang'        => $kode_barang,
+                'kode_barang_stb'    => $kode_barang_stb
+
             );
 
-            if ($photo = '') {
-            } else {
-                $config['upload_path']    = './assets/photo';
-                $config['allowed_types']   = 'jpg|jpeg|png|tiff';
-                $this->load->library('upload', $config);
 
-                if (!$this->upload->do_upload('photo')) {
-                    echo "Photo Gagal diupload";
-                } else {
-                    $photo = $this->upload->data('file_name');
-                }
-            }
-
-            $this->M_CRUD->insertData($dataPegawai, 'data_pegawai');
+            $this->M_CRUD->insertData($dataCustomer, 'data_customer');
             $this->session->set_flashdata('Tambah_icon', 'success');
             $this->session->set_flashdata('Tambah_title', 'Tambah Data Berhasil');
 
-            redirect('admin/DataPegawai/C_Data_Pegawai');
+            redirect('admin/DataCustomer/C_Data_Customer');
         }
     }
 }
