@@ -11,9 +11,10 @@ class C_Lihat_Aktivasi extends CI_Controller
         $CheckAktivasi = $this->M_DataAktivasi->CheckAktivasi($id_aktivasi);
 
         // Nama Barang
+        $data['NamaCustomer']       = $CheckAktivasi->nama_customer;
         $data['NamaBarang']         = $CheckAktivasi->nama_barang;
         $data['Hitam_UPC_Outdoor']  = $CheckAktivasi->Patch_Core_Hitam_UPC_Outdor;
-        $data['Kuning_APC_Hijau']  = $CheckAktivasi->Patch_Core_Hitam_UPC_Outdor;
+        $data['Kuning_APC_Hijau']   = $CheckAktivasi->Patch_Core_Hitam_UPC_Outdor;
 
         $this->load->view('template/V_Header_Admin', $data);
         $this->load->view('template/V_Sidebar_Admin', $data);

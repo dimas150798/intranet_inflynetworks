@@ -1,9 +1,8 @@
-<div class="footer-wrap pd-20 mb-20 card-box" style="margin-top: auto;">
-    <div>Copyright &copy; My Infly Networks 2022</div>
+<div class="main-container">
+    <div class="footer-wrap pd-20 mb-20 card-box">
+        <div>Copyright &copy; My Infly Networks 2022</div>
+    </div>
 </div>
-</div>
-</div>
-
 
 <!-- welcome modal end -->
 <!-- js -->

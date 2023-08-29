@@ -24,30 +24,11 @@
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>assets/plugins/datatables/css/responsive.bootstrap4.min.css" />
     <link rel="stylesheet" type="text/css" href="<?php echo base_url(); ?>vendors/styles/style.css" />
 
+
     <!-- Global site tag (gtag.js) - Google Analytics -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-GBZ3SGGX85"></script>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2973766580778258" crossorigin="anonymous"></script>
 
     <!-- sweet alret2 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css" rel="stylesheet">
-
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        .content-wrap {
-            flex: 1;
-            /* Add your content styles here */
-        }
-
-        .footer-wrap {
-            flex-shrink: 0;
-            /* Add your footer styles here */
-        }
-    </style>
 </head>
