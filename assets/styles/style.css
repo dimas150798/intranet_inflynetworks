@@ -4121,3 +4121,13 @@ body.IE .register-page-wrap .container{
 .welcome-modal-btn i{
 	margin-top: 6px;
 }
+
+.content-wrap {
+    flex: 1;
+    /* Add your content styles here */
+}
+
+.footer-wrap {
+    flex-shrink: 0;
+    /* Add your footer styles here */
+}

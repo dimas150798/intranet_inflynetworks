@@ -4,7 +4,7 @@
 <head>
     <!-- Basic Page Info -->
     <meta charset="utf-8" />
-    <title>Dashboard - Infly Networks</title>
+    <title>Intranet - Infly Networks</title>
 
     <!-- Site favicon -->
     <link rel="apple-touch-icon" sizes="180x180" href="<?php echo base_url(); ?>vendors/images/logo-only.png" />
@@ -30,4 +30,24 @@
 
     <!-- sweet alret2 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        .content-wrap {
+            flex: 1;
+            /* Add your content styles here */
+        }
+
+        .footer-wrap {
+            flex-shrink: 0;
+            /* Add your footer styles here */
+        }
+    </style>
 </head>

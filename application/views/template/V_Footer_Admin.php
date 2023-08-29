@@ -1,4 +1,4 @@
-<div class="footer-wrap pd-20 mb-20 card-box">
+<div class="footer-wrap pd-20 mb-20 card-box" style="margin-top: auto;">
     <div>Copyright &copy; My Infly Networks 2022</div>
 </div>
 </div>
@@ -15,6 +15,7 @@
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/js/dataTables.bootstrap4.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/js/dataTables.responsive.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/js/responsive.bootstrap4.min.js"></script>
+
 <!-- buttons for Export datatable -->
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/js/dataTables.buttons.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/js/buttons.bootstrap4.min.js"></script>
@@ -23,8 +24,10 @@
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/js/buttons.flash.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/js/pdfmake.min.js"></script>
 <script src="<?php echo base_url(); ?>assets/plugins/datatables/js/vfs_fonts.js"></script>
+
 <!-- Datatable Setting js -->
 <script src="<?php echo base_url(); ?>vendors/scripts/datatable-setting.js"></script>
+
 <!-- Google Tag Manager (noscript) -->
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NXZMQSS" height="0" width="0" style="display: none; visibility: hidden"></iframe></noscript>
 <!-- End Google Tag Manager (noscript) -->
@@ -64,6 +67,25 @@
             "serverside": true,
             "ajax": {
                 "url": "<?= base_url('admin/DataCustomer/C_Data_Customer/GetDataAjaxCustomer'); ?>",
+            },
+            "bDestroy": true
+        })
+    })
+</script>
+
+<!-- Ajax Show Data Aktivasi -->
+<script>
+    $(document).ready(function() {
+        $('#dataaktivasi').DataTable({
+            "autoFill": true,
+            "pagingType": 'numbers',
+            "searching": true,
+            "paging": true,
+            "stateSave": true,
+            "processing": true,
+            "serverside": true,
+            "ajax": {
+                "url": "<?= base_url('admin/DataAktivasi/C_Data_Aktivasi/GetDataAjax'); ?>",
             },
             "bDestroy": true
         })
@@ -204,9 +226,27 @@
         })
     }
 </script>
-<!-- Delete Data Customer -->
+<!-- Melihat Data Aktivasi -->
 <script>
-    function DeleteDataPegawai(parameter_id) {
+    function LihatAktivasi(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melihat Data Aktivasi ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Melihat Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/DataAktivasi/C_Lihat_Aktivasi/LihatAktivasi') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Delete Data Aktivasi -->
+<script>
+    function DeleteDataAktivasi(parameter_id) {
         Swal.fire({
             title: 'Yakin Melakukan Delete Data ?',
             text: "Data yang dihapus tidak akan kembali",
@@ -217,13 +257,11 @@
             confirmButtonText: 'Ya, Hapus Data!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Delete_Pegawai/DeleteDataPegawai') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/DataAktivasi/C_Delete_Aktivasi/DeleteDataAktivasi') ?>/" + parameter_id;
             }
         })
     }
 </script>
-
-
 
 </body>
 

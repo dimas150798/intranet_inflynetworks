@@ -3,21 +3,33 @@
 class M_DataAktivasi extends CI_Model
 {
 
-    // Menampilkan Data Pegawai
-    public function DataPegawai()
+    // Menampilkan Data Aktivasi
+    public function DataAktivasi()
     {
-        $query   = $this->db->query("SELECT id_pegawai, NIK, nama_pegawai, no_telpon, alamat_pegawai, pendidikan_pegawai, jabatan, tanggal_masuk, gaji, photo
-            FROM data_pegawai");
+        $query   = $this->db->query("SELECT data_aktivasi.id_aktivasi, data_aktivasi.kode_barang, data_aktivasi.id_stockBarang, data_aktivasi.jumlah_modem,
+            data_aktivasi.Patch_Core_Hitam_UPC_Outdor, data_aktivasi.Patch_Core_Kuning_UPC_Biru, data_aktivasi.Patch_Core_Kuning_APC_Hijau, data_aktivasi.Adaptor, data_aktivasi.tanggal,
+            data_customer.nama_customer, data_stockbarang.id_barang, data_namabarang.nama_barang, data_status.nama_status
+
+            FROM data_aktivasi
+            
+            LEFT JOIN data_customer ON data_aktivasi.id_customer = data_customer.id_customer
+            LEFT JOIN data_stockbarang ON data_aktivasi.id_stockBarang = data_stockbarang.id_stockBarang
+            LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
+            LEFT JOIN data_status ON data_aktivasi.id_status = data_status.id_status
+            
+            ORDER BY data_aktivasi.id_aktivasi DESC");
 
         return $query->result_array();
     }
 
-    //Edit Data Pegawai
-    public function EditPegawai($id_pegawai)
+    //Edit Data Aktivasi
+    public function EditAktivasi($id_aktivasi)
     {
-        $query   = $this->db->query("SELECT id_pegawai, NIK, nama_pegawai, no_telpon, alamat_pegawai, pendidikan_pegawai, jabatan, tanggal_masuk, gaji, photo
-        FROM data_pegawai
-        WHERE id_pegawai = '$id_pegawai'
+        $query   = $this->db->query("SELECT id_aktivasi, kode_barang, id_stockBarang, jumlah_modem, Patch_Core_Hitam_UPC_Outdor, Patch_Core_Kuning_UPC_Biru,
+            Patch_Core_Kuning_APC_Hijau, Adaptor, tanggal, id_status, id_pegawai, id_customer, id_keadaanbarang
+
+        FROM data_aktivasi
+        WHERE id_aktivasi = '$id_aktivasi'
         ");
 
         return $query->result_array();
@@ -46,15 +58,19 @@ class M_DataAktivasi extends CI_Model
         return $query->result_array();
     }
 
-    // Check akses login
-    public function CheckLogin($username_login, $password_login)
+    // Check data aktivasi
+    public function CheckAktivasi($id_aktivasi)
     {
-        $this->db->select('nama_pegawai, username, password');
-        $this->db->where('username', $username_login);
-        $this->db->where('password', $password_login);
+        $this->db->select('data_aktivasi.id_aktivasi, data_aktivasi.kode_barang, data_aktivasi.id_stockBarang, data_aktivasi.jumlah_modem,
+                            data_aktivasi.Patch_Core_Hitam_UPC_Outdor, data_aktivasi.Patch_Core_Kuning_UPC_Biru, data_aktivasi.Patch_Core_Kuning_APC_Hijau, data_aktivasi.Adaptor, 
+                            data_aktivasi.tanggal, data_aktivasi.id_status, data_customer.nama_customer, data_stockbarang.id_barang, data_namabarang.nama_barang');
+        $this->db->join('data_customer', 'data_aktivasi.id_customer = data_customer.id_customer', 'left');
+        $this->db->join('data_stockbarang', 'data_aktivasi.id_stockBarang = data_stockbarang.id_stockBarang', 'left');
+        $this->db->join('data_namabarang', 'data_stockbarang.id_barang = data_namabarang.id_barang', 'left');
+        $this->db->where('data_aktivasi.id_aktivasi', $id_aktivasi);
 
         $this->db->limit(1);
-        $result = $this->db->get('data_login');
+        $result = $this->db->get('data_aktivasi');
 
         return $result->row();
         if ($result->num_rows() > 0) {

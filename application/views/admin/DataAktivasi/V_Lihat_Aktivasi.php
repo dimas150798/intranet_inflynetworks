@@ -16,7 +16,7 @@
                                     <a href="#">Data Aktivasi</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
-                                    Table
+                                    Informasi
                                 </li>
                             </ol>
                         </nav>
@@ -35,31 +35,11 @@
                 </div>
             </div>
 
-            <!-- Table Data Customer -->
-            <div class="card-box mb-30">
-                <div class="container-fluid">
-                    <div class="pd-20">
-                        <h4 class="text-blue text-center">Data Aktivasi - Infly Networks</h4>
-                    </div>
-                    <div class="pb-20" style="overflow-x: auto;">
-                        <table id="dataaktivasi" class="table table-bordered responsive nowrap" style="width: 100%;">
-                            <thead>
-                                <tr>
-                                    <th width="5%">No</th>
-                                    <th width="20%">Nama Customer</th>
-                                    <th width="20%">Nama Barang</th>
-                                    <th width="20%">SN Modem</th>
-                                    <th width="10%">Tanggal</th>
-                                    <th width="10%">Status</th>
-                                    <th width="15%">Action</th>
-                                </tr>
-                            </thead>
-                        </table>
-
-
-                    </div>
+            <div class="main-containe">
+                <div class="product-detail-desc pd-20 card-box height-100-p mb-3">
+                    <h4 class="mb-20 pt-20"><?php echo $NamaBarang ?></h4>
+                    <p>Patch Cord Hitam UPC Outdor = <?php echo $Hitam_UPC_Outdoor ?></p>
+                    <p>Patch Cord Kuning APC (Hijau) = <?php echo $Hitam_UPC_Outdoor ?></p>
                 </div>
-                <!-- End Table Data Customer -->
-
 
             </div>
