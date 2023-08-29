@@ -47,69 +47,74 @@
                             <div class="bg-danger">
                                 <small class="text-white"><?php echo form_error('nik'); ?></small>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Pembelian Paket -->
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Pembelian Paket </label>
-                        <div class="col-sm-12 col-md-10">
-                            <!-- <input class="form-control" name="pembelian_paket" placeholder="Pilih Paket..." /> -->
-                            <select name="nama_paket" id="id_paket" class="form-control" required>
-                                <option value="">Pilih Paket :</option>
-                                <?php foreach ($DataPaket as $dataPaket) : ?>
-                                    <option value="<?php echo $dataPaket['id_paket']; ?>">
-                                        <?php echo $dataPaket['nama_paket']; ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
-                            <div class="bg-danger">
-                                <small class="text-white"><?php echo form_error('pembelian_paket'); ?></small>
+
+                            <div class="row mt-3">
+                                <div class="col-sm-4">
+                                    <label for="name_pppoe" class="form-label" style="font-weight: bold;"> Name PPPOE : <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="name_pppoe" id="name_pppoe" value="" placeholder="Masukkan nama pelanggan...">
+                                    <div class="bg-danger">
+                                        <small class="text-white"><?php echo form_error('name_pppoe'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="password_pppoe" class="form-label" style="font-weight: bold;"> Password PPPOE : <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="password_pppoe" id="password_pppoe" value="" placeholder="Masukkan nama pelanggan...">
+                                    <div class="bg-danger">
+                                        <small class="text-white"><?php echo form_error('password_pppoe'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="phone_customer" class="form-label" style="font-weight: bold;"> No. Telephone : <span class="text-danger">*</span></label>
+                                    <input type="text" class="form-control" name="phone_customer" id="phone_customer" value="" placeholder="Masukkan nama pelanggan...">
+                                    <div class="bg-danger">
+                                        <small class="text-white"><?php echo form_error('phone_customer'); ?></small>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <!-- Nomor Customer -->
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Telephon</label>
-                        <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="tlp_customer" placeholder="Masukkan No Telephon..." />
-                            <div class="bg-danger">
-                                <small class="text-white"><?php echo form_error('tlp_customer'); ?></small>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Alamat Customer -->
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Alamat</label>
-                        <div class="col-sm-12 col-md-10">
-                            <input class="form-control" name="alamat_customer" placeholder="Masukkan Alamat..." />
-                            <div class="bg-danger">
-                                <small class="text-white"><?php echo form_error('alamat_customer'); ?></small>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Pendidikan</label>
-                        <div class="col-sm-12 col-md-10">
-                            <select name="pendidikan_customer" class="custom-select col-12">
-                                <option disabled selected>Pilih Pendidikan</option>
-                                <option value="SMA/SMK/MA">SMA/SMK/MA</option>
-                                <option value="D3">D3</option>
-                                <option value="D4">D4</option>
-                                <option value="S1">S1</option>
-                                <option value="S2">S2</option>
-                            </select>
-                            <div class="bg-danger">
-                                <small class="text-white"><?php echo form_error('pendidikan_customer'); ?></small>
-                            </div>
-                        </div>
-                    </div> -->
-                    <!-- Tanggal Registrasi -->
-                    <div class="form-group row">
-                        <label class="col-sm-12 col-md-2 col-form-label">Tanggal Registrasi</label>
-                        <div class="col-sm-12 col-md-10">
-                            <input class="form-control" type="date" name="date" placeholder="Tanggal Masuk..." />
-                            <div class="bg-danger">
-                                <small class="text-white"><?php echo form_error('date'); ?></small>
+
+                            <div class="row mt-3">
+                                <div class="col-sm-4">
+                                    <label for="id_paket" class="form-label" style="font-weight: bold;"> Paket : <span class="text-danger">*</span></label>
+                                    <select id="id_paket" name="id_paket" class="form-control" required>
+                                        <option value="">Pilih Paket :</option>
+                                        <?php foreach ($DataPaket as $dataPaket) : ?>
+                                            <option value="<?php echo $dataPaket['id_paket']; ?>">
+                                                <?php echo $dataPaket['nama_paket']; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <div class="bg-danger">
+                                        <small class="text-white"><?php echo form_error('id_paket'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="id_area" class="form-label" style="font-weight: bold;"> Kode DP dan Area : <span class="text-danger">*</span></label>
+                                    <select id="id_area" name="id_area" class="form-control" required>
+                                        <option value="">Pilih Area :</option>
+                                        <?php foreach ($DataArea as $dataArea) : ?>
+                                            <option value="<?php echo $dataArea['id_area']; ?>">
+                                                <?php echo $dataArea['nama_area']; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <div class="bg-danger">
+                                        <small class="text-white"><?php echo form_error('id_area'); ?></small>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <label for="id_sales" class="form-label" style="font-weight: bold;"> Sales : <span class="text-danger">*</span></label>
+                                    <select id="id_sales" name="id_sales" class="form-control" required>
+                                        <option value="">Pilih Sales :</option>
+                                        <?php foreach ($DataSales as $dataSales) : ?>
+                                            <option value="<?php echo $dataSales['id_sales']; ?>">
+                                                <?php echo $dataSales['nama_sales']; ?>
+                                            </option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                    <div class="bg-danger">
+                                        <small class="text-white"><?php echo form_error('id_sales'); ?></small>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>

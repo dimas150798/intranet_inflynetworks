@@ -1,9 +1,8 @@
-<div class="footer-wrap pd-20 mb-20 card-box" style="margin-top: auto;">
-    <div>Copyright &copy; My Infly Networks 2022</div>
+<div class="main-container">
+    <div class="footer-wrap pd-20 mb-20 card-box">
+        <div>Copyright &copy; My Infly Networks 2022</div>
+    </div>
 </div>
-</div>
-</div>
-
 
 <!-- welcome modal end -->
 <!-- js -->
@@ -92,7 +91,7 @@
     })
 </script>
 
-<!-- Allert Add Data Pegawai -->
+<!-- Allert Add Data -->
 <script>
     <?php if ($this->session->flashdata('Tambah_icon')) { ?>
         var toastMixin = Swal.mixin({
@@ -246,7 +245,7 @@
 
 <!-- Delete Data Aktivasi -->
 <script>
-    function DeleteDataAktivasi(parameter_id) {
+    function DeleteDataPegawai(parameter_id) {
         Swal.fire({
             title: 'Yakin Melakukan Delete Data ?',
             text: "Data yang dihapus tidak akan kembali",
@@ -257,7 +256,7 @@
             confirmButtonText: 'Ya, Hapus Data!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/DataAktivasi/C_Delete_Aktivasi/DeleteDataAktivasi') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/DataPegawai/C_Delete_Pegawai/DeleteDataPegawai') ?>/" + parameter_id;
             }
         })
     }

@@ -1,4 +1,4 @@
-<body>
+<body class="d-flex flex-column">
 
     <div class="header">
         <div class="header-left">
