@@ -22,39 +22,15 @@ class M_DataPegawai extends CI_Model
 
         return $query->result_array();
     }
-    //Delete Data Pegawai
-    public function DeletePegawai($where, $table)
+
+    // Check Data Pegawai
+    public function CheckDataPegawai($nama_pegawai)
     {
-        $this->db->where($where);
-        $this->db->delete($table);
-
-        return ($this->db->affected_rows() > 0) ? true : false;
-    }
-
-    // Edit Data Login
-    public function EditLogin($id_login)
-    {
-        $query   = $this->db->query("SELECT data_login.id_login, data_login.email_login, data_login.password_login, 
-        data_login.id_akses, data_akses.nama_akses
-        FROM data_login
-
-        LEFT JOIN data_akses ON data_login.id_akses = data_akses.id_akses
-
-        WHERE id_login = '$id_login'
-        ORDER BY data_login.id_login ASC");
-
-        return $query->result_array();
-    }
-
-    // Check akses login
-    public function CheckLogin($username_login, $password_login)
-    {
-        $this->db->select('nama_pegawai, username, password');
-        $this->db->where('username', $username_login);
-        $this->db->where('password', $password_login);
+        $this->db->select('id_pegawai, NIK, nama_pegawai, no_telpon, alamat_pegawai, pendidikan_pegawai, jabatan, tanggal_masuk, gaji, photo');
+        $this->db->where('nama_pegawai', $nama_pegawai);
 
         $this->db->limit(1);
-        $result = $this->db->get('data_login');
+        $result = $this->db->get('data_pegawai');
 
         return $result->row();
         if ($result->num_rows() > 0) {

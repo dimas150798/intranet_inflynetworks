@@ -2,34 +2,18 @@
 
 class M_Kecamatan extends CI_Model
 {
-    // Menampilkan Data Customer
-    public function DataCustomer()
+    // Menampilkan Data Kecamatan
+    public function DataKecamatan()
     {
-        $query   = $this->db->query("SELECT data_customer.id_customer, data_customer.pembelian_paket, data_customer.nama_customer, data_customer.nik_customer, data_customer.alamat_customer, data_customer.tlp_customer, data_customer.date, data_customer.kode_barang, data_customer.kode_barang_stb
-
-        FROM data_customer
-             LEFT JOIN data_paket ON data_customer.pembelian_paket = data_paket.id_paket
-             ");
-
-        return $query->result_array();
-    }
-    //Edit Data Customer
-    public function EditCustomer($id_customer)
-    {
-        $query   = $this->db->query("SELECT data_customer.id_customer, data_customer.pembelian_paket, data_customer.nama_customer, data_customer.nik_customer, data_customer.alamat_customer, data_customer.tlp_customer, data_customer.date, data_customer.kode_barang, data_customer.kode_barang_stb
-    FROM data_customer
-    WHERE id_customer = '$id_customer'
-    ");
+        $query   = $this->db->query("SELECT id_kecamatan, nama_kecamatan, id_kota FROM data_kecamatan ORDER BY nama_kecamatan ASC ");
 
         return $query->result_array();
     }
 
-    // Hapus Data Custmer
-    public function DeleteCustomer($where, $table)
+    public function ListKecamatan($id_kota)
     {
-        $this->db->where($where);
-        $this->db->delete($table);
+        $query   = $this->db->query("SELECT id_kecamatan, nama_kecamatan, id_kota FROM data_kecamatan WHERE id_kota = '$id_kota' ");
 
-        return ($this->db->affected_rows() > 0) ? true : false;
+        return $query->result_array();
     }
 }

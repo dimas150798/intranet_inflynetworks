@@ -5,10 +5,10 @@ class C_Data_Pegawai extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('template/V_Header_Admin');
+        $this->load->view('template/DataPegawai/V_Header_Pegawai');
         $this->load->view('template/V_Sidebar_Admin');
         $this->load->view('admin/DataPegawai/V_Data_Pegawai');
-        $this->load->view('template/V_Footer_Admin');
+        $this->load->view('template/DataPegawai/V_Footer_Pegawai');
     }
 
     public function GetDataAjax()

@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Form Edit Data Customer</h4>
+                            <h4>Form Edit Data Terminasi</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -30,7 +30,7 @@
             <div class="card-box p-5">
 
                 <?php foreach ($DataCustomer as $data) : ?>
-                    <form method="POST" action="<?php echo base_url('admin/DataCustomer/C_Edit_Customer/EditSave') ?>">
+                    <form method="POST" action="<?php echo base_url('admin/DataTerminasi/C_Edit_Terminasi/EditSave') ?>">
                         <div class="form-group row">
                             <div class="row">
                                 <input type="hidden" class="form-control" name="id_customer" id="id_customer" value="<?php echo $data['id_customer'] ?>" readonly>
@@ -126,11 +126,21 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Tanggal <span class="text-danger">*</span></label>
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Tanggal Registrasi <span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
                                 <input class="form-control" type="date" name="date" value="<?php echo $data['date'] ?>" />
                                 <div class="bg-danger">
                                     <small class="text-white"><?php echo form_error('date'); ?></small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Tanggal Terminasi<span class="text-danger">*</span></label>
+                            <div class="col-sm-12 col-md-9">
+                                <input class="form-control" type="date" name="date_terminasi" value="<?php echo $data['date_terminasi'] ?>" />
+                                <div class="bg-danger">
+                                    <small class="text-white"><?php echo form_error('date_terminasi'); ?></small>
                                 </div>
                             </div>
                         </div>

@@ -8,7 +8,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-12 col-lg-6 col-xl-6">
                         <div class="title">
-                            <h4>Data Customer</h4>
+                            <h4>Data Customer Terminasi</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -22,7 +22,7 @@
                         </nav>
                     </div>
 
-                    <div class="col-12 col-lg-auto col-xl-auto mt-2">
+                    <!-- <div class="col-12 col-lg-auto col-xl-auto mt-2">
                         <div class="dropdown">
                             <a class="btn btn-info dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                 Fitur
@@ -31,7 +31,7 @@
                                 <a class="dropdown-item" href="<?php echo base_url('admin/DataCustomer/C_Add_Customer') ?>">Tambah Customer</a>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                 </div>
             </div>
 
@@ -39,7 +39,7 @@
             <div class="card-box">
                 <div class="container-fluid">
                     <div class="p-2" style="overflow-x: auto;">
-                        <table id="datacustomer" class="table table-bordered responsive nowrap" style="width: 100%;">
+                        <table id="terminasi" class="table table-bordered responsive nowrap" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th width="5%">No</th>

@@ -6,7 +6,7 @@
 				<div class="page-header">
 
 					<div class="row align-items-center justify-content-between">
-						<div class="col-xl-6">
+						<div class="col-12 col-lg-6 col-xl-6">
 							<div class="title">
 								<h4>Data Pegawai</h4>
 							</div>
@@ -22,7 +22,7 @@
 							</nav>
 						</div>
 
-						<div class="col-6 col-xl-auto mt-2">
+						<div class="col-12 col-lg-auto col-xl-auto mt-2">
 							<div class="dropdown">
 								<a class="btn btn-info dropdown-toggle" href="#" role="button" data-toggle="dropdown">
 									Fitur
@@ -38,11 +38,8 @@
 				<!-- Table Data Pegawai -->
 				<div class="card-box">
 					<div class="container-fluid">
-						<div class="pd-20">
-							<h4 class="text-blue text-center">Data Pegawai - Infly Networks</h4>
-						</div>
-						<div class="pb-20">
-							<table id="example" class="table table-bordered responsive nowrap" style="width: 100%;">
+						<div class="p-2" style="overflow-x: auto;">
+							<table id="datapegawai" class="table table-bordered responsive nowrap" style="width: 100%;">
 								<thead>
 									<tr>
 										<th width="5%">No</th>
@@ -58,6 +55,7 @@
 					</div>
 				</div>
 				<!-- End Table Data Pegawai -->
+
 			</div>
 		</div>
 	</div>

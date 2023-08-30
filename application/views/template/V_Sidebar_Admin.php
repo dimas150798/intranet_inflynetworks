@@ -148,7 +148,7 @@
                         <ul class="submenu">
                             <li><a href="<?php echo base_url('admin/DataCustomer/C_Data_Customer') ?>">Nama Customer</a></li>
                             <li><a href="<?php echo base_url('admin/DataAktivasi/C_Data_Aktivasi') ?>">Aktivasi</a></li>
-                            <li><a href="color-settings.html">Terminasi</a></li>
+                            <li><a href="<?php echo base_url('admin/DataTerminasi/C_Data_Terminasi') ?>">Terminasi</a></li>
                         </ul>
                     </li>
                     <!-- End Data Customer -->
