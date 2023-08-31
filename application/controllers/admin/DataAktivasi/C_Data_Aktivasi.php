@@ -12,10 +12,10 @@ class C_Data_Aktivasi extends CI_Controller
 {
     public function index()
     {
-        $this->load->view('template/V_Header_Admin');
+        $this->load->view('template/DataAktivasi/V_Header_Aktivasi');
         $this->load->view('template/V_Sidebar_Admin');
         $this->load->view('admin/DataAktivasi/V_Data_Aktivasi');
-        $this->load->view('template/V_Footer_Admin');
+        $this->load->view('template/DataAktivasi/V_Footer_Aktivasi');
     }
 
     public function GetDataAjax()
@@ -42,7 +42,7 @@ class C_Data_Aktivasi extends CI_Controller
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a onclick="LihatAktivasi(' . $dataAktivasi['id_aktivasi'] . ')"class="dropdown-item text-black"><i class="bi bi-eye-fill"></i> Lihat Data</a>
-                        <a onclick="DeleteDataAktivasi(' . $dataAktivasi['id_aktivasi'] . ')"class="dropdown-item text-black"><i class="bi bi-trash3-fill"></i> Hapus</a>
+                        <a onclick="DeleteAktivasi(' . $dataAktivasi['id_aktivasi'] . ')"class="dropdown-item text-black"><i class="bi bi-trash3-fill"></i> Hapus</a>
                     </div>
                 </div>';
 

@@ -14,6 +14,7 @@ class C_Delete_Aktivasi extends CI_Controller
         // Mengambil data dari check aktivasi
         $id_stockBarang = $checkAktivasi->id_stockBarang;
         $id_status = $checkAktivasi->id_status;
+        $kode_barang = $checkAktivasi->kode_barang;
 
         // Mengambil data stock barang dari id_stockBarang
         $checkStockBarang   = $this->M_StockBarang->CheckStocBarang($id_stockBarang);
@@ -21,7 +22,6 @@ class C_Delete_Aktivasi extends CI_Controller
         // Mengambil jumlah stock barang masuk, mutasi, rusak
         $jumlah_stockBarang = $checkStockBarang->jumlah_stockBarang + 1;
         $jumlah_stockMutasi = $checkStockBarang->jumlah_stockMutasi - 1;
-        $jumlah_stockRusak  = $checkStockBarang->jumlah_stockRusak;
 
         // Update Data Stock Barang
         $StockBarang = array(
@@ -47,16 +47,31 @@ class C_Delete_Aktivasi extends CI_Controller
 
         // Condition Aktivasi
         $WhereAktivasi = array(
-            'id_aktivasi'   => $id_aktivasi
+            'id_aktivasi'                   => $id_aktivasi
+        );
+
+        // Update Data Customer
+        $DataCustomer = array(
+            'kode_barang'                   => NULL,
+            'kode_barang_stb'               => NULL,
+            'id_status'                     => NULL
+        );
+
+        // Condition Customer
+        $WhereCustomer = array(
+            'kode_barang'                   => $kode_barang
         );
 
         if ($id_status == '13') {
             $this->M_CRUD->updateData('data_stockbarang', $StockBarang, $WhereStockBarang);
             $this->M_CRUD->updateData('data_aktivasi', $DataAktivasi, $WhereAktivasi);
+            $this->M_CRUD->updateData('data_customer', $DataCustomer, $WhereCustomer);
 
-            $this->session->set_flashdata('Delete_icon', 'success');
-            $this->session->set_flashdata('Delete_title', 'Hapus Data Berhasil');
+            $this->session->set_flashdata('berhasil_icon', 'success');
+            $this->session->set_flashdata('berhasil_title', 'Hapus Data Berhasil');
         } else {
+            $this->session->set_flashdata('gagal_icon', 'success');
+            $this->session->set_flashdata('gagal_title', 'Status Barang Sudah Stock');
         }
 
         redirect('admin/DataAktivasi/C_Data_Aktivasi');

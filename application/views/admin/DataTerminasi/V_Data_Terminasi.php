@@ -44,7 +44,7 @@
                                 <tr>
                                     <th width="5%">No</th>
                                     <th width="20%">Nama Customer</th>
-                                    <th width="10%">Tanggal Registrasi</th>
+                                    <th width="10%">Tanggal Terminasi</th>
                                     <th width="10%">Paket</th>
                                     <th width="20%">Telephone</th>
                                     <th width="20%">Alamat Customer</th>

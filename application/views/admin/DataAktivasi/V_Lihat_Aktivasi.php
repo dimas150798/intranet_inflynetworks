@@ -1,3 +1,12 @@
+<?php
+if (!function_exists('changeDateFormat')) {
+    function changeDateFormat($format = 'd-m-Y', $givenDate = null)
+    {
+        return date($format, strtotime($givenDate));
+    }
+}
+?>
+
 <div class="main-container flex-grow-1">
     <!-- <div class="mobile-menu-overlay"></div> -->
 
@@ -34,10 +43,41 @@
     </div>
 
     <div class="card-box p-4">
-        <h4 class="mb-20 pt-20"><?php echo $NamaBarang ?></h4>
-        <p>Nama Customer = <?php echo $NamaCustomer ?></p>
-        <p>Patch Cord Hitam UPC Outdor = <?php echo $Hitam_UPC_Outdoor ?></p>
-        <p>Patch Cord Kuning APC (Hijau) = <?php echo $Hitam_UPC_Outdoor ?></p>
+        <div class="container">
+            <div class="row">
+                <div class="col-12">
+                    <h4 class="text-center"><?php echo $NamaBarang ?></h4>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 col-lg-4 col-xl-4">
+                    <label for="" class="col-form-label" style="font-weight: bold;"> Nama Customer <span class="text-danger">*</span></label>
+                    <input class="form-control bg-info text-center" style="font-weight: bold; font-size: 15px;" type="text" value="<?php echo $NamaCustomer ?>" readonly>
+                </div>
+                <div class="col-12 col-lg-4 col-xl-4">
+                    <label for="" class="col-form-label" style="font-weight: bold;"> SN Modem <span class="text-danger">*</span></label>
+                    <input class="form-control bg-info text-center" style="font-weight: bold; font-size: 15px;" type="text" value="<?php echo $KodeBarang ?>" readonly>
+                </div>
+                <div class="col-12 col-lg-4 col-xl-4">
+                    <label for="" class="col-form-label" style="font-weight: bold;"> Tanggal Aktivasi <span class="text-danger">*</span></label>
+                    <input class="form-control bg-info text-center" style="font-weight: bold; font-size: 15px;" type="text" value="<?php echo changeDateFormat('d-m-Y', $TanggalAktivasi) ?>" readonly>
+                </div>
+            </div>
+            <div class="row mt-3">
+                <div class="col-12 col-lg-4 col-xl-4">
+                    <label for="" class="col-form-label" style="font-weight: bold;"> Patch Cord Hitam UPC Outdor <span class="text-danger">*</span></label>
+                    <input class="form-control bg-info text-center" style="font-weight: bold; font-size: 15px;" type="text" value="<?php echo $Hitam_UPC_Outdoor ?>" readonly>
+                </div>
+                <div class="col-12 col-lg-4 col-xl-4">
+                    <label for="" class="col-form-label" style="font-weight: bold;"> Patch Cord Kuning APC (Hijau) <span class="text-danger">*</span></label>
+                    <input class="form-control bg-info text-center" style="font-weight: bold; font-size: 15px;" type="text" value="<?php echo $Kuning_APC_Hijau ?>" readonly>
+                </div>
+                <div class="col-12 col-lg-4 col-xl-4">
+                    <label for="" class="col-form-label" style="font-weight: bold;"> Patch Cord Kuning UPC (Biru) <span class="text-danger">*</span></label>
+                    <input class="form-control bg-info text-center" style="font-weight: bold; font-size: 15px;" type="text" value="<?php echo $Kuning_UPC_Biru ?>" readonly>
+                </div>
+            </div>
+        </div>
     </div>
 
 </div>

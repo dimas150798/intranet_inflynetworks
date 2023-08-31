@@ -36,12 +36,9 @@
             </div>
 
             <!-- Table Data Customer -->
-            <div class="card-box mb-30">
+            <div class="card-box">
                 <div class="container-fluid">
-                    <div class="pd-20">
-                        <h4 class="text-blue text-center">Data Aktivasi - Infly Networks</h4>
-                    </div>
-                    <div class="pb-20" style="overflow-x: auto;">
+                    <div class="p-2" style="overflow-x: auto;">
                         <table id="dataaktivasi" class="table table-bordered responsive nowrap" style="width: 100%;">
                             <thead>
                                 <tr>

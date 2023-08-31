@@ -1,5 +1,5 @@
 <div class="footer-wrap pd-20 mb-20 bg-white mt-4">
-    <div>Copyright &copy; My Infly Networks 2022</div>
+    <div>Copyright &copy; My Infly Networks 2023</div>
 </div>
 
 

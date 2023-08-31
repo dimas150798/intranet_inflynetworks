@@ -25,12 +25,12 @@ class C_Data_Terminasi extends CI_Controller
         $no = 0;
 
         foreach ($result as $dataCustomer) {
-            $TanggalRegistrasi = $dataCustomer['date_terminasi'] == NULL;
+            $TanggalTerminasi = $dataCustomer['date_terminasi'] == NULL;
 
             $row = array();
             $row[] = ++$no;
             $row[] = strtoupper($dataCustomer['nama_customer']);
-            $row[] = '<div>' . ($TanggalRegistrasi ? '<span class="badge bg-danger text-white">' . 'DATA KOSONG' . '</span>' :  changeDateFormat('d-m-Y', $dataCustomer['date_terminasi'])) . '</div>';
+            $row[] = '<div>' . ($TanggalTerminasi ? '<span class="badge bg-danger text-white">' . 'DATA KOSONG' . '</span>' :  changeDateFormat('d-m-Y', $dataCustomer['date_terminasi'])) . '</div>';
             $row[] = $dataCustomer['pembelian_paket'];
             $row[] = $dataCustomer['tlp_customer'];
             $row[] = strtoupper($dataCustomer['alamat_customer']) . ' ' . $dataCustomer['nama_kota'] . ', Kecamatan ' . $dataCustomer['nama_kecamatan'] . ', Kelurahan ' . $dataCustomer['nama_kelurahan'];
