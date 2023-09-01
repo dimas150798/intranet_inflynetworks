@@ -166,8 +166,8 @@
                             <span class="micon bi bi-box2-fill"></span><span class="mtext">Data Barang</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="introduction.html">Nama Barang</a></li>
-                            <li><a href="getting-started.html">Detail Barang</a></li>
+                            <li><a href="<?php echo base_url('admin/NamaBarang/C_Nama_Barang') ?>">Nama Barang</a></li>
+                            <li><a href="getting-started.html">Barang Rusak</a></li>
                         </ul>
                     </li>
                     <!-- End Data Barang -->

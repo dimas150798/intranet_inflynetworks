@@ -13,4 +13,4 @@ $autoload['config'] = array();
 
 $autoload['language'] = array();
 
-$autoload['model'] = array('M_CRUD', 'M_DataAktivasi', 'M_DataCustomer', 'M_DataPegawai', 'M_Kecamatan', 'M_Kelurahan', 'M_Kota', 'M_Login', 'M_Paket', 'M_StockBarang');
+$autoload['model'] = array('M_CRUD', 'M_DataAktivasi', 'M_DataCustomer', 'M_DataPegawai', 'M_Kecamatan', 'M_Kelurahan', 'M_Kota', 'M_Login', 'M_Paket', 'M_StockBarang', 'M_NamaBarang', 'M_DataSatuan', 'M_DataPeralatan');
