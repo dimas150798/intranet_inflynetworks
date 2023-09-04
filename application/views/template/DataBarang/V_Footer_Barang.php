@@ -55,6 +55,24 @@
     })
 </script>
 
+<!-- Ajax Show Data Barang Rusak-->
+<script>
+    $(document).ready(function() {
+        $('#barangrusak').DataTable({
+            "autoFill": true,
+            "pagingType": 'numbers',
+            "searching": true,
+            "paging": true,
+            "stateSave": true,
+            "processing": true,
+            "serverside": true,
+            "ajax": {
+                "url": "<?= base_url('admin/BarangRusak/C_Barang_Rusak/GetDataAjax'); ?>",
+            },
+            "bDestroy": true
+        })
+    })
+</script>
 
 <!-- Alert Berhasil -->
 <script>
@@ -141,6 +159,25 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = "<?php echo site_url('admin/NamaBarang/C_Delete_Barang/DeleteBarang') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Delete Data Barang Rusak -->
+<script>
+    function DeleteBarangRusak(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Delete Data ?',
+            text: "Data yang dihapus tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Hapus Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/BarangRusak/C_Delete_Barang/DeleteBarangRusak') ?>/" + parameter_id;
             }
         })
     }
