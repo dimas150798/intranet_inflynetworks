@@ -167,6 +167,7 @@
                         </a>
                         <ul class="submenu">
                             <li><a href="<?php echo base_url('admin/NamaBarang/C_Nama_Barang') ?>">Nama Barang</a></li>
+                            <li><a href="<?php echo base_url('admin/StockBarangAll/C_Stock_BarangAll') ?>">Stock Barang</a></li>
                             <li><a href="<?php echo base_url('admin/BarangRusak/C_Barang_Rusak') ?>">Barang Rusak</a></li>
                         </ul>
                     </li>

@@ -6,8 +6,7 @@ class M_DataPegawai extends CI_Model
     // Menampilkan Data Pegawai
     public function DataPegawai()
     {
-        $query   = $this->db->query("SELECT id_pegawai, NIK, nama_pegawai, no_telpon, alamat_pegawai, pendidikan_pegawai, jabatan, tanggal_masuk, gaji, photo
-            FROM data_pegawai");
+        $query   = $this->db->query("SELECT id_pegawai, NIK, nama_pegawai, no_telpon, alamat_pegawai, pendidikan_pegawai, jabatan, tanggal_masuk, gaji, photo FROM data_pegawai ORDER BY nama_pegawai ASC");
 
         return $query->result_array();
     }

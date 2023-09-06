@@ -62,7 +62,14 @@ class C_Delete_Aktivasi extends CI_Controller
             'kode_barang'                   => $kode_barang
         );
 
-        if ($id_status == '13') {
+        if ($checkAktivasi->id_status == 13) {
+            $this->M_CRUD->updateData('data_stockbarang', $StockBarang, $WhereStockBarang);
+            $this->M_CRUD->updateData('data_aktivasi', $DataAktivasi, $WhereAktivasi);
+            $this->M_CRUD->updateData('data_customer', $DataCustomer, $WhereCustomer);
+
+            $this->session->set_flashdata('berhasil_icon', 'success');
+            $this->session->set_flashdata('berhasil_title', 'Hapus Data Berhasil');
+        } elseif ($checkAktivasi->id_status == 1) {
             $this->M_CRUD->updateData('data_stockbarang', $StockBarang, $WhereStockBarang);
             $this->M_CRUD->updateData('data_aktivasi', $DataAktivasi, $WhereAktivasi);
             $this->M_CRUD->updateData('data_customer', $DataCustomer, $WhereCustomer);

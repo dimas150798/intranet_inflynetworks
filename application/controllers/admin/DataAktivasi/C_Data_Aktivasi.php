@@ -42,6 +42,7 @@ class C_Data_Aktivasi extends CI_Controller
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <a onclick="LihatAktivasi(' . $dataAktivasi['id_aktivasi'] . ')"class="dropdown-item text-black"><i class="bi bi-eye-fill"></i> Lihat Data</a>
+                        <a onclick="EditAktivasi(' . $dataAktivasi['id_aktivasi'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit</a>
                         <a onclick="DeleteAktivasi(' . $dataAktivasi['id_aktivasi'] . ')"class="dropdown-item text-black"><i class="bi bi-trash3-fill"></i> Hapus</a>
                     </div>
                 </div>';

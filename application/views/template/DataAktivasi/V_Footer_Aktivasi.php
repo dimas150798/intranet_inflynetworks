@@ -108,6 +108,25 @@
     <?php } ?>
 </script>
 
+<!-- Edit Data Aktivasi -->
+<script>
+    function EditAktivasi(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Edit Data Aktivasi ?',
+            text: "Data yang diedit tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Edit Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/DataAktivasi/C_Edit_Aktivasi/EditAktivasi') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
 <!-- Delete Data Aktivasi -->
 <script>
     function DeleteAktivasi(parameter_id) {

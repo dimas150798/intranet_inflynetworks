@@ -7,47 +7,68 @@ class M_StockBarang extends CI_Model
     public function StockBarang()
     {
         $query   = $this->db->query("SELECT data_stockbarang.id_stockBarang, data_stockbarang.id_barang, data_stockbarang.jumlah_stockBarang, data_stockbarang.jumlah_stockMutasi, 
-            data_stockbarang.jumlah_stockRusak, data_stockbarang.tanggal_restock, data_stockbarang.tanggal_mutasi, data_namabarang.nama_barang
+            data_stockbarang.jumlah_stockRusak, data_stockbarang.tanggal_restock, data_stockbarang.tanggal_mutasi, data_namabarang.nama_barang, data_peralatan.kategori_peralatan
 
             FROM data_stockbarang
             
             LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
+            LEFT JOIN data_peralatan ON data_namabarang.id_peralatan = data_peralatan.id_peralatan
             
-            ORDER BY data_namabarang.nama_barang DESC");
+            ORDER BY data_namabarang.nama_barang ASC");
 
         return $query->result_array();
     }
 
-    //Edit Data Pegawai
-    public function EditPegawai($id_pegawai)
+    // Menampilkan Data Stock Barang Adapter
+    public function StockBarangAdapter()
     {
-        $query   = $this->db->query("SELECT id_pegawai, NIK, nama_pegawai, no_telpon, alamat_pegawai, pendidikan_pegawai, jabatan, tanggal_masuk, gaji, photo
-        FROM data_pegawai
-        WHERE id_pegawai = '$id_pegawai'
-        ");
+        $query   = $this->db->query("SELECT data_stockbarang.id_stockBarang, data_stockbarang.id_barang, data_stockbarang.jumlah_stockBarang, data_stockbarang.jumlah_stockMutasi, 
+                data_stockbarang.jumlah_stockRusak, data_stockbarang.tanggal_restock, data_stockbarang.tanggal_mutasi, data_namabarang.nama_barang, data_peralatan.kategori_peralatan
+    
+                FROM data_stockbarang
+                
+                LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
+                LEFT JOIN data_peralatan ON data_namabarang.id_peralatan = data_peralatan.id_peralatan
+
+                WHERE data_stockbarang.id_barang BETWEEN 34 AND 36
+                
+                ORDER BY data_namabarang.nama_barang ASC");
 
         return $query->result_array();
     }
-    //Delete Data Pegawai
-    public function DeletePegawai($where, $table)
-    {
-        $this->db->where($where);
-        $this->db->delete($table);
 
-        return ($this->db->affected_rows() > 0) ? true : false;
+    // Menampilkan Data Stock Barang Aktivasi
+    public function StockBarangAktivasi()
+    {
+        $query   = $this->db->query("SELECT data_stockbarang.id_stockBarang, data_stockbarang.id_barang, data_stockbarang.jumlah_stockBarang, data_stockbarang.jumlah_stockMutasi, 
+                data_stockbarang.jumlah_stockRusak, data_stockbarang.tanggal_restock, data_stockbarang.tanggal_mutasi, data_namabarang.nama_barang, data_peralatan.kategori_peralatan
+    
+                FROM data_stockbarang
+                
+                LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
+                LEFT JOIN data_peralatan ON data_namabarang.id_peralatan = data_peralatan.id_peralatan
+
+                WHERE data_peralatan.id_peralatan = 3
+                
+                ORDER BY data_namabarang.nama_barang ASC");
+
+        return $query->result_array();
     }
 
-    // Edit Data Login
-    public function EditLogin($id_login)
+    //Edit Data Stock Barang
+    public function EditStockBarang($id_stockBarang)
     {
-        $query   = $this->db->query("SELECT data_login.id_login, data_login.email_login, data_login.password_login, 
-        data_login.id_akses, data_akses.nama_akses
-        FROM data_login
+        $query   = $this->db->query("SELECT data_stockbarang.id_stockBarang, data_stockbarang.id_barang, data_stockbarang.jumlah_stockBarang, data_stockbarang.jumlah_stockMutasi, 
+                                data_stockbarang.jumlah_stockRusak, data_stockbarang.tanggal_restock, data_stockbarang.tanggal_mutasi, data_namabarang.nama_barang, data_peralatan.kategori_peralatan
 
-        LEFT JOIN data_akses ON data_login.id_akses = data_akses.id_akses
+                                FROM data_stockbarang
+                                
+                                LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
+                                LEFT JOIN data_peralatan ON data_namabarang.id_peralatan = data_peralatan.id_peralatan
 
-        WHERE id_login = '$id_login'
-        ORDER BY data_login.id_login ASC");
+                                WHERE data_stockbarang.id_stockBarang = '$id_stockBarang'
+                                
+                                ORDER BY data_namabarang.nama_barang ASC ");
 
         return $query->result_array();
     }

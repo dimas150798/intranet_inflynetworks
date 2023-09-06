@@ -74,6 +74,44 @@
     })
 </script>
 
+<!-- Ajax Show Data Barang Semua-->
+<script>
+    $(document).ready(function() {
+        $('#barangall').DataTable({
+            "autoFill": true,
+            "pagingType": 'numbers',
+            "searching": true,
+            "paging": true,
+            "stateSave": true,
+            "processing": true,
+            "serverside": true,
+            "ajax": {
+                "url": "<?= base_url('admin/StockBarangAll/C_Stock_BarangAll/GetDataAjax'); ?>",
+            },
+            "bDestroy": true
+        })
+    })
+</script>
+
+<!-- Ajax Show Data Barang Aktivasi-->
+<script>
+    $(document).ready(function() {
+        $('#barangaktivasi').DataTable({
+            "autoFill": true,
+            "pagingType": 'numbers',
+            "searching": true,
+            "paging": true,
+            "stateSave": true,
+            "processing": true,
+            "serverside": true,
+            "ajax": {
+                "url": "<?= base_url('admin/StockBarangAktivasi/C_Barang_Aktivasi/GetDataAjax'); ?>",
+            },
+            "bDestroy": true
+        })
+    })
+</script>
+
 <!-- Alert Berhasil -->
 <script>
     <?php if ($this->session->flashdata('berhasil_icon')) { ?>
@@ -145,6 +183,63 @@
     }
 </script>
 
+<!-- Tambah Detail Barang Aktivasi -->
+<script>
+    function DetailBarangAktivasi(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Tambah Detail ?',
+            // text: "Data yang dihapus edit akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Tambah Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Detail_Aktivasi/DetailBarangAktivasi') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Tambah Bonus Pembelian Aktivasi -->
+<script>
+    function TambahBonusPembelian(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Tambah Barang ?',
+            // text: "Data yang dihapus edit akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Tambah Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Bonus_Pembelian/DataBonusPembelian') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Tambah Barang Aktivasi Keluar  -->
+<script>
+    function BarangAktivasiKeluar(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Pengurangan Barang ?',
+            text: "Data yang dikurangi tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Kurangi Barang!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Barang_Keluar/DataBarangKeluar') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
 <!-- Delete Data Nama Barang -->
 <script>
     function DeleteNamaBarang(parameter_id) {
@@ -198,6 +293,51 @@
     $('#id_peralatan').each(function() {
         $(this).select2({
             placeholder: 'Pilih Kategori',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
+
+    // Kondisi Barang 
+    $('#id_keadaanbarang').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Keadaan Barang',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
+
+    // Nama Pegawai
+    $('#id_pegawai').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Nama Pegawai',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
+
+    // Nama Customer
+    $('#id_customer').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Nama Customer',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
+
+    // Kode Barang
+    $('#kode_barang').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih SN Modem',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
+
+    // Adaptor
+    $('#adaptor').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Adaptor',
             theme: 'bootstrap-5',
             dropdownParent: $(this).parent(),
         });

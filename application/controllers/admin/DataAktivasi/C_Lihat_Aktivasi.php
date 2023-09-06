@@ -19,16 +19,22 @@ class C_Lihat_Aktivasi extends CI_Controller
         $data['KodeBarang']         = $CheckAktivasi->kode_barang;
         $data['TanggalAktivasi']    = $CheckAktivasi->tanggal;
 
-        if ($CheckAktivasi->nama_customer == NULL or $CheckAktivasi->id_status != 13) {
+
+        if ($CheckAktivasi->id_status == 13) {
+            $this->load->view('template/DataAktivasi/V_Header_Aktivasi', $data);
+            $this->load->view('template/V_Sidebar_Admin', $data);
+            $this->load->view('admin/DataAktivasi/V_Lihat_Aktivasi', $data);
+            $this->load->view('template/DataAktivasi/V_Footer_Aktivasi', $data);
+        } elseif ($CheckAktivasi->id_status == 1) {
+            $this->load->view('template/DataAktivasi/V_Header_Aktivasi', $data);
+            $this->load->view('template/V_Sidebar_Admin', $data);
+            $this->load->view('admin/DataAktivasi/V_Lihat_Aktivasi', $data);
+            $this->load->view('template/DataAktivasi/V_Footer_Aktivasi', $data);
+        } else {
             $this->session->set_flashdata('gagal_icon', 'success');
             $this->session->set_flashdata('gagal_title', 'Data Tidak Bisa Dilihat');
 
             redirect('admin/DataAktivasi/C_Data_Aktivasi');
-        } else {
-            $this->load->view('template/V_Header_Admin', $data);
-            $this->load->view('template/V_Sidebar_Admin', $data);
-            $this->load->view('admin/DataAktivasi/V_Lihat_Aktivasi', $data);
-            $this->load->view('template/V_Footer_Admin', $data);
         }
     }
 }
