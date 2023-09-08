@@ -173,19 +173,6 @@
                     </li>
                     <!-- End Data Barang -->
 
-                    <!-- Kategori Barang -->
-                    <li>
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon bi bi-box2-fill"></span><span class="mtext">Kategori Barang</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="introduction.html">Aktivasi</a></li>
-                            <li><a href="getting-started.html">Distribusi</a></li>
-                            <li><a href="getting-started.html">Engineer</a></li>
-                        </ul>
-                    </li>
-                    <!-- End Kategori Barang -->
-
                     <!-- Laporan Barang -->
                     <li>
                         <a href="javascript:;" class="dropdown-toggle">

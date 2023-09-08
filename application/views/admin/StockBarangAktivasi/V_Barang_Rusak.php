@@ -4,12 +4,12 @@
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
 
-            <!-- Header Keluar Barang Aktivasi-->
+            <!-- Header Keluar Barang Aktivasi Rusak-->
             <div class="page-header">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Form Keluar Barang Aktivasi</h4>
+                            <h4>Form Keluar Barang Rusak</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -24,17 +24,16 @@
                     </div>
                 </div>
             </div>
-            <!-- Header End Keluar Barang Aktivasi -->
+            <!-- Header End Keluar Barang Aktivasi Rusak -->
 
-            <!-- Form Keluar Barang Aktivasi -->
+            <!-- Form Keluar Barang Aktivasi Rusak -->
             <div class="card-box p-5">
 
                 <?php foreach ($DataStock as $data) : ?>
-                    <form method="POST" action="<?php echo base_url('admin/StockBarangAktivasi/C_Barang_Keluar/TambahBarangKeluar') ?>">
+                    <form method="POST" action="<?php echo base_url('admin/StockBarangAktivasi/C_Barang_Rusak/Tambah_BarangRusak') ?>">
                         <div class="form-group row">
                             <div class="row">
                                 <input type="hidden" class="form-control" name="id_stockBarang" id="id_stockBarang" value="<?php echo $data['id_stockBarang'] ?>" readonly>
-                                <input type="hidden" class="form-control" name="id_barang" id="id_barang" value="<?php echo $data['id_barang'] ?>" readonly>
                             </div>
                         </div>
 
@@ -46,17 +45,16 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Jumlah <span class="text-danger">*</span></label>
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Jumlah Rusak <span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
-                                <input class="form-control" type="number" name="jumlah" min="0" max="<?php echo $StockBarang ?>" value="0" />
+                                <input class="form-control" type="number" name="jumlah" min="1" max="<?php echo $JumlahStock ?>" value="" placeholder="Masukkan jumlah..." required />
                             </div>
                         </div>
-
 
                         <div class="form-group row">
                             <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Tanggal<span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
-                                <input class="form-control" type="date" name="tanggal" placeholder="Tanggal..." />
+                                <input class="form-control" type="date" name="tanggal" placeholder="Tanggal..." required />
                             </div>
                         </div>
 
@@ -75,9 +73,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Keterangan</label>
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Keterangan <span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
-                                <input class="form-control" name="keterangan" value="" placeholder="Masukkan Keterangan..." />
+                                <input class="form-control" name="keterangan" value="" placeholder="Masukkan Keterangan..." required />
                             </div>
                         </div>
 
@@ -90,7 +88,7 @@
                     </form>
                 <?php endforeach; ?>
             </div>
-            <!-- End Form Keluar Barang Aktivasi -->
+            <!-- End Form Keluar Barang Aktivasi Rusak-->
 
         </div>
     </div>

@@ -8,7 +8,7 @@ class M_DataAktivasi extends CI_Model
     {
         $query   = $this->db->query("SELECT data_aktivasi.id_aktivasi, data_aktivasi.kode_barang, data_aktivasi.id_stockBarang, data_aktivasi.jumlah_modem,
             data_aktivasi.Patch_Core_Hitam_UPC_Outdor, data_aktivasi.Patch_Core_Kuning_UPC_Biru, data_aktivasi.Patch_Core_Kuning_APC_Hijau, data_aktivasi.Adaptor, data_aktivasi.tanggal,
-            data_customer.nama_customer, data_stockbarang.id_barang, data_namabarang.nama_barang, data_status.nama_status
+            data_customer.nama_customer, data_stockbarang.id_barang, data_namabarang.nama_barang, data_status.nama_status, data_keadaanbarang.nama_keadaan
 
             FROM data_aktivasi
             
@@ -16,7 +16,8 @@ class M_DataAktivasi extends CI_Model
             LEFT JOIN data_stockbarang ON data_aktivasi.id_stockBarang = data_stockbarang.id_stockBarang
             LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
             LEFT JOIN data_status ON data_aktivasi.id_status = data_status.id_status
-            
+            LEFT JOIN data_keadaanbarang ON data_aktivasi.id_keadaanbarang = data_keadaanbarang.id_keadaanbarang
+
             ORDER BY data_aktivasi.id_aktivasi DESC");
 
         return $query->result_array();
@@ -35,8 +36,10 @@ class M_DataAktivasi extends CI_Model
                 LEFT JOIN data_stockbarang ON data_aktivasi.id_stockBarang = data_stockbarang.id_stockBarang
                 LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
                 LEFT JOIN data_status ON data_aktivasi.id_status = data_status.id_status
+                LEFT JOIN data_keadaanbarang ON data_aktivasi.id_keadaanbarang = data_keadaanbarang.id_keadaanbarang
+
                 
-                WHERE data_stockbarang.id_stockBarang = '$id_stockBarang' AND data_aktivasi.id_status = 12 
+                WHERE data_stockbarang.id_stockBarang = '$id_stockBarang' AND data_aktivasi.id_status = 12 AND data_keadaanbarang.id_keadaanbarang = 2
 
                 ORDER BY data_aktivasi.id_aktivasi DESC");
 
@@ -108,7 +111,7 @@ class M_DataAktivasi extends CI_Model
     // Check data aktivasi Stock Barang
     public function CheckAktivasiStock($kode_barang)
     {
-        $this->db->select('id_aktivasi, kode_barang, id_stockBarang, jumlah_modem, Patch_Core_Hitam_UPC_Outdor, Patch_Core_Kuning_UPC_Biru, Patch_Core_Kuning_APC_Hijau, Adaptor, tanggal');
+        $this->db->select('id_aktivasi, kode_barang, id_stockBarang, jumlah_modem, Patch_Core_Hitam_UPC_Outdor, Patch_Core_Kuning_UPC_Biru, Patch_Core_Kuning_APC_Hijau, Adaptor, tanggal, id_status');
         $this->db->where('kode_barang', $kode_barang);
 
         $this->db->limit(1);

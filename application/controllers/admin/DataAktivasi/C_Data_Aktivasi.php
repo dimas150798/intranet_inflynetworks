@@ -33,7 +33,7 @@ class C_Data_Aktivasi extends CI_Controller
             $row[] = $dataAktivasi['nama_barang'];
             $row[] = $dataAktivasi['kode_barang'];
             $row[] = changeDateFormat('d-m-Y', $dataAktivasi['tanggal']);
-            $row[] = '<div class="text-center">' . '<span class="badge bg-success text-white">' . $dataAktivasi['nama_status']  . '</span>' . '</div>';
+            $row[] = '<div class="text-center">' . '<span class="badge bg-success text-white">' . strtoupper($dataAktivasi['nama_status'])  . ' ' .  strtoupper($dataAktivasi['nama_keadaan']) . '</span>' . '</div>';
 
             $row[] =
                 '<div class="text-center">

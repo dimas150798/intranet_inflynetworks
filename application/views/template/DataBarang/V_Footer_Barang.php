@@ -240,6 +240,25 @@
     }
 </script>
 
+<!-- Tambah Barang Rusak Aktivasi  -->
+<script>
+    function BarangAktivasiRusak(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Pengurangan Barang ?',
+            text: "Data yang dikurangi tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Kurangi Barang!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Barang_Rusak/Barang_Rusak') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
 <!-- Delete Data Nama Barang -->
 <script>
     function DeleteNamaBarang(parameter_id) {
@@ -277,6 +296,7 @@
         })
     }
 </script>
+
 
 <!-- Button Search  -->
 <script type="text/javascript">

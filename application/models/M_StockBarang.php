@@ -48,7 +48,7 @@ class M_StockBarang extends CI_Model
                 LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
                 LEFT JOIN data_peralatan ON data_namabarang.id_peralatan = data_peralatan.id_peralatan
 
-                WHERE data_peralatan.id_peralatan = 3
+                WHERE data_peralatan.id_peralatan = 3 OR data_peralatan.id_peralatan = 7
                 
                 ORDER BY data_namabarang.nama_barang ASC");
 
@@ -77,7 +77,7 @@ class M_StockBarang extends CI_Model
     public function CheckStocBarang($id_stockBarang)
     {
         $this->db->select('data_stockbarang.id_stockBarang, data_stockbarang.id_barang, data_stockbarang.jumlah_stockBarang, data_stockbarang.jumlah_stockMutasi, 
-                        data_stockbarang.jumlah_stockRusak, data_stockbarang.tanggal_restock, data_stockbarang.tanggal_mutasi, data_namabarang.nama_barang');
+                            data_stockbarang.jumlah_stockRusak, data_stockbarang.tanggal_restock, data_stockbarang.tanggal_mutasi, data_namabarang.nama_barang');
         $this->db->join('data_namabarang', 'data_stockbarang.id_barang = data_namabarang.id_barang', 'left');
         $this->db->where('data_stockbarang.id_stockBarang', $id_stockBarang);
 

@@ -43,9 +43,9 @@ class C_Barang_Aktivasi extends CI_Controller
                         Option
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a onclick="DetailBarangAktivasi(' . $dataBarang['id_stockBarang'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Detail Barang</a>
                         <a onclick="TambahBonusPembelian(' . $dataBarang['id_stockBarang'] . ')"class="dropdown-item text-black"><i class="bi bi-patch-plus"></i> Bonus Pembelian</a>
                         <a onclick="BarangAktivasiKeluar(' . $dataBarang['id_stockBarang'] . ')"class="dropdown-item text-black"><i class="bi bi-patch-minus"></i> Keluar Barang</a>
+                        <a onclick="BarangAktivasiRusak(' . $dataBarang['id_stockBarang'] . ')"class="dropdown-item text-black"><i class="bi bi-node-minus-fill"></i> Barang Rusak</a>
                 </div>';
             $data[] = $row;
         }
