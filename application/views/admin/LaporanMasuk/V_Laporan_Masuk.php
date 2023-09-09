@@ -8,7 +8,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-xl-6">
                         <div class="title">
-                            <h4>Data Laporan Keluar</h4>
+                            <h4>Data Laporan Masuk</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="container card bg-secondary mt-2">
-                    <form action="<?php echo base_url('admin/LaporanKeluar/C_Laporan_Keluar') ?>" method=" get">
+                    <form action="<?php echo base_url('admin/LaporanMasuk/C_Laporan_Masuk') ?>" method=" get">
                         <div class="row align-items-center justify-content-between p-2">
 
                             <div class="col-xl-6">
@@ -114,15 +114,14 @@
             <div class="card-box">
                 <div class="container-fluid">
                     <div class="p-2" style="overflow-x: auto;">
-                        <table id="laporankeluar" class="table table-bordered responsive nowrap" style="width: 100%;">
+                        <table id="laporanmasuk" class="table table-bordered responsive nowrap" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th width="5%">No</th>
                                     <th width="15%">Nama Barang</th>
                                     <th width="15%">Kode Barang</th>
-                                    <th width="10%">Nama Customer</th>
-                                    <th width="5%">Jumlah</th>
-                                    <th width="5%">Tanggal</th>
+                                    <th width="10%">Jumlah</th>
+                                    <th width="10%">Tanggal</th>
                                     <th width="15%">Nama Pegawai</th>
                                     <th width="15%">Keterangan</th>
                                 </tr>

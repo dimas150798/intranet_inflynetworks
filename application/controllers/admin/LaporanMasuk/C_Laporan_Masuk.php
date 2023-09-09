@@ -9,7 +9,7 @@ if (!function_exists('changeDateFormat')) {
 }
 
 
-class C_Laporan_Keluar extends CI_Controller
+class C_Laporan_Masuk extends CI_Controller
 {
     public function index()
     {
@@ -21,7 +21,7 @@ class C_Laporan_Keluar extends CI_Controller
             $this->session->set_userdata('bulanGET', $bulanGET);
             $this->session->set_userdata('tahunGET', $tahunGET);
 
-            $data['LaporanKeluar']      = $this->M_LaporanKeluar->LaporanKeluarPencarian($bulanGET, $tahunGET);
+            $data['LaporanMasuk']      = $this->M_LaporanMasuk->LaporanMasukPencarian($bulanGET, $tahunGET);
 
             // Menyimpan query di dalam data
             $data['bulanGET']           = $bulanGET;
@@ -29,7 +29,7 @@ class C_Laporan_Keluar extends CI_Controller
 
             $this->load->view('template/DataLaporan/V_Header_Laporan', $data);
             $this->load->view('template/V_Sidebar_Admin', $data);
-            $this->load->view('admin/LaporanKeluar/V_Laporan_Keluar', $data);
+            $this->load->view('admin/LaporanMasuk/V_Laporan_Masuk', $data);
             $this->load->view('template/DataLaporan/V_Footer_Laporan', $data);
         } else {
             date_default_timezone_set("Asia/Jakarta");
@@ -40,7 +40,7 @@ class C_Laporan_Keluar extends CI_Controller
             $this->session->set_userdata('bulan', $bulan);
             $this->session->set_userdata('tahun', $tahun);
 
-            $data['LaporanKeluar']      = $this->M_LaporanKeluar->LaporanKeluarPencarian($bulan, $tahun);
+            $data['LaporanMasuk']      = $this->M_LaporanMasuk->LaporanMasukPencarian($bulan, $tahun);
 
             // Menyimpan query di dalam data
             $data['bulan']           = $bulan;
@@ -48,7 +48,7 @@ class C_Laporan_Keluar extends CI_Controller
 
             $this->load->view('template/DataLaporan/V_Header_Laporan', $data);
             $this->load->view('template/V_Sidebar_Admin', $data);
-            $this->load->view('admin/LaporanKeluar/V_Laporan_Keluar', $data);
+            $this->load->view('admin/LaporanMasuk/V_Laporan_Masuk', $data);
             $this->load->view('template/DataLaporan/V_Footer_Laporan', $data);
         }
     }
@@ -56,21 +56,20 @@ class C_Laporan_Keluar extends CI_Controller
     public function GetDataAjax()
     {
         if ($this->session->userdata('tahunGET') != NULL && $this->session->userdata('bulanGET') != NULL) {
-            $result = $this->M_LaporanKeluar->LaporanKeluarPencarian($this->session->userdata('bulanGET'), $this->session->userdata('tahunGET'));
+            $result = $this->M_LaporanMasuk->LaporanMasukPencarian($this->session->userdata('bulanGET'), $this->session->userdata('tahunGET'));
 
             $no = 0;
 
-            foreach ($result as $laporanKeluar) {
+            foreach ($result as $laporanMasuk) {
 
                 $row = array();
                 $row[] = ++$no;
-                $row[] = $laporanKeluar['nama_barang'];
-                $row[] = $laporanKeluar['kode_barang'];
-                $row[] = $laporanKeluar['nama_customer'];
-                $row[] = $laporanKeluar['jumlah'];
-                $row[] = changeDateFormat('d-m-Y', $laporanKeluar['tanggal']);
-                $row[] = $laporanKeluar['nama_pegawai'];
-                $row[] = $laporanKeluar['keterangan'];
+                $row[] = $laporanMasuk['nama_barang'];
+                $row[] = $laporanMasuk['kode_barang'];
+                $row[] = $laporanMasuk['jumlah'];
+                $row[] = changeDateFormat('d-m-Y', $laporanMasuk['tanggal']);
+                $row[] = $laporanMasuk['nama_pegawai'];
+                $row[] = $laporanMasuk['keterangan'];
 
                 $data[] = $row;
             }
@@ -81,21 +80,20 @@ class C_Laporan_Keluar extends CI_Controller
 
             $this->output->set_content_type('application/json')->set_output(json_encode($ouput));
         } else {
-            $result = $this->M_LaporanKeluar->LaporanKeluarPencarian($this->session->userdata('bulan'), $this->session->userdata('tahun'));
+            $result = $this->M_LaporanMasuk->LaporanMasukPencarian($this->session->userdata('bulan'), $this->session->userdata('tahun'));
 
             $no = 0;
 
-            foreach ($result as $laporanKeluar) {
+            foreach ($result as $laporanMasuk) {
 
                 $row = array();
                 $row[] = ++$no;
-                $row[] = $laporanKeluar['nama_barang'];
-                $row[] = $laporanKeluar['kode_barang'];
-                $row[] = $laporanKeluar['nama_customer'];
-                $row[] = $laporanKeluar['jumlah'];
-                $row[] = changeDateFormat('d-m-Y', $laporanKeluar['tanggal']);
-                $row[] = $laporanKeluar['nama_pegawai'];
-                $row[] = $laporanKeluar['keterangan'];
+                $row[] = $laporanMasuk['nama_barang'];
+                $row[] = $laporanMasuk['kode_barang'];
+                $row[] = $laporanMasuk['jumlah'];
+                $row[] = changeDateFormat('d-m-Y', $laporanMasuk['tanggal']);
+                $row[] = $laporanMasuk['nama_pegawai'];
+                $row[] = $laporanMasuk['keterangan'];
 
                 $data[] = $row;
             }

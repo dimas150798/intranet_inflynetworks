@@ -55,6 +55,25 @@
     })
 </script>
 
+<!-- Ajax Show Data Laporan Masuk -->
+<script>
+    $(document).ready(function() {
+        $('#laporanmasuk').DataTable({
+            "autoFill": true,
+            "pagingType": 'numbers',
+            "searching": true,
+            "paging": true,
+            "stateSave": true,
+            "processing": true,
+            "serverside": true,
+            "ajax": {
+                "url": "<?= base_url('admin/LaporanMasuk/C_Laporan_Masuk/GetDataAjax'); ?>",
+            },
+            "bDestroy": true
+        })
+    })
+</script>
+
 
 <!-- Alert Berhasil -->
 <script>

@@ -179,7 +179,7 @@
                             <span class="micon bi bi-box2-fill"></span><span class="mtext">Laporan Barang</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="introduction.html">Laporan Masuk</a></li>
+                            <li><a href="<?php echo base_url('admin/LaporanMasuk/C_Laporan_Masuk') ?>">Laporan Masuk</a></li>
                             <li><a href="<?php echo base_url('admin/LaporanKeluar/C_Laporan_Keluar') ?>">Laporan Keluar</a></li>
                             <li><a href="getting-started.html">Peminjaman</a></li>
                         </ul>
