@@ -36,19 +36,19 @@
 <!-- Select2 -->
 <script src="<?php echo base_url(); ?>assets/scripts/select2.min.js"></script>
 
-<!-- Ajax Show Data Laporan Keluar -->
+<!-- Ajax Show Data Barang -->
 <script>
     $(document).ready(function() {
-        $('#laporankeluar').DataTable({
+        $('#datapeminjaman').DataTable({
             "autoFill": true,
             "pagingType": 'numbers',
             "searching": true,
             "paging": true,
             "stateSave": true,
             "processing": true,
-            "serverside": true,
+            "serverSide": true,
             "ajax": {
-                "url": "<?= base_url('admin/LaporanKeluar/C_Laporan_Keluar/GetDataAjax'); ?>",
+                "url": "<?= base_url('admin/DataPeminjaman/C_Data_Peminjaman/GetDataAjax'); ?>", // Use the condition or default URL
                 "dataType": "json",
                 "dataSrc": function(json) {
                     if (json && json.data) {
@@ -71,14 +71,14 @@
                 }
             },
             "bDestroy": true
-        })
-    })
+        });
+    });
 </script>
 
-<!-- Ajax Show Data Laporan Masuk -->
+<!-- Ajax Show Data Barang Rusak-->
 <script>
     $(document).ready(function() {
-        $('#laporanmasuk').DataTable({
+        $('#barangrusak').DataTable({
             "autoFill": true,
             "pagingType": 'numbers',
             "searching": true,
@@ -87,33 +87,50 @@
             "processing": true,
             "serverside": true,
             "ajax": {
-                "url": "<?= base_url('admin/LaporanMasuk/C_Laporan_Masuk/GetDataAjax'); ?>",
-                "dataType": "json",
-                "dataSrc": function(json) {
-                    if (json && json.data) {
-                        return json.data;
-                    } else {
-                        // Jangan tampilkan pesan kesalahan di sini
-                        return [];
-                    }
-                },
-                "error": function(xhr, error, thrown) {
-                    // Tangani kesalahan respons JSON di sini
-                    console.error("Error: " + error + " - " + thrown);
-
-                    // Tampilkan pesan kesalahan menggunakan SweetAlert2
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Terjadi Kesalahan',
-                        text: 'Data Yang Di Tampilkan Kosong.',
-                    });
-                }
+                "url": "<?= base_url('admin/BarangRusak/C_Barang_Rusak/GetDataAjax'); ?>",
             },
             "bDestroy": true
         })
     })
 </script>
 
+<!-- Ajax Show Data Barang Semua-->
+<script>
+    $(document).ready(function() {
+        $('#barangall').DataTable({
+            "autoFill": true,
+            "pagingType": 'numbers',
+            "searching": true,
+            "paging": true,
+            "stateSave": true,
+            "processing": true,
+            "serverside": true,
+            "ajax": {
+                "url": "<?= base_url('admin/StockBarangAll/C_Stock_BarangAll/GetDataAjax'); ?>",
+            },
+            "bDestroy": true
+        })
+    })
+</script>
+
+<!-- Ajax Show Data Barang Aktivasi-->
+<script>
+    $(document).ready(function() {
+        $('#barangaktivasi').DataTable({
+            "autoFill": true,
+            "pagingType": 'numbers',
+            "searching": true,
+            "paging": true,
+            "stateSave": true,
+            "processing": true,
+            "serverside": true,
+            "ajax": {
+                "url": "<?= base_url('admin/StockBarangAktivasi/C_Barang_Aktivasi/GetDataAjax'); ?>",
+            },
+            "bDestroy": true
+        })
+    })
+</script>
 
 <!-- Alert Berhasil -->
 <script>
@@ -167,28 +184,104 @@
     <?php } ?>
 </script>
 
-<!-- Edit Data Aktivasi -->
+<!-- Edit Data Nama Barang -->
 <script>
-    function EditAktivasi(parameter_id) {
+    function EditNamaBarang(parameter_id) {
         Swal.fire({
-            title: 'Yakin Edit Data Aktivasi ?',
-            text: "Data yang diedit tidak akan kembali",
+            title: 'Yakin Melakukan Edit Data ?',
+            text: "Data yang dihapus edit akan kembali",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Edit Data!'
+            confirmButtonText: 'Ya, Hapus Data!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/DataAktivasi/C_Edit_Aktivasi/EditAktivasi') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/NamaBarang/C_Edit_Barang/EditBarang') ?>/" + parameter_id;
             }
         })
     }
 </script>
 
-<!-- Delete Data Aktivasi -->
+<!-- Tambah Detail Barang Aktivasi -->
 <script>
-    function DeleteAktivasi(parameter_id) {
+    function DetailBarangAktivasi(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Tambah Detail ?',
+            // text: "Data yang dihapus edit akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Tambah Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Detail_Aktivasi/DetailBarangAktivasi') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Tambah Bonus Pembelian Aktivasi -->
+<script>
+    function TambahBonusPembelian(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Tambah Barang ?',
+            // text: "Data yang dihapus edit akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Tambah Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Bonus_Pembelian/DataBonusPembelian') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Tambah Barang Aktivasi Keluar  -->
+<script>
+    function BarangAktivasiKeluar(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Pengurangan Barang ?',
+            text: "Data yang dikurangi tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Kurangi Barang!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Barang_Keluar/DataBarangKeluar') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Tambah Barang Rusak Aktivasi  -->
+<script>
+    function BarangAktivasiRusak(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Pengurangan Barang ?',
+            text: "Data yang dikurangi tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Kurangi Barang!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Barang_Rusak/Barang_Rusak') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Delete Data Nama Barang -->
+<script>
+    function DeleteNamaBarang(parameter_id) {
         Swal.fire({
             title: 'Yakin Melakukan Delete Data ?',
             text: "Data yang dihapus tidak akan kembali",
@@ -199,114 +292,95 @@
             confirmButtonText: 'Ya, Hapus Data!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/DataAktivasi/C_Delete_Aktivasi/DeleteDataAktivasi') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/NamaBarang/C_Delete_Barang/DeleteBarang') ?>/" + parameter_id;
             }
         })
     }
 </script>
 
-<!-- Melihat Data Aktivasi -->
+<!-- Delete Data Barang Rusak -->
 <script>
-    function LihatAktivasi(parameter_id) {
+    function DeleteBarangRusak(parameter_id) {
         Swal.fire({
-            title: 'Yakin Melihat Data Aktivasi ?',
+            title: 'Yakin Melakukan Delete Data ?',
+            text: "Data yang dihapus tidak akan kembali",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Melihat Data!'
+            confirmButtonText: 'Ya, Hapus Data!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/DataAktivasi/C_Lihat_Aktivasi/LihatAktivasi') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/BarangRusak/C_Delete_Barang/DeleteBarangRusak') ?>/" + parameter_id;
             }
         })
     }
 </script>
 
+
 <!-- Button Search  -->
 <script type="text/javascript">
-    $('#pembelian_paket').each(function() {
+    // Satuan pada nama barang
+    $('#id_satuan').each(function() {
         $(this).select2({
-            placeholder: 'Pilih Paket',
-            theme: 'bootstrap-5',
-            dropdownParent: $(this).parent(),
-        });
-    });
-    // Kota, Kecamatan dan Kelurahan
-    $('#kota').each(function() {
-        $(this).select2({
-            placeholder: 'Pilih Kota / Kabupaten',
-            theme: 'bootstrap-5',
-            dropdownParent: $(this).parent(),
-        });
-    });
-    $('#kecamatan').each(function() {
-        $(this).select2({
-            placeholder: 'Pilih Kecamatan',
-            theme: 'bootstrap-5',
-            dropdownParent: $(this).parent(),
-        });
-    });
-    $('#kelurahan').each(function() {
-        $(this).select2({
-            placeholder: 'Pilih Kelurahan',
+            placeholder: 'Pilih Satuan',
             theme: 'bootstrap-5',
             dropdownParent: $(this).parent(),
         });
     });
 
-    // Select Function 
-    $(document).ready(function() {
-        $('#kota').on('change', function() {
-            var id_kota = $(this).val();
-
-            if (id_kota == '') {
-                $('#kecamatan').prop('disabled', true);
-            } else {
-                $('#kecamatan').prop('disabled', false);
-                $.ajax({
-                    url: "<?php echo base_url('admin/DataCustomer/C_Add_Customer/getKecamatan') ?>",
-                    type: "POST",
-                    data: {
-                        'id_kota': id_kota
-                    },
-                    dataType: 'json',
-                    success: function(data) {
-                        $('#kecamatan').html(data);
-                    },
-                    error: function() {
-                        alert('Error..');
-                    }
-
-                });
-            }
+    // Kategori Peralatan nama barang
+    $('#id_peralatan').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Kategori',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
         });
+    });
 
-        $('#kecamatan').on('change', function() {
-            var id_kecamatan = $(this).val();
-
-            if (id_kecamatan == '') {
-                $('#kelurahan').prop('disabled', true);
-            } else {
-                $('#kelurahan').prop('disabled', false);
-                $.ajax({
-                    url: "<?php echo base_url('admin/DataCustomer/C_Add_Customer/getKelurahan') ?>",
-                    type: "POST",
-                    data: {
-                        'id_kecamatan': id_kecamatan
-                    },
-                    dataType: 'json',
-                    success: function(data) {
-                        $('#kelurahan').html(data);
-                    },
-                    error: function() {
-                        alert('Error..');
-                    }
-
-                });
-            }
+    // Kondisi Barang 
+    $('#id_keadaanbarang').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Keadaan Barang',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
         });
+    });
 
+    // Nama Pegawai
+    $('#id_pegawai').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Nama Pegawai',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
+
+    // Nama Customer
+    $('#id_customer').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Nama Customer',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
+
+    // Kode Barang
+    $('#kode_barang').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih SN Modem',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
+
+    // Adaptor
+    $('#adaptor').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Adaptor',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
     });
 </script>
 

@@ -35,7 +35,7 @@
                 </div>
 
                 <div class="container card bg-secondary mt-2">
-                    <form action="<?php echo base_url('admin/LaporanKeluar/C_Laporan_Keluar') ?>" method=" get">
+                    <form action="<?php echo base_url('admin/LaporanKeluar/C_Laporan_Keluar') ?>" method="get">
                         <div class="row align-items-center justify-content-between p-2">
 
                             <div class="col-xl-6">
