@@ -21,8 +21,8 @@ class M_DataCustomer extends CI_Model
         return $query->result_array();
     }
 
-    // Menampilkan Data Customer Belum Aktivasi
-    public function CustomerBelumAktivasi()
+    // Menampilkan Data Customer Belum Aktivasi Modem
+    public function CustomerAktivasi_Modem()
     {
         $query   = $this->db->query("SELECT data_customer.id_customer, data_customer.pembelian_paket, data_customer.nama_customer, 
                                         data_customer.nik_customer, data_customer.alamat_customer, data_customer.tlp_customer, data_customer.date, data_customer.date_terminasi,
@@ -34,8 +34,27 @@ class M_DataCustomer extends CI_Model
                                         LEFT JOIN data_kecamatan ON data_customer.id_kecamatan = data_kecamatan.id_kecamatan
                                         LEFT JOIN data_kelurahan ON data_customer.id_kelurahan = data_kelurahan.id_kelurahan
     
-                                        WHERE id_status IS NULL AND kode_barang IS NULL AND kode_barang_stb IS NULL
+                                        WHERE id_status IS NULL AND kode_barang IS NULL
                                         ORDER BY nama_customer ASC");
+
+        return $query->result_array();
+    }
+
+    // Menampilkan Data Customer Belum Aktivasi STB
+    public function CustomerAktivasi_STB()
+    {
+        $query   = $this->db->query("SELECT data_customer.id_customer, data_customer.pembelian_paket, data_customer.nama_customer, 
+                                            data_customer.nik_customer, data_customer.alamat_customer, data_customer.tlp_customer, data_customer.date, data_customer.date_terminasi,
+                                            data_customer.kode_barang, data_customer.kode_barang_stb, data_kota.nama_kota, data_kecamatan.nama_kecamatan, data_kelurahan.nama_kelurahan
+                                            
+                                            FROM data_customer
+        
+                                            LEFT JOIN data_kota ON data_customer.id_kota = data_kota.id_kota
+                                            LEFT JOIN data_kecamatan ON data_customer.id_kecamatan = data_kecamatan.id_kecamatan
+                                            LEFT JOIN data_kelurahan ON data_customer.id_kelurahan = data_kelurahan.id_kelurahan
+        
+                                            WHERE id_status IS NULL AND kode_barang_stb IS NULL
+                                            ORDER BY nama_customer ASC");
 
         return $query->result_array();
     }
