@@ -169,6 +169,58 @@
 
 <!-- Edit Data Pegawai -->
 
+<!-- Alert Berhasil -->
+<script>
+    <?php if ($this->session->flashdata('berhasil_icon')) { ?>
+        var toastMixin = Swal.mixin({
+            toast: true,
+            icon: 'success',
+            title: 'General Title',
+            animation: false,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+
+        toastMixin.fire({
+            animation: true,
+            title: '<?php echo $this->session->flashdata('berhasil_title') ?>'
+        });
+
+    <?php } ?>
+</script>
+
+<!-- Alert Gagal -->
+<script>
+    <?php if ($this->session->flashdata('gagal_icon')) { ?>
+        var toastMixin = Swal.mixin({
+            toast: true,
+            icon: 'warning',
+            title: 'General Title',
+            animation: false,
+            position: 'top-right',
+            showConfirmButton: false,
+            timer: 2000,
+            timerProgressBar: true,
+            didOpen: (toast) => {
+                toast.addEventListener('mouseenter', Swal.stopTimer)
+                toast.addEventListener('mouseleave', Swal.resumeTimer)
+            }
+        });
+
+        toastMixin.fire({
+            animation: true,
+            title: '<?php echo $this->session->flashdata('gagal_title') ?>'
+        });
+
+    <?php } ?>
+</script>
+
 <script>
     function EditDataPegawai(parameter_id) {
         Swal.fire({

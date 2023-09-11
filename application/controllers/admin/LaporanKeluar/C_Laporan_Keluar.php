@@ -11,6 +11,19 @@ if (!function_exists('changeDateFormat')) {
 
 class C_Laporan_Keluar extends CI_Controller
 {
+    public function __construct()
+    {
+        parent::__construct();
+        if ($this->session->userdata('username') == null) {
+
+            // Notifikasi Login Terlebih Dahulu
+            $this->session->set_flashdata('gagal_icon', 'warning');
+            $this->session->set_flashdata('gagal_title', 'Masukkan Username & Password Terlebih Dahulu');
+
+            redirect('C_Login');
+        }
+    }
+
     public function index()
     {
         if ((isset($_GET['bulan']) && $_GET['bulan'] != '') && (isset($_GET['tahun']) && $_GET['tahun'] != '')) {

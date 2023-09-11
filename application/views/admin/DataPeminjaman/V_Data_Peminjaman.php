@@ -28,7 +28,7 @@
                                 Fitur
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="<?php echo base_url('admin/DataPegawai/C_Add_Pegawai') ?>">Tambah Peminjaman</a>
+                                <a class="dropdown-item" href="<?php echo base_url('admin/DataPeminjaman/C_Add_Peminjaman') ?>">Tambah Peminjaman</a>
                             </div>
                         </div>
                     </div>

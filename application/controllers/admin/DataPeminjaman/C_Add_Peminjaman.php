@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class C_Add_Pegawai extends CI_Controller
+class C_Add_Peminjaman extends CI_Controller
 {
     public function __construct()
     {
@@ -18,10 +18,10 @@ class C_Add_Pegawai extends CI_Controller
 
     public function index()
     {
-        $this->load->view('template/DataPegawai/V_Header_Pegawai');
+        $this->load->view('template/DataPeminjaman/V_Header_Peminjaman');
         $this->load->view('template/V_Sidebar_Admin');
-        $this->load->view('admin/DataPegawai/V_Add_Pegawai');
-        $this->load->view('template/DataPegawai/V_Footer_Pegawai');
+        $this->load->view('admin/DataPeminjaman/V_Add_Peminjaman');
+        $this->load->view('template/DataPeminjaman/V_Footer_Peminjaman');
     }
 
     public function TambahPegawai()

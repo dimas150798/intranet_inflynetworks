@@ -31,6 +31,8 @@ class C_Login extends CI_Controller
                 $this->load->view('V_Login');
                 $this->load->view('template/V_Footer_Login');
             } else {
+                $this->session->set_userdata('username', $data_login->username);
+
                 redirect('admin/C_Dashboard_Admin');
             }
         }
