@@ -36,7 +36,7 @@
 <!-- Select2 -->
 <script src="<?php echo base_url(); ?>assets/scripts/select2.min.js"></script>
 
-<!-- Ajax Show Data Barang -->
+<!-- Ajax Show Data Peminjaman Barang -->
 <script>
     $(document).ready(function() {
         $('#datapeminjaman').DataTable({
@@ -46,39 +46,19 @@
             "paging": true,
             "stateSave": true,
             "processing": true,
-            "serverSide": true,
+            "serverside": true,
             "ajax": {
-                "url": "<?= base_url('admin/DataPeminjaman/C_Data_Peminjaman/GetDataAjax'); ?>", // Use the condition or default URL
-                "dataType": "json",
-                "dataSrc": function(json) {
-                    if (json && json.data) {
-                        return json.data;
-                    } else {
-                        // Jangan tampilkan pesan kesalahan di sini
-                        return [];
-                    }
-                },
-                "error": function(xhr, error, thrown) {
-                    // Tangani kesalahan respons JSON di sini
-                    console.error("Error: " + error + " - " + thrown);
-
-                    // Tampilkan pesan kesalahan menggunakan SweetAlert2
-                    Swal.fire({
-                        icon: 'error',
-                        title: 'Terjadi Kesalahan',
-                        text: 'Data Yang Di Tampilkan Kosong.',
-                    });
-                }
+                "url": "<?= base_url('admin/DataPeminjaman/C_Data_Peminjaman/GetDataAjax'); ?>",
             },
             "bDestroy": true
-        });
-    });
+        })
+    })
 </script>
 
-<!-- Ajax Show Data Barang Rusak-->
+<!-- Ajax Show Data Foto Peminjaman Barang -->
 <script>
     $(document).ready(function() {
-        $('#barangrusak').DataTable({
+        $('#fotopeminjaman').DataTable({
             "autoFill": true,
             "pagingType": 'numbers',
             "searching": true,
@@ -87,50 +67,13 @@
             "processing": true,
             "serverside": true,
             "ajax": {
-                "url": "<?= base_url('admin/BarangRusak/C_Barang_Rusak/GetDataAjax'); ?>",
+                "url": "<?= base_url('admin/DataPeminjaman/C_Foto_Peminjaman/GetDataAjax'); ?>",
             },
             "bDestroy": true
         })
     })
 </script>
 
-<!-- Ajax Show Data Barang Semua-->
-<script>
-    $(document).ready(function() {
-        $('#barangall').DataTable({
-            "autoFill": true,
-            "pagingType": 'numbers',
-            "searching": true,
-            "paging": true,
-            "stateSave": true,
-            "processing": true,
-            "serverside": true,
-            "ajax": {
-                "url": "<?= base_url('admin/StockBarangAll/C_Stock_BarangAll/GetDataAjax'); ?>",
-            },
-            "bDestroy": true
-        })
-    })
-</script>
-
-<!-- Ajax Show Data Barang Aktivasi-->
-<script>
-    $(document).ready(function() {
-        $('#barangaktivasi').DataTable({
-            "autoFill": true,
-            "pagingType": 'numbers',
-            "searching": true,
-            "paging": true,
-            "stateSave": true,
-            "processing": true,
-            "serverside": true,
-            "ajax": {
-                "url": "<?= base_url('admin/StockBarangAktivasi/C_Barang_Aktivasi/GetDataAjax'); ?>",
-            },
-            "bDestroy": true
-        })
-    })
-</script>
 
 <!-- Alert Berhasil -->
 <script>
@@ -184,100 +127,44 @@
     <?php } ?>
 </script>
 
-<!-- Edit Data Nama Barang -->
+<!-- Barang Kembali -->
 <script>
-    function EditNamaBarang(parameter_id) {
+    function BarangKembali(parameter_id) {
         Swal.fire({
-            title: 'Yakin Melakukan Edit Data ?',
-            text: "Data yang dihapus edit akan kembali",
+            title: 'Yakin Melakukan Pengembalian Barang ?',
+            text: "Jumlah Stock Barang Akan Bertambah",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus Data!'
+            confirmButtonText: 'Ya, Kembali Barang!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/NamaBarang/C_Edit_Barang/EditBarang') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/DataPeminjaman/C_Barang_Kembali/BarangKembali') ?>/" + parameter_id;
             }
         })
     }
 </script>
 
-<!-- Tambah Detail Barang Aktivasi -->
+<!-- Barang Kembali -->
 <script>
-    function DetailBarangAktivasi(parameter_id) {
+    function FotoBarangKembali(parameter_id) {
         Swal.fire({
-            title: 'Yakin Melakukan Tambah Detail ?',
-            // text: "Data yang dihapus edit akan kembali",
+            title: 'Yakin Melakukan Input Data Foto ?',
+            text: "Foto Akan Terupload Dan Merubah Status",
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Tambah Data!'
+            confirmButtonText: 'Ya, Upload Foto!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Detail_Aktivasi/DetailBarangAktivasi') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/DataPeminjaman/C_AddFoto_Pengembalian/FotoPengembalian') ?>/" + parameter_id;
             }
         })
     }
 </script>
 
-<!-- Tambah Bonus Pembelian Aktivasi -->
-<script>
-    function TambahBonusPembelian(parameter_id) {
-        Swal.fire({
-            title: 'Yakin Melakukan Tambah Barang ?',
-            // text: "Data yang dihapus edit akan kembali",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Tambah Data!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Bonus_Pembelian/DataBonusPembelian') ?>/" + parameter_id;
-            }
-        })
-    }
-</script>
-
-<!-- Tambah Barang Aktivasi Keluar  -->
-<script>
-    function BarangAktivasiKeluar(parameter_id) {
-        Swal.fire({
-            title: 'Yakin Melakukan Pengurangan Barang ?',
-            text: "Data yang dikurangi tidak akan kembali",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Kurangi Barang!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Barang_Keluar/DataBarangKeluar') ?>/" + parameter_id;
-            }
-        })
-    }
-</script>
-
-<!-- Tambah Barang Rusak Aktivasi  -->
-<script>
-    function BarangAktivasiRusak(parameter_id) {
-        Swal.fire({
-            title: 'Yakin Melakukan Pengurangan Barang ?',
-            text: "Data yang dikurangi tidak akan kembali",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Kurangi Barang!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Barang_Rusak/Barang_Rusak') ?>/" + parameter_id;
-            }
-        })
-    }
-</script>
 
 <!-- Delete Data Nama Barang -->
 <script>
@@ -297,26 +184,6 @@
         })
     }
 </script>
-
-<!-- Delete Data Barang Rusak -->
-<script>
-    function DeleteBarangRusak(parameter_id) {
-        Swal.fire({
-            title: 'Yakin Melakukan Delete Data ?',
-            text: "Data yang dihapus tidak akan kembali",
-            icon: 'warning',
-            showCancelButton: true,
-            confirmButtonColor: '#3085d6',
-            cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus Data!'
-        }).then((result) => {
-            if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/BarangRusak/C_Delete_Barang/DeleteBarangRusak') ?>/" + parameter_id;
-            }
-        })
-    }
-</script>
-
 
 <!-- Button Search  -->
 <script type="text/javascript">
@@ -378,6 +245,15 @@
     $('#adaptor').each(function() {
         $(this).select2({
             placeholder: 'Pilih Adaptor',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
+
+    // Adaptor
+    $('#id_stockBarang').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Nama Barang',
             theme: 'bootstrap-5',
             dropdownParent: $(this).parent(),
         });

@@ -18,81 +18,79 @@ class C_Add_Peminjaman extends CI_Controller
 
     public function index()
     {
-        $this->load->view('template/DataPeminjaman/V_Header_Peminjaman');
-        $this->load->view('template/V_Sidebar_Admin');
-        $this->load->view('admin/DataPeminjaman/V_Add_Peminjaman');
-        $this->load->view('template/DataPeminjaman/V_Footer_Peminjaman');
+        $data['StockBarang']    = $this->M_StockBarang->StockBarang();
+        $data['DataPegawai']    = $this->M_DataPegawai->DataPegawai();
+
+        $this->load->view('template/DataPeminjaman/V_Header_Peminjaman', $data);
+        $this->load->view('template/V_Sidebar_Admin', $data);
+        $this->load->view('admin/DataPeminjaman/V_Add_Peminjaman', $data);
+        $this->load->view('template/DataPeminjaman/V_Footer_Peminjaman', $data);
     }
 
-    public function TambahPegawai()
+    public function TambahPeminjaman()
     {
         // Rules form validation
-        $this->form_validation->set_rules('nama_pegawai', 'Nama Pegawai', 'required');
-        $this->form_validation->set_rules('nik', 'NIK', 'required');
-        $this->form_validation->set_rules('no_telpon', 'Telephone', 'required');
-        $this->form_validation->set_rules('alamat_pegawai', 'Alamat', 'required');
-        $this->form_validation->set_rules('pendidikan_pegawai', 'Pendidikan', 'required');
-        $this->form_validation->set_rules('jabatan', 'Jabatan', 'required');
-        $this->form_validation->set_rules('tanggal_masuk', 'Tanggal Masuk', 'required');
-        $this->form_validation->set_rules('gaji', 'Gaji', 'required');
+        $this->form_validation->set_rules('tanggal', 'Tanggal Peminjaman', 'required');
+        $this->form_validation->set_rules('jumlah', 'Jumlah Peminjaman', 'required');
+        $this->form_validation->set_rules('keterangan', 'Keterangan Peminjaman', 'required');
         $this->form_validation->set_message('required', 'Masukan data terlebih dahulu...');
 
         // mengambil data post pada view
-        $nama_pegawai          = $this->input->post('nama_pegawai');
-        $nik                   = $this->input->post('nik');
-        $no_telpon             = $this->input->post('no_telpon');
-        $alamat_pegawai        = $this->input->post('alamat_pegawai');
-        $pendidikan_pegawai    = $this->input->post('pendidikan_pegawai');
-        $jabatan               = $this->input->post('jabatan');
-        $tanggal_masuk         = $this->input->post('tanggal_masuk');
-        $gaji                  = $this->input->post('gaji');
-        $photo                 = $_FILES['photo']['name'];
+        $id_pegawai         = $this->input->post('id_pegawai');
+        $id_stockBarang     = $this->input->post('id_stockBarang');
+        $tanggal            = $this->input->post('tanggal');
+        $jumlah             = $this->input->post('jumlah');
+        $keterangan         = $this->input->post('keterangan');
 
-        $dataPegawai = array(
-            'NIK'                   => $nik,
-            'nama_pegawai'          => $nama_pegawai,
-            'no_telpon'             => $no_telpon,
-            'alamat_pegawai'        => $alamat_pegawai,
-            'pendidikan_pegawai'    => $pendidikan_pegawai,
-            'jabatan'               => $jabatan,
-            'tanggal_masuk'         => $tanggal_masuk,
-            'gaji'                  => $gaji,
-            'photo'                 => $photo
+        $CheckStockBarang   = $this->M_StockBarang->CheckStocBarang($id_stockBarang);
+
+        $PenguranganStock   = $CheckStockBarang->jumlah_stockBarang - $jumlah;
+        $PenambahanMutasi   = $CheckStockBarang->jumlah_stockMutasi + $jumlah;
+
+        $dataPeminjaman = array(
+            'id_stockBarang'        => $id_stockBarang,
+            'id_pegawai'            => $id_pegawai,
+            'tanggal'               => $tanggal,
+            'jumlah'                => $jumlah,
+            'id_status'             => 1,
+            'keterangan'            => $keterangan
         );
 
-        if ($photo = '') {
-        } else {
-            $config['upload_path']    = './assets/photo';
-            $config['allowed_types']   = 'jpg|jpeg|png|tiff';
-            $this->load->library('upload', $config);
+        $dataStockBarang = array(
+            'jumlah_stockBarang'    => $PenguranganStock,
+            'jumlah_stockMutasi'    => $PenambahanMutasi
+        );
 
-            if (!$this->upload->do_upload('photo')) {
-                echo "Photo Gagal diupload";
-            } else {
-                $photo = $this->upload->data('file_name');
-            }
-        }
+        // WHERE CONDITION ID BARANG
+        $IdStockBarang              = array(
+            'id_stockBarang'        => $id_stockBarang
+        );
 
-        // Check Data Pegawai
-        $CheckDataPegawai = $this->M_DataPegawai->CheckDataPegawai($nama_pegawai);
+        $data['StockBarang']    = $this->M_StockBarang->StockBarang();
+        $data['DataPegawai']    = $this->M_DataPegawai->DataPegawai();
 
         if ($this->form_validation->run() == false) {
-            $this->load->view('template/DataPegawai/V_Header_Admin');
-            $this->load->view('template/V_Sidebar_Admin');
-            $this->load->view('admin/DataPegawai/V_Add_Pegawai');
-            $this->load->view('template/DataPegawai/V_Footer_Admin');
+            $this->load->view('template/DataPeminjaman/V_Header_Peminjaman', $data);
+            $this->load->view('template/V_Sidebar_Admin', $data);
+            $this->load->view('admin/DataPeminjaman/V_Add_Peminjaman', $data);
+            $this->load->view('template/DataPeminjaman/V_Footer_Peminjaman', $data);
         } else {
-            if ($nama_pegawai == $CheckDataPegawai->nama_pegawai) {
+            if ($CheckStockBarang->jumlah_stockBarang == 0) {
                 $this->session->set_flashdata('gagal_icon', 'warning');
-                $this->session->set_flashdata('gagal_title', 'Nama Pegawai Sudah Ada');
-                redirect('admin/DataPegawai/C_Add_Pegawai');
+                $this->session->set_flashdata('gagal_title', 'Stock Barang Kosong');
+                redirect('admin/DataPeminjaman/C_Data_Peminjaman');
+            } elseif ($jumlah > $CheckStockBarang->jumlah_stockBarang) {
+                $this->session->set_flashdata('gagal_icon', 'warning');
+                $this->session->set_flashdata('gagal_title', 'Stock Barang Kurang');
+                redirect('admin/DataPeminjaman/C_Data_Peminjaman');
             } else {
-                $this->M_CRUD->insertData($dataPegawai, 'data_pegawai');
+                $this->M_CRUD->updateData('data_stockbarang', $dataStockBarang, $IdStockBarang);
+                $this->M_CRUD->insertData($dataPeminjaman, 'data_peminjaman_barang');
 
                 $this->session->set_flashdata('berhasil_icon', 'success');
                 $this->session->set_flashdata('berhasil_title', 'Tambah Data Berhasil');
 
-                redirect('admin/DataPegawai/C_Data_Pegawai');
+                redirect('admin/DataPeminjaman/C_Data_Peminjaman');
             }
         }
     }

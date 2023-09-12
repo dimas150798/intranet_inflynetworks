@@ -25,8 +25,8 @@ class C_Data_Peminjaman extends CI_Controller
 
     public function index()
     {
-        if ((isset($_GET['day']) && $_GET['day'] != '')) {
-            $dayGET                 = $_GET['day'];
+        if (isset($_GET['day']) && $_GET['day'] != '') {
+            $dayGET = $_GET['day'];
 
             // Menyimpan Dalam Session
             $this->session->set_userdata('dayGET', $dayGET);
@@ -34,7 +34,7 @@ class C_Data_Peminjaman extends CI_Controller
             $data['DataPeminjaman']      = $this->M_DataPeminjaman->DataPeminjaman($dayGET);
 
             // Menyimpan query di dalam data
-            $data['dayGET']           = $dayGET;
+            // $data['dayGET']           = $dayGET;
 
             $this->load->view('template/DataPeminjaman/V_Header_Peminjaman', $data);
             $this->load->view('template/V_Sidebar_Admin', $data);
@@ -50,7 +50,7 @@ class C_Data_Peminjaman extends CI_Controller
             $data['DataPeminjaman']      = $this->M_DataPeminjaman->DataPeminjaman($day);
 
             // Menyimpan query di dalam data
-            $data['day']           = $day;
+            // $data['day']           = $day;
 
             $this->load->view('template/DataPeminjaman/V_Header_Peminjaman', $data);
             $this->load->view('template/V_Sidebar_Admin', $data);
@@ -61,7 +61,8 @@ class C_Data_Peminjaman extends CI_Controller
 
     public function GetDataAjax()
     {
-        if ($this->session->userdata('dayGET') != '') {
+
+        if ($this->session->userdata('dayGET') != '' and $this->session->userdata('dayGET') != NULL) {
             $result = $this->M_DataPeminjaman->DataPeminjaman($this->session->userdata('dayGET'));
 
             $no = 0;
@@ -76,16 +77,14 @@ class C_Data_Peminjaman extends CI_Controller
                 $row[] = changeDateFormat('d-m-Y', $dataPeminjaman['tanggal']);
                 $row[] = $dataPeminjaman['jumlah'];
                 $row[] = $dataPeminjaman['keterangan'];
-                $row[] = '<div>' . ($NamaStatus ? '<span class="badge bg-danger text-white">' . $dataPeminjaman['nama_status'] . '</span>' : '<span class="badge bg-success text-white">' . $dataPeminjaman['nama_status'] . '</span>') . '</div>';
+                $row[] = '<div>' . ($NamaStatus ? '<span class="badge bg-danger text-white">' . 'DI PINJAM' . '</span>' : '<span class="badge bg-success text-white">' . 'DI KEMBALIKAN' . '</span>') . '</div>';
                 $row[] =
                     '<div class="text-center">
                 <a class="btn btn-info btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                     Option
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a onclick="EditDataCustomer(' . $dataPeminjaman['id_peminjaman_barang'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit</a>
-                    <a onclick="DeleteCustomer(' . $dataPeminjaman['id_peminjaman_barang'] . ')"class="dropdown-item text-black"><i class="bi bi-trash3-fill"></i> Hapus</a>
-                    <a onclick="TerminasiCustomer(' . $dataPeminjaman['id_peminjaman_barang'] . ')"class="dropdown-item text-black"><i class="bi bi-wifi-off"></i> Terminasi</a>
+                    <a onclick="BarangKembali(' . $dataPeminjaman['id_peminjaman_barang'] . ')"class="dropdown-item text-black"><i class="bi bi-layer-backward"></i> Barang Kembali</a>
                 </div>
             </div>';
 
@@ -119,9 +118,7 @@ class C_Data_Peminjaman extends CI_Controller
                     Option
                 </a>
                 <div class="dropdown-menu dropdown-menu-right">
-                    <a onclick="EditDataCustomer(' . $dataPeminjaman['id_peminjaman_barang'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit</a>
-                    <a onclick="DeleteCustomer(' . $dataPeminjaman['id_peminjaman_barang'] . ')"class="dropdown-item text-black"><i class="bi bi-trash3-fill"></i> Hapus</a>
-                    <a onclick="TerminasiCustomer(' . $dataPeminjaman['id_peminjaman_barang'] . ')"class="dropdown-item text-black"><i class="bi bi-wifi-off"></i> Terminasi</a>
+                    <a onclick="BarangKembali(' . $dataPeminjaman['id_peminjaman_barang'] . ')"class="dropdown-item text-black"><i class="bi bi-layer-backward"></i> Barang Kembali</a>
                 </div>
             </div>';
 

@@ -9,12 +9,12 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Form Tambah Peminjaman Barang</h4>
+                            <h4>Form Tambah Foto Peminjaman Barang</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
                                 <li class="breadcrumb-item">
-                                    <a href="#">Data Peminjaman</a>
+                                    <a href="#">Data Foto Peminjaman</a>
                                 </li>
                                 <li class="breadcrumb-item active" aria-current="page">
                                     Form
@@ -28,7 +28,7 @@
 
             <!-- Form Tambah Pelanggan -->
             <div class="card-box p-5">
-                <form method="POST" action="<?php echo base_url('admin/DataPeminjaman/C_Add_Peminjaman/TambahPeminjaman') ?>">
+                <form method="POST" action="<?php echo base_url('admin/DataPeminjaman/C_AddFoto_Peminjaman/TambahFotoPeminjaman') ?>" enctype="multipart/form-data">
 
                     <div class="form-group row">
                         <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Nama Pegawai <span class="text-danger">*</span></label>
@@ -45,46 +45,23 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Nama Barang <span class="text-danger">*</span></label>
+                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Tanggal Foto<span class="text-danger">*</span></label>
                         <div class="col-sm-12 col-md-9">
-                            <select id="id_stockBarang" name="id_stockBarang" class="form-control" required>
-                                <option value="">Pilih Barang :</option>
-                                <?php foreach ($StockBarang as $dataStock) : ?>
-                                    <option value="<?php echo $dataStock['id_stockBarang']; ?>">
-                                        <?php echo $dataStock['nama_barang']; ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
+                            <input class="form-control" type="date" name="tanggal_peminjaman" placeholder="Tanggal Foto Peminjaman..." required />
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Tanggal Peminjaman<span class="text-danger">*</span></label>
+                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Foto Peminjaman <span class="text-danger">*</span></label>
                         <div class="col-sm-12 col-md-9">
-                            <input class="form-control" type="date" name="tanggal" placeholder="Tanggal Masuk Peminjaman..." />
-                            <div class="bg-danger">
-                                <small class="text-white"><?php echo form_error('tanggal'); ?></small>
-                            </div>
+                            <input type="file" name="foto_peminjaman1" accept="image/*" class="form-control" required>
                         </div>
                     </div>
 
                     <div class="form-group row">
-                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Jumlah Barang <span class="text-danger">*</span></label>
+                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Foto Peminjaman<span class="text-danger">*</span></label>
                         <div class="col-sm-12 col-md-9">
-                            <input class="form-control" type="number" min="1" name="jumlah" placeholder="Masukkan Jumlah Barang..." />
-                            <div class="bg-danger">
-                                <small class="text-white"><?php echo form_error('jumlah'); ?></small>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Keterangan<span class="text-danger">*</span></label>
-                        <div class="col-sm-12 col-md-9">
-                            <input class="form-control" name="keterangan" placeholder="Masukkan keterangan peminjaman..." />
-                            <div class="bg-danger">
-                                <small class="text-white"><?php echo form_error('keterangan'); ?></small>
-                            </div>
+                            <input type="file" name="foto_peminjaman2" accept="image/*" class="form-control">
                         </div>
                     </div>
 
