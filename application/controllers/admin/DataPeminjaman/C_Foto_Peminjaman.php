@@ -91,6 +91,7 @@ class C_Foto_Peminjaman extends CI_Controller
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a onclick="FotoBarangKembali(' . $dataPeminjaman['id_bukti_barang_peminjaman'] . ')"class="dropdown-item text-black"><i class="bi bi-layer-backward"></i> Foto Pengembalian</a>
+                                <a onclick="DetailFotoPeminjaman(' . $dataPeminjaman['id_bukti_barang_peminjaman'] . ')"class="dropdown-item text-black"><i class="bi bi-images"></i> Detail Pengembalian</a>
                             </div>
                         </div>';
 
@@ -131,6 +132,8 @@ class C_Foto_Peminjaman extends CI_Controller
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a onclick="FotoBarangKembali(' . $dataPeminjaman['id_bukti_barang_peminjaman'] . ')"class="dropdown-item text-black"><i class="bi bi-layer-backward"></i> Barang Kembali</a>
+                                <a onclick="DetailFotoPeminjaman(' . $dataPeminjaman['id_bukti_barang_peminjaman'] . ')"class="dropdown-item text-black"><i class="bi bi-images"></i> Detail Pengembalian</a>
+                            
                             </div>
                         </div>';
 

@@ -165,21 +165,19 @@
     }
 </script>
 
-
-<!-- Delete Data Nama Barang -->
+<!-- Barang Kembali -->
 <script>
-    function DeleteNamaBarang(parameter_id) {
+    function DetailFotoPeminjaman(parameter_id) {
         Swal.fire({
-            title: 'Yakin Melakukan Delete Data ?',
-            text: "Data yang dihapus tidak akan kembali",
+            title: 'Yakin Melihat Detail Foto ?',
             icon: 'warning',
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Hapus Data!'
+            confirmButtonText: 'Ya, Lihat Foto!'
         }).then((result) => {
             if (result.isConfirmed) {
-                window.location.href = "<?php echo site_url('admin/NamaBarang/C_Delete_Barang/DeleteBarang') ?>/" + parameter_id;
+                window.location.href = "<?php echo site_url('admin/DataPeminjaman/C_Detail_Pengembalian/FotoPengembalian') ?>/" + parameter_id;
             }
         })
     }
