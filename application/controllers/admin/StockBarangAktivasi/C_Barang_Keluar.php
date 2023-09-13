@@ -32,6 +32,7 @@ class C_Barang_Keluar extends CI_Controller
         $data['CustomerSTB']    = $this->M_DataCustomer->CustomerAktivasi_STB();
         $data['DataAktivasi']   = $this->M_DataAktivasi->DataAktivasiStock($id_stockBarang);
         $data['DataAdaptor']    = $this->M_StockBarang->StockBarangAdapter();
+        $data['DataKabel']      = $this->M_StockBarang->StockBarangKabelInstalasi();
 
         // Check Jumlah Data Barang Patch Core
         $CheckStock             = $this->M_StockBarang->CheckStocBarang($id_stockBarang);
@@ -102,6 +103,8 @@ class C_Barang_Keluar extends CI_Controller
         $id_pegawai         = $this->input->post('id_pegawai');
         $keterangan         = $this->input->post('keterangan');
         $kode_barang_stb    = $this->input->post('kode_barang_stb');
+        $id_kabel           = $this->input->post('id_kabel');
+        $ukuran_kabel       = $this->input->post('ukuran_kabel');
 
         // DATA AKTIVASI STB
         $CheckAktivasi_STB      = $this->M_DataAktivasi->CheckAktivasiStock($kode_barang_stb);
@@ -183,10 +186,31 @@ class C_Barang_Keluar extends CI_Controller
 
         // DATA BARANG ADAPTOR
         $CheckAdaptor           = $this->M_StockBarang->CheckStocBarang($adaptor);
+        $Stock_Adaptor           = $CheckAdaptor->jumlah_stockBarang;
 
         // MENGURANGI DAN MENAMBAH JUMLAH ADAPTOR 
         $StockAdaptor           = $CheckAdaptor->jumlah_stockBarang - 1;
         $MutasiAdaptor          = $CheckAdaptor->jumlah_stockMutasi + 1;
+
+        // DATA BARANG KABEL
+        $CheckKabel             = $this->M_StockBarang->CheckStocBarang($id_kabel);
+        $Stock_Kabel            = $CheckKabel->jumlah_stockBarang;
+
+        // MENGURANGI DAN MENAMBAH JUMLAH KABEL
+        $StockKabel           = $CheckKabel->jumlah_stockBarang - $ukuran_kabel;
+        $MutasiKabel          = $CheckKabel->jumlah_stockMutasi + $ukuran_kabel;
+
+        // DATA BARANG KABEL
+        $DataBarang_Kabel = array(
+            'jumlah_stockBarang'            => $StockKabel,
+            'jumlah_stockMutasi'            => $MutasiKabel,
+            'tanggal_mutasi'                => $tanggal
+        );
+
+        //WHERE CONDITION ID BARANG KABEL
+        $IdKabel = array(
+            'id_stockBarang'                => $id_kabel
+        );
 
         // DATA BARANG PATCH CORD HITAM
         $DataStock_HitamUPC = array(
@@ -346,6 +370,18 @@ class C_Barang_Keluar extends CI_Controller
             'keterangan'                    => $keterangan
         );
 
+        // LAPORAN BARANG KABEL
+        $Laporan_Kabel = array(
+            'id_stockBarang'                => $id_kabel,
+            'kode_barang'                   => $kode_barang,
+            'jumlah'                        => $ukuran_kabel,
+            'tanggal'                       => $tanggal,
+            'id_pegawai'                    => $id_pegawai,
+            'id_status'                     => 13,
+            'id_customer'                   => $id_customer,
+            'keterangan'                    => $keterangan
+        );
+
         if ($id_stockBarang == 49 or $id_stockBarang == 50 or $id_stockBarang == 51 or $id_stockBarang == 30 or $id_stockBarang == 29 or $id_stockBarang == 31) {
             // INSERT LAPORAN DAN UPDATE STOCK NON MODEM
             $this->M_CRUD->updateData('data_stockbarang', $DataBarang, $IdBarang);
@@ -389,62 +425,90 @@ class C_Barang_Keluar extends CI_Controller
         } else {
             if ($CheckAktivasi != NULL && $IdStatus == 12) {
                 // INSERT LAPORAN DAN UPDATE STOCK MODEM
-                $this->M_CRUD->updateData('data_aktivasi', $DataAktivasi, $IdAktivasi);
-                $this->M_CRUD->updateData('data_stockbarang', $DataBarangModem, $IdBarang);
-                $this->M_CRUD->updateData('data_stockbarang', $DataStock_HitamUPC, $IdHitamUPC);
-                $this->M_CRUD->updateData('data_stockbarang', $DataStock_KuningAPC, $IdKuningAPC);
-                $this->M_CRUD->updateData('data_stockbarang', $DataStock_BiruUPC, $IdBiruUPC);
-                $this->M_CRUD->updateData('data_stockbarang', $DataStock_Adaptor, $IdAdaptor);
-                $this->M_CRUD->updateData('data_customer', $DataCustomer, $IdCustomer);
+                if ($Stock_Adaptor == 0) {
+                    $this->session->set_flashdata('gagal_icon', 'warning');
+                    $this->session->set_flashdata('gagal_title', 'Stock Adaptor Kosong');
+                    redirect($_SERVER['HTTP_REFERER']); // Mengarahkan pengguna kembali ke halaman sebelumnya
+                } else {
+                    if ($ukuran_kabel > $Stock_Kabel) {
+                        $this->session->set_flashdata('gagal_icon', 'warning');
+                        $this->session->set_flashdata('gagal_title', 'Stock Kabel Tidak Cukup');
+                        redirect($_SERVER['HTTP_REFERER']); // Mengarahkan pengguna kembali ke halaman sebelumnya
+                    } else {
+                        $this->M_CRUD->updateData('data_aktivasi', $DataAktivasi, $IdAktivasi);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataBarangModem, $IdBarang);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataBarang_Kabel, $IdKabel);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataStock_HitamUPC, $IdHitamUPC);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataStock_KuningAPC, $IdKuningAPC);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataStock_BiruUPC, $IdBiruUPC);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataStock_Adaptor, $IdAdaptor);
+                        $this->M_CRUD->updateData('data_customer', $DataCustomer, $IdCustomer);
 
-                $this->M_CRUD->insertData($LaporanBarang_KeluarModem, 'data_stockkeluar');
-                $this->M_CRUD->insertData($LaporanBarang_KeluarAdaptor, 'data_stockkeluar');
+                        $this->M_CRUD->insertData($LaporanBarang_KeluarModem, 'data_stockkeluar');
+                        $this->M_CRUD->insertData($LaporanBarang_KeluarAdaptor, 'data_stockkeluar');
+                        $this->M_CRUD->insertData($Laporan_Kabel, 'data_stockkeluar');
 
-                if ($Hitam_UPC != 0) {
-                    $this->M_CRUD->insertData($Laporan_HitamUPC, 'data_stockkeluar');
+                        if ($Hitam_UPC != 0) {
+                            $this->M_CRUD->insertData($Laporan_HitamUPC, 'data_stockkeluar');
+                        }
+
+                        if ($Kuning_APC != 0) {
+                            $this->M_CRUD->insertData($Laporan_KuningAPC, 'data_stockkeluar');
+                        }
+
+                        if ($Biru_UPC != 0) {
+                            $this->M_CRUD->insertData($Laporan_BiruUPC, 'data_stockkeluar');
+                        }
+
+                        $this->session->set_flashdata('berhasil_icon', 'success');
+                        $this->session->set_flashdata('berhasil_title', 'Keluar Barang Berhasil Dengan SN Yang Sudah Ada');
+
+                        redirect('admin/StockBarangAktivasi/C_Barang_Aktivasi');
+                    }
                 }
-
-                if ($Kuning_APC != 0) {
-                    $this->M_CRUD->insertData($Laporan_KuningAPC, 'data_stockkeluar');
-                }
-
-                if ($Biru_UPC != 0) {
-                    $this->M_CRUD->insertData($Laporan_BiruUPC, 'data_stockkeluar');
-                }
-
-                $this->session->set_flashdata('berhasil_icon', 'success');
-                $this->session->set_flashdata('berhasil_title', 'Keluar Barang Berhasil Dengan SN Yang Sudah Ada');
-
-                redirect('admin/StockBarangAktivasi/C_Barang_Aktivasi');
             } elseif ($CheckAktivasi == NULL) {
                 // INSERT LAPORAN DAN UPDATE STOCK MODEM
-                $this->M_CRUD->updateData('data_stockbarang', $DataBarangModem, $IdBarang);
-                $this->M_CRUD->updateData('data_stockbarang', $DataStock_HitamUPC, $IdHitamUPC);
-                $this->M_CRUD->updateData('data_stockbarang', $DataStock_KuningAPC, $IdKuningAPC);
-                $this->M_CRUD->updateData('data_stockbarang', $DataStock_BiruUPC, $IdBiruUPC);
-                $this->M_CRUD->updateData('data_stockbarang', $DataStock_Adaptor, $IdAdaptor);
-                $this->M_CRUD->updateData('data_customer', $DataCustomer, $IdCustomer);
+                if ($Stock_Adaptor == 0) {
+                    $this->session->set_flashdata('gagal_icon', 'warning');
+                    $this->session->set_flashdata('gagal_title', 'Stock Adaptor Kosong');
+                    redirect($_SERVER['HTTP_REFERER']); // Mengarahkan pengguna kembali ke halaman sebelumnya
+                } else {
+                    if ($ukuran_kabel > $Stock_Kabel) {
+                        $this->session->set_flashdata('gagal_icon', 'warning');
+                        $this->session->set_flashdata('gagal_title', 'Stock Kabel Tidak Cukup');
+                        redirect($_SERVER['HTTP_REFERER']); // Mengarahkan pengguna kembali ke halaman sebelumnya
+                    } else {
+                        $this->M_CRUD->updateData('data_stockbarang', $DataBarangModem, $IdBarang);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataBarang_Kabel, $IdKabel);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataStock_HitamUPC, $IdHitamUPC);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataStock_KuningAPC, $IdKuningAPC);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataStock_BiruUPC, $IdBiruUPC);
+                        $this->M_CRUD->updateData('data_stockbarang', $DataStock_Adaptor, $IdAdaptor);
+                        $this->M_CRUD->updateData('data_customer', $DataCustomer, $IdCustomer);
 
-                $this->M_CRUD->insertData($DataAktivasi, 'data_aktivasi');
-                $this->M_CRUD->insertData($LaporanBarang_KeluarModem, 'data_stockkeluar');
-                $this->M_CRUD->insertData($LaporanBarang_KeluarAdaptor, 'data_stockkeluar');
+                        $this->M_CRUD->insertData($DataAktivasi, 'data_aktivasi');
+                        $this->M_CRUD->insertData($LaporanBarang_KeluarModem, 'data_stockkeluar');
+                        $this->M_CRUD->insertData($LaporanBarang_KeluarAdaptor, 'data_stockkeluar');
+                        $this->M_CRUD->insertData($Laporan_Kabel, 'data_stockkeluar');
 
-                if ($Hitam_UPC != 0) {
-                    $this->M_CRUD->insertData($Laporan_HitamUPC, 'data_stockkeluar');
+                        if ($Hitam_UPC != 0) {
+                            $this->M_CRUD->insertData($Laporan_HitamUPC, 'data_stockkeluar');
+                        }
+
+                        if ($Kuning_APC != 0) {
+                            $this->M_CRUD->insertData($Laporan_KuningAPC, 'data_stockkeluar');
+                        }
+
+                        if ($Biru_UPC != 0) {
+                            $this->M_CRUD->insertData($Laporan_BiruUPC, 'data_stockkeluar');
+                        }
+
+                        $this->session->set_flashdata('berhasil_icon', 'success');
+                        $this->session->set_flashdata('berhasil_title', 'Keluar Barang Berhasil');
+
+                        redirect('admin/StockBarangAktivasi/C_Barang_Aktivasi');
+                    }
                 }
-
-                if ($Kuning_APC != 0) {
-                    $this->M_CRUD->insertData($Laporan_KuningAPC, 'data_stockkeluar');
-                }
-
-                if ($Biru_UPC != 0) {
-                    $this->M_CRUD->insertData($Laporan_BiruUPC, 'data_stockkeluar');
-                }
-
-                $this->session->set_flashdata('berhasil_icon', 'success');
-                $this->session->set_flashdata('berhasil_title', 'Keluar Barang Berhasil');
-
-                redirect('admin/StockBarangAktivasi/C_Barang_Aktivasi');
             } else {
                 $this->session->set_flashdata('gagal_icon', 'success');
                 $this->session->set_flashdata('gagal_title', 'Tidak Masuk SN Modem Sudah Terpakai Dan Status Bukan Stock');

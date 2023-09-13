@@ -8,7 +8,7 @@ if (!function_exists('changeDateFormat')) {
     }
 }
 
-class C_Barang_Aktivasi extends CI_Controller
+class C_Barang_Distribusi extends CI_Controller
 {
     public function __construct()
     {
@@ -27,13 +27,13 @@ class C_Barang_Aktivasi extends CI_Controller
     {
         $this->load->view('template/DataBarang/V_Header_Barang');
         $this->load->view('template/V_Sidebar_Admin');
-        $this->load->view('admin/StockBarangAktivasi/V_Barang_Aktivasi');
+        $this->load->view('admin/StockBarangDistribusi/V_Barang_Distribusi');
         $this->load->view('template/DataBarang/V_Footer_Barang');
     }
 
     public function GetDataAjax()
     {
-        $result = $this->M_StockBarang->StockBarangAktivasi();
+        $result = $this->M_StockBarang->StockBarangDistribusi();
 
         $no = 0;
 
@@ -56,9 +56,9 @@ class C_Barang_Aktivasi extends CI_Controller
                         Option
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
-                        <a onclick="TambahBonusAktivasi(' . $dataBarang['id_stockBarang'] . ')"class="dropdown-item text-black"><i class="bi bi-patch-plus"></i> Bonus Pembelian</a>
-                        <a onclick="BarangAktivasiKeluar(' . $dataBarang['id_stockBarang'] . ')"class="dropdown-item text-black"><i class="bi bi-patch-minus"></i> Keluar Barang</a>
-                        <a onclick="BarangAktivasiRusak(' . $dataBarang['id_stockBarang'] . ')"class="dropdown-item text-black"><i class="bi bi-node-minus-fill"></i> Barang Rusak</a>
+                        <a onclick="TambahBonusDistribusi(' . $dataBarang['id_stockBarang'] . ')"class="dropdown-item text-black"><i class="bi bi-patch-plus"></i> Bonus Pembelian</a>
+                        <a onclick="BarangDistribusiKeluar(' . $dataBarang['id_stockBarang'] . ')"class="dropdown-item text-black"><i class="bi bi-patch-minus"></i> Keluar Barang</a>
+                        <a onclick="BarangDistribusiRusak(' . $dataBarang['id_stockBarang'] . ')"class="dropdown-item text-black"><i class="bi bi-node-minus-fill"></i> Barang Rusak</a>
                 </div>';
             $data[] = $row;
         }

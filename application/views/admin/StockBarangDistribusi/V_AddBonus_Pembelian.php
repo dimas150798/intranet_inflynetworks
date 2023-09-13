@@ -9,7 +9,7 @@
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Form Bonus Pembelian Aktivasi</h4>
+                            <h4>Form Bonus Pembelian Distribusi</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -30,7 +30,7 @@
             <div class="card-box p-5">
 
                 <?php foreach ($DataStock as $data) : ?>
-                    <form method="POST" action="<?php echo base_url('admin/StockBarangAktivasi/C_Bonus_Pembelian/TambahBonusPembelian') ?>">
+                    <form method="POST" action="<?php echo base_url('admin/StockBarangDistribusi/C_Bonus_Pembelian/TambahBonusPembelian') ?>">
                         <div class="form-group row">
                             <div class="row">
                                 <input type="hidden" class="form-control" name="id_stockBarang" id="id_stockBarang" value="<?php echo $data['id_stockBarang'] ?>" readonly>

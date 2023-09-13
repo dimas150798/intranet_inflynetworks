@@ -55,6 +55,42 @@ class M_StockBarang extends CI_Model
         return $query->result_array();
     }
 
+    // Menampilkan Data Stock Barang Distribusi
+    public function StockBarangDistribusi()
+    {
+        $query   = $this->db->query("SELECT data_stockbarang.id_stockBarang, data_stockbarang.id_barang, data_stockbarang.jumlah_stockBarang, data_stockbarang.jumlah_stockMutasi, 
+                    data_stockbarang.jumlah_stockRusak, data_stockbarang.tanggal_restock, data_stockbarang.tanggal_mutasi, data_namabarang.nama_barang, data_peralatan.kategori_peralatan
+        
+                    FROM data_stockbarang
+                    
+                    LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
+                    LEFT JOIN data_peralatan ON data_namabarang.id_peralatan = data_peralatan.id_peralatan
+    
+                    WHERE data_peralatan.id_peralatan = 4 OR data_peralatan.id_peralatan = 7
+                    
+                    ORDER BY data_namabarang.nama_barang ASC");
+
+        return $query->result_array();
+    }
+
+    // Menampilkan Data Stock Barang Kabel Instalasi
+    public function StockBarangKabelInstalasi()
+    {
+        $query   = $this->db->query("SELECT data_stockbarang.id_stockBarang, data_stockbarang.id_barang, data_stockbarang.jumlah_stockBarang, data_stockbarang.jumlah_stockMutasi, 
+                            data_stockbarang.jumlah_stockRusak, data_stockbarang.tanggal_restock, data_stockbarang.tanggal_mutasi, data_namabarang.nama_barang, data_peralatan.kategori_peralatan
+
+                            FROM data_stockbarang
+                            
+                            LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
+                            LEFT JOIN data_peralatan ON data_namabarang.id_peralatan = data_peralatan.id_peralatan
+
+                            WHERE data_stockbarang.id_barang = 50 OR data_stockbarang.id_barang BETWEEN 200 AND 201
+                            
+                            ORDER BY data_namabarang.nama_barang ASC");
+
+        return $query->result_array();
+    }
+
     //Edit Data Stock Barang
     public function EditStockBarang($id_stockBarang)
     {

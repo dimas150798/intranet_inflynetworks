@@ -30,6 +30,7 @@
                             <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="<?php echo base_url('admin/StockBarangAll/C_Stock_BarangAll') ?>">Semua Barang</a>
                                 <a class="dropdown-item" href="<?php echo base_url('admin/StockBarangAktivasi/C_Barang_Aktivasi') ?>">Barang Aktivasi</a>
+                                <a class="dropdown-item" href="<?php echo base_url('admin/StockBarangDistribusi/C_Barang_Distribusi') ?>">Barang Distribusi</a>
                             </div>
                         </div>
                     </div>

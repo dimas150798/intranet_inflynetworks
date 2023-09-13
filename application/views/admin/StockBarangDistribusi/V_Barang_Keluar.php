@@ -4,12 +4,12 @@
     <div class="pd-ltr-20 xs-pd-20-10">
         <div class="min-height-200px">
 
-            <!-- Header Tambah Bonus Pembelian -->
+            <!-- Header Keluar Barang Aktivasi-->
             <div class="page-header">
                 <div class="row">
                     <div class="col-md-6 col-sm-12">
                         <div class="title">
-                            <h4>Form Bonus Pembelian Aktivasi</h4>
+                            <h4>Form Keluar Barang Distribusi</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -24,16 +24,17 @@
                     </div>
                 </div>
             </div>
-            <!-- Header End Tambah Bonus Pembelian -->
+            <!-- Header End Keluar Barang Aktivasi -->
 
-            <!-- Form Tambah Bonus Pembelian -->
+            <!-- Form Keluar Barang Aktivasi -->
             <div class="card-box p-5">
 
                 <?php foreach ($DataStock as $data) : ?>
-                    <form method="POST" action="<?php echo base_url('admin/StockBarangAktivasi/C_Bonus_Pembelian/TambahBonusPembelian') ?>">
+                    <form method="POST" action="<?php echo base_url('admin/StockBarangDistribusi/C_Barang_Keluar/TambahBarangKeluar') ?>">
                         <div class="form-group row">
                             <div class="row">
                                 <input type="hidden" class="form-control" name="id_stockBarang" id="id_stockBarang" value="<?php echo $data['id_stockBarang'] ?>" readonly>
+                                <input type="hidden" class="form-control" name="id_barang" id="id_barang" value="<?php echo $data['id_barang'] ?>" readonly>
                             </div>
                         </div>
 
@@ -45,56 +46,38 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Invoice Pembelian <span class="text-danger">*</span></label>
-                            <div class="col-sm-12 col-md-9">
-                                <input class="form-control" name="kode_barang" value="" placeholder="Masukkan Invoice Pembelian..." />
-                                <div class="bg-danger">
-                                    <small class="text-white"><?php echo form_error('kode_barang'); ?></small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Tanggal Input Data<span class="text-danger">*</span></label>
-                            <div class="col-sm-12 col-md-9">
-                                <input class="form-control" type="date" name="tanggal" value="" />
-                                <div class="bg-danger">
-                                    <small class="text-white"><?php echo form_error('tanggal'); ?></small>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
                             <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Jumlah <span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
-                                <input class="form-control" type="number" name="jumlah" min="0" value="" placeholder="Masukkan jumlah..." />
-                                <div class="bg-danger">
-                                    <small class="text-white"><?php echo form_error('jumlah'); ?></small>
-                                </div>
+                                <input class="form-control" type="number" name="jumlah" min="0" max="<?php echo $StockBarang ?>" value="0" />
+                            </div>
+                        </div>
+
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Tanggal<span class="text-danger">*</span></label>
+                            <div class="col-sm-12 col-md-9">
+                                <input class="form-control" type="date" name="tanggal" placeholder="Tanggal..." />
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Nama Pegawai <span class="text-danger">*</span></label>
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Pegawai Yang Mengeluarkan <span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
-                                <select id="id_pegawai" name="id_pegawai" class="form-control">
-                                    <option value="">Pilih Nama Pegawai :</option>
+                                <select id="id_pegawai" name="id_pegawai" class="form-control" required>
+                                    <option value="">Pilih Pegawai :</option>
                                     <?php foreach ($DataPegawai as $dataPegawai) : ?>
                                         <option value="<?php echo $dataPegawai['id_pegawai']; ?>">
                                             <?php echo $dataPegawai['nama_pegawai']; ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
-                                <div class="bg-danger">
-                                    <small class="text-white"><?php echo form_error('id_pegawai'); ?></small>
-                                </div>
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Keterangan </label>
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Keterangan</label>
                             <div class="col-sm-12 col-md-9">
-                                <input class="form-control" name="keterangan" value="" placeholder="Masukkan Keterangan.." />
+                                <input class="form-control" name="keterangan" value="" placeholder="Masukkan Keterangan..." />
                             </div>
                         </div>
 
@@ -107,8 +90,7 @@
                     </form>
                 <?php endforeach; ?>
             </div>
-            <!-- End Form Tambah Bonus Pembelian -->
-
+            <!-- End Form Keluar Barang Aktivasi -->
 
         </div>
     </div>

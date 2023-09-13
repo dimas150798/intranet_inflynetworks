@@ -112,6 +112,25 @@
     })
 </script>
 
+<!-- Ajax Show Data Barang Distribusi-->
+<script>
+    $(document).ready(function() {
+        $('#barangdistribusi').DataTable({
+            "autoFill": true,
+            "pagingType": 'numbers',
+            "searching": true,
+            "paging": true,
+            "stateSave": true,
+            "processing": true,
+            "serverside": true,
+            "ajax": {
+                "url": "<?= base_url('admin/StockBarangDistribusi/C_Barang_Distribusi/GetDataAjax'); ?>",
+            },
+            "bDestroy": true
+        })
+    })
+</script>
+
 <!-- Alert Berhasil -->
 <script>
     <?php if ($this->session->flashdata('berhasil_icon')) { ?>
@@ -204,7 +223,7 @@
 
 <!-- Tambah Bonus Pembelian Aktivasi -->
 <script>
-    function TambahBonusPembelian(parameter_id) {
+    function TambahBonusAktivasi(parameter_id) {
         Swal.fire({
             title: 'Yakin Melakukan Tambah Barang ?',
             // text: "Data yang dihapus edit akan kembali",
@@ -216,6 +235,25 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Bonus_Pembelian/DataBonusPembelian') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Tambah Bonus Pembelian Distribusi -->
+<script>
+    function TambahBonusDistribusi(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Tambah Barang ?',
+            // text: "Data yang dihapus edit akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Tambah Data!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangDistribusi/C_Bonus_Pembelian/DataBonusPembelian') ?>/" + parameter_id;
             }
         })
     }
@@ -240,6 +278,25 @@
     }
 </script>
 
+<!-- Tambah Barang Distribusi Keluar  -->
+<script>
+    function BarangDistribusiKeluar(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Pengurangan Barang ?',
+            text: "Data yang dikurangi tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Kurangi Barang!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangDistribusi/C_Barang_Keluar/DataBarangKeluar') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
 <!-- Tambah Barang Rusak Aktivasi  -->
 <script>
     function BarangAktivasiRusak(parameter_id) {
@@ -254,6 +311,25 @@
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = "<?php echo site_url('admin/StockBarangAktivasi/C_Barang_Rusak/Barang_Rusak') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Tambah Barang Rusak Distribusi  -->
+<script>
+    function BarangDistribusiRusak(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Pengurangan Barang ?',
+            text: "Data yang dikurangi tidak akan kembali",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Kurangi Barang!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/StockBarangDistribusi/C_Barang_Rusak/Barang_Rusak') ?>/" + parameter_id;
             }
         })
     }
@@ -362,7 +438,17 @@
             dropdownParent: $(this).parent(),
         });
     });
+
+    // Kabel
+    $('#id_kabel').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Kabel',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
 </script>
+
 
 </body>
 

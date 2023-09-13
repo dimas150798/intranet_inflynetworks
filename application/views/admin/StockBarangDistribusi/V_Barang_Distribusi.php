@@ -8,7 +8,7 @@
                 <div class="row align-items-center justify-content-between">
                     <div class="col-12 col-lg-6 col-xl-6">
                         <div class="title">
-                            <h4>Data Stock Barang</h4>
+                            <h4>Data Stock Barang Distribusi</h4>
                         </div>
                         <nav aria-label="breadcrumb" role="navigation">
                             <ol class="breadcrumb">
@@ -41,17 +41,17 @@
             <div class="card-box">
                 <div class="container-fluid">
                     <div class="p-2" style="overflow-x: auto;">
-                        <table id="barangall" class="table table-bordered responsive nowrap" style="width: 100%;">
+                        <table id="barangdistribusi" class="table table-bordered responsive nowrap" style="width: 100%;">
                             <thead>
                                 <tr>
                                     <th width="5%">No</th>
                                     <th width="20%">Nama Barang</th>
-                                    <th width="10%">Jumlah Stock</th>
-                                    <th width="10%">Jumlah Mutasi</th>
-                                    <th width="15%">Jumlah Rusak</th>
+                                    <th width="10%">Stock</th>
+                                    <th width="10%">Mutasi</th>
+                                    <th width="10%">Rusak</th>
                                     <th width="15%">Last Restock</th>
                                     <th width="15%">Last Mutasi</th>
-                                    <!-- <th width="10%">Action</th> -->
+                                    <th width="15%">Action</th>
                                 </tr>
                             </thead>
                         </table>

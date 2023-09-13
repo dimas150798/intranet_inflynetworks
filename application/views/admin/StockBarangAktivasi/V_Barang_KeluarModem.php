@@ -81,9 +81,30 @@
                         </div>
 
                         <div class="form-group row">
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Pilih Kabel <span class="text-danger">*</span></label>
+                            <div class="col-sm-12 col-md-9">
+                                <select id="id_kabel" name="id_kabel" class="form-control" required>
+                                    <option value="">Pilih Kabel :</option>
+                                    <?php foreach ($DataKabel as $dataKabel) : ?>
+                                        <option value="<?php echo $dataKabel['id_stockBarang']; ?>">
+                                            <?php echo $dataKabel['nama_barang']; ?>
+                                        </option>
+                                    <?php endforeach; ?>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Ukuran Kabel<span class="text-danger">*</span></label>
+                            <div class="col-sm-12 col-md-9">
+                                <input class="form-control" type="number" name="ukuran_kabel" id="ukuran_kabel" min="0" max="" value="0" />
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
                             <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Hitam UPC Outdor<span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
-                                <input class="form-control" type="number" name="Hitam_UPC" min="0" max="<?php echo $Hitam_UPC ?>" value="0" />
+                                <input class="form-control" type="text" name="Hitam_UPC" min="0" max="<?php echo $Hitam_UPC ?>" value="0" />
                             </div>
                         </div>
 
