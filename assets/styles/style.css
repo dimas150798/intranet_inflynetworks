@@ -4131,3 +4131,59 @@ body.IE .register-page-wrap .container{
     flex-shrink: 0;
     /* Add your footer styles here */
 }
+
+
+/* Gaya tampilan langkah-langkah */
+.step {
+	display: none;
+}
+
+.active-step {
+	display: block;
+}
+
+/* Gaya tampilan indikator langkah */
+.step-indicator {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.step-number {
+	display: inline-block;
+	width: 40px; /* Lebar nomor langkah */
+	height: 40px; /* Tinggi nomor langkah */
+	background-color: #ccc;
+	border-radius: 50%;
+	margin: 0 25px;
+	line-height: 40px;
+	text-align: center;
+	font-weight: bold;
+	font-size: 18px; /* Ukuran teks nomor langkah */
+	cursor: pointer;
+	position: relative; /* Menambahkan posisi relatif */
+}
+
+.active-indicator {
+	background-color: #007BFF;
+}
+.step-title {
+	font-size: 14px; /* Ukuran teks judul langkah */
+	margin-top: 5px; /* Jarak antara judul dan nomor langkah */
+}
+
+/* Gaya tambahan untuk indikator langkah dengan judul */
+.step-with-title {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+/* Tambahkan media query untuk layar yang lebih kecil */
+@media (max-width: 768px) {
+    .step-number {
+        width: 30px; /* Atur ukuran nomor langkah untuk layar yang lebih kecil */
+        height: 30px;
+        font-size: 16px; /* Atur ukuran teks nomor langkah untuk layar yang lebih kecil */
+        line-height: 30px;
+    }
+}

@@ -13,7 +13,7 @@
                         <div class="weight-600 font-30 text-blue">Intranet Infly Networks!</div>
                     </h4>
                     <p class="font-18 max-width-600">
-                        Intranet adalah aplikasi management pergudangan dan monitoring, serta purchasing
+                        Intranet adalah aplikasi management pergudangan dan purchasing
                     </p>
                 </div>
             </div>

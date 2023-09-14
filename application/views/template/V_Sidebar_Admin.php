@@ -196,29 +196,15 @@
                     <!-- Purchase Request -->
                     <li>
                         <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon bi bi-receipt"></span><span class="mtext">Request</span>
+                            <span class="micon bi bi-receipt"></span><span class="mtext">Request & Order</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="introduction.html">Data Request</a></li>
-                            <li><a href="getting-started.html">Rekap Request</a></li>
+                            <li><a href="<?php echo base_url('admin/DataPurchase/C_Add_Purchase') ?>">Tambah Purchase</a></li>
+                            <li><a href="<?php echo base_url('admin/DataRequest/C_Data_Request') ?>">Data Request</a></li>
+                            <li><a href="<?php echo base_url('admin/DataOrder/C_Data_Order') ?>">Data Order</a></li>
                         </ul>
                     </li>
                     <!-- End Purchase Request -->
-
-                    <!-- Purchase Order -->
-                    <li>
-                        <a href="javascript:;" class="dropdown-toggle">
-                            <span class="micon bi bi-receipt"></span><span class="mtext">Order</span>
-                        </a>
-                        <ul class="submenu">
-                            <li><a href="introduction.html">Data Order</a></li>
-                            <li><a href="getting-started.html">Rekap Order</a></li>
-                        </ul>
-                    </li>
-                    <!-- Purchase Order -->
-
-
-
                 </ul>
             </div>
         </div>
