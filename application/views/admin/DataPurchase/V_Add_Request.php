@@ -52,7 +52,7 @@
                         <div class="col-sm-12 col-md-9">
                             <select id="id_barang" name="id_barang" class="form-control" required>
                                 <option value="">Pilih Barang :</option>
-                                <?php foreach ($StockBarang as $dataStock) : ?>
+                                <?php foreach ($DataBarang as $dataStock) : ?>
                                     <option value="<?php echo $dataStock['id_barang']; ?>">
                                         <?php echo $dataStock['nama_barang']; ?>
                                     </option>
