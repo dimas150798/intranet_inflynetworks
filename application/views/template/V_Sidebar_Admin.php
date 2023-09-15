@@ -199,7 +199,7 @@
                             <span class="micon bi bi-receipt"></span><span class="mtext">Request & Order</span>
                         </a>
                         <ul class="submenu">
-                            <li><a href="<?php echo base_url('admin/DataPurchase/C_Add_Purchase') ?>">Tambah Purchase</a></li>
+                            <li><a href="<?php echo base_url('admin/DataPurchase/C_Add_Request') ?>">Tambah Purchase</a></li>
                             <li><a href="<?php echo base_url('admin/DataRequest/C_Data_Request') ?>">Data Request</a></li>
                             <li><a href="<?php echo base_url('admin/DataOrder/C_Data_Order') ?>">Data Order</a></li>
                         </ul>

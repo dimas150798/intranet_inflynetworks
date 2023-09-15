@@ -38,6 +38,10 @@
     <!-- sweet alret2 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.27/dist/sweetalert2.min.css" rel="stylesheet">
 
+    <!-- Sertakan SweetAlert CSS dan JavaScript di bagian head dari halaman Anda -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/sweetalert/2.1.2/sweetalert.min.js"></script>
+
     <!--CSS Select  -->
     <link href="<?php echo base_url(); ?>assets/styles/select2.min.css" rel="stylesheet" />
     <link href="<?php echo base_url(); ?>assets/styles/select2-bootstrap-5-theme.min.css" rel="stylesheet" />

@@ -191,13 +191,51 @@
             showCancelButton: true,
             confirmButtonColor: '#3085d6',
             cancelButtonColor: '#d33',
-            confirmButtonText: 'Ya, Kembali Barang!'
+            confirmButtonText: 'Ya, Terima Barang!'
         }).then((result) => {
             if (result.isConfirmed) {
                 window.location.href = "<?php echo site_url('admin/DataOrder/C_Done_Order/DoneOrder') ?>/" + parameter_id;
             }
         })
     }
+</script>
+
+<!-- ACC Order -->
+<script>
+    function ACCOrder(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan ACC Barang ?',
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, ACC Barang!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/DataOrder/C_Acc_Request/AccRequest'); ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
+<!-- Kode JavaScript untuk menampilkan SweetAlert saat button "Selesai" ditekan -->
+<script>
+    document.getElementById("selesaiButton").addEventListener("click", function() {
+        Swal.fire({
+            title: "Konfirmasi",
+            text: "Apakah Anda yakin ingin menyelesaikan tindakan ini?",
+            icon: "warning",
+            showCancelButton: true,
+            confirmButtonText: "Ya",
+            cancelButtonText: "Batal",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                // Tempatkan kode untuk menavigasi ke halaman tujuan di sini
+                window.location.href = "<?php echo site_url('admin/DataOrder/C_Data_Order') ?>";
+
+            }
+        });
+    });
 </script>
 
 <!-- Button Search  -->

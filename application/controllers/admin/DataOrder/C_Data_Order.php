@@ -77,6 +77,7 @@ class C_Data_Order extends CI_Controller
                 $KeteranganSelesai2 = ['DITERIMA PURCHASE'];
                 $KeteranganLama1 = ['DITERIMA'];
                 $KeteranganLama2 = ['PURCHASE'];
+                $KeteranganRequest = ['REQUEST'];
                 $StatusOrder = $dataOrder['nama_status'];
                 $row = array();
 
@@ -90,12 +91,16 @@ class C_Data_Order extends CI_Controller
                     $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA WEREHOUSE' . '</span></div>';
                 } elseif (in_array($StatusOrder, $KeteranganSelesai2)) {
                     $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA PURCHASE' . '</span></div>';
+                } elseif (in_array($StatusOrder, $KeteranganRequest)) {
+                    $row[] = '<div><span class="badge bg-warning text-white">' . 'REQUEST' . '</span></div>';
                 } else {
                     $row[] = '<div><span class="badge bg-danger text-white">' . 'ORDER' . '</span></div>';
                 }
 
                 $row[] = $dataOrder['nama_pegawai'];
                 $row[] = $dataOrder['nama_barang'];
+                $row[] = $dataOrder['nama_supplier'];
+                $row[] = $dataOrder['harga_barang'];
                 $row[] = changeDateFormat('d-m-Y', $dataOrder['tanggal']);
                 $row[] = $dataOrder['jumlah_order'];
                 $row[] = $dataOrder['keterangan'];
@@ -106,6 +111,7 @@ class C_Data_Order extends CI_Controller
                             Option
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
+                            <a onclick="ACCOrder(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-bag-check"></i> Acc Request</a>
                             <a onclick="DoneOrder(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-check2-square"></i> Barang Diterima</a>
                         </div>
                     </div>';
@@ -128,6 +134,7 @@ class C_Data_Order extends CI_Controller
                 $KeteranganSelesai2 = ['DITERIMA PURCHASE'];
                 $KeteranganLama1 = ['DITERIMA'];
                 $KeteranganLama2 = ['PURCHASE'];
+                $KeteranganRequest = ['REQUEST'];
                 $StatusOrder = $dataOrder['nama_status'];
                 $row = array();
 
@@ -141,11 +148,16 @@ class C_Data_Order extends CI_Controller
                     $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA WEREHOUSE' . '</span></div>';
                 } elseif (in_array($StatusOrder, $KeteranganSelesai2)) {
                     $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA PURCHASE' . '</span></div>';
+                } elseif (in_array($StatusOrder, $KeteranganRequest)) {
+                    $row[] = '<div><span class="badge bg-warning text-white">' . 'REQUEST' . '</span></div>';
                 } else {
                     $row[] = '<div><span class="badge bg-danger text-white">' . 'ORDER' . '</span></div>';
                 }
+
                 $row[] = $dataOrder['nama_pegawai'];
                 $row[] = $dataOrder['nama_barang'];
+                $row[] = $dataOrder['nama_supplier'];
+                $row[] = $dataOrder['harga_barang'];
                 $row[] = changeDateFormat('d-m-Y', $dataOrder['tanggal']);
                 $row[] = $dataOrder['jumlah_order'];
                 $row[] = $dataOrder['keterangan'];
@@ -155,6 +167,7 @@ class C_Data_Order extends CI_Controller
                             Option
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
+                            <a onclick="ACCOrder(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-bag-check"></i> Acc Request</a>
                             <a onclick="DoneOrder(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-check2-square"></i> Barang Diterima</a>
                         </div>
                     </div>';

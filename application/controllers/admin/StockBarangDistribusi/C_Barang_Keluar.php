@@ -92,7 +92,7 @@ class C_Barang_Keluar extends CI_Controller
         // LAPORAN BARANG KELUAR STB
         $LaporanBarang_Keluar       = array(
             'id_stockBarang'        => $id_stockBarang,
-            'jumlah'                => 1,
+            'jumlah'                => $jumlah,
             'tanggal'               => $tanggal,
             'id_pegawai'            => $id_pegawai,
             'id_status'             => 13,

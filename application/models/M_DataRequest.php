@@ -23,82 +23,42 @@ class M_DataRequest extends CI_Model
         return $query->result_array();
     }
 
-    // Menampilkan Data Aktivasi Yang Berstatus Stock
-    public function DataAktivasiStock($id_stockBarang)
+    // Check data aktivasi
+    public function CheckACCRequest($no_purchase_request, $id_barang)
     {
-        $query   = $this->db->query("SELECT data_aktivasi.id_aktivasi, data_aktivasi.kode_barang, data_aktivasi.id_stockBarang, data_aktivasi.jumlah_modem,
-                data_aktivasi.Patch_Core_Hitam_UPC_Outdor, data_aktivasi.Patch_Core_Kuning_UPC_Biru, data_aktivasi.Patch_Core_Kuning_APC_Hijau, data_aktivasi.Adaptor, data_aktivasi.tanggal,
-                data_customer.nama_customer, data_stockbarang.id_barang, data_namabarang.nama_barang, data_status.nama_status
-    
-                FROM data_aktivasi
-                
-                LEFT JOIN data_customer ON data_aktivasi.id_customer = data_customer.id_customer
-                LEFT JOIN data_stockbarang ON data_aktivasi.id_stockBarang = data_stockbarang.id_stockBarang
-                LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
-                LEFT JOIN data_status ON data_aktivasi.id_status = data_status.id_status
-                LEFT JOIN data_keadaanbarang ON data_aktivasi.id_keadaanbarang = data_keadaanbarang.id_keadaanbarang
+        $this->db->select('data_purchase_request.id_purchase_request, data_purchase_request.no_purchase_request, data_purchase_request.jumlah_request, data_purchase_request.tanggal,
+                       data_purchase_request.keterangan, data_purchase_request.id_status, data_purchase_request.id_pegawai, data_purchase_request.id_barang, data_pegawai.nama_pegawai, data_namabarang.nama_barang,
+                       data_status.nama_status');
+        $this->db->join('data_status', 'data_purchase_request.id_status = data_status.id_status', 'left');
+        $this->db->join('data_pegawai', 'data_purchase_request.id_pegawai = data_pegawai.id_pegawai', 'left');
+        $this->db->join('data_namabarang', 'data_purchase_request.id_barang = data_namabarang.id_barang', 'left');
+        $this->db->where('data_purchase_request.no_purchase_request', $no_purchase_request);
+        $this->db->where('data_purchase_request.id_barang', $id_barang);
 
-                
-                WHERE data_stockbarang.id_stockBarang = '$id_stockBarang' AND data_aktivasi.id_status = 12 AND data_keadaanbarang.id_keadaanbarang = 2
+        $this->db->limit(1);
+        $result = $this->db->get('data_purchase_request');
 
-                ORDER BY data_aktivasi.id_aktivasi DESC");
-
-        return $query->result_array();
-    }
-
-    // Menampilkan Data Jumlah Aktivasi
-    public function JumlahBarangAktivasi($id_stockBarang)
-    {
-        $query   = $this->db->query("SELECT data_aktivasi.id_aktivasi, data_aktivasi.kode_barang, data_aktivasi.id_stockBarang, data_aktivasi.jumlah_modem,
-                data_aktivasi.Patch_Core_Hitam_UPC_Outdor, data_aktivasi.Patch_Core_Kuning_UPC_Biru, data_aktivasi.Patch_Core_Kuning_APC_Hijau, data_aktivasi.Adaptor, data_aktivasi.tanggal,
-                data_customer.nama_customer, data_stockbarang.id_barang, data_namabarang.nama_barang, data_status.nama_status
-    
-                FROM data_aktivasi
-                
-                LEFT JOIN data_customer ON data_aktivasi.id_customer = data_customer.id_customer
-                LEFT JOIN data_stockbarang ON data_aktivasi.id_stockBarang = data_stockbarang.id_stockBarang
-                LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
-                LEFT JOIN data_status ON data_aktivasi.id_status = data_status.id_status
-                
-                WHERE data_aktivasi.id_stockBarang = '$id_stockBarang'
-
-                ORDER BY data_aktivasi.id_aktivasi DESC");
-
-        return $query->num_rows();
-    }
-
-    //Edit Data Aktivasi
-    public function EditAktivasi($id_aktivasi)
-    {
-        $query   = $this->db->query("SELECT data_aktivasi.id_aktivasi, data_aktivasi.kode_barang, data_aktivasi.id_stockBarang, data_aktivasi.jumlah_modem,
-                    data_aktivasi.Patch_Core_Hitam_UPC_Outdor, data_aktivasi.Patch_Core_Kuning_UPC_Biru, data_aktivasi.Patch_Core_Kuning_APC_Hijau, data_aktivasi.Adaptor, data_aktivasi.tanggal,
-                    data_customer.nama_customer, data_stockbarang.id_barang, data_namabarang.nama_barang, data_status.nama_status
-
-                    FROM data_aktivasi
-
-                    LEFT JOIN data_customer ON data_aktivasi.id_customer = data_customer.id_customer
-                    LEFT JOIN data_stockbarang ON data_aktivasi.id_stockBarang = data_stockbarang.id_stockBarang
-                    LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
-                    LEFT JOIN data_status ON data_aktivasi.id_status = data_status.id_status
-
-                    WHERE id_aktivasi = '$id_aktivasi' ");
-
-        return $query->result_array();
+        return $result->row();
+        if ($result->num_rows() > 0) {
+            return $result->row();
+        } else {
+            return false;
+        }
     }
 
     // Check data aktivasi
-    public function CheckAktivasi($id_aktivasi)
+    public function CheckInvoiceRequest($no_purchase_request)
     {
-        $this->db->select('data_aktivasi.id_aktivasi, data_aktivasi.kode_barang, data_aktivasi.id_stockBarang, data_aktivasi.jumlah_modem,
-                            data_aktivasi.Patch_Core_Hitam_UPC_Outdor, data_aktivasi.Patch_Core_Kuning_UPC_Biru, data_aktivasi.Patch_Core_Kuning_APC_Hijau, data_aktivasi.Adaptor, 
-                            data_aktivasi.tanggal, data_aktivasi.id_status, data_customer.nama_customer, data_stockbarang.id_barang, data_namabarang.nama_barang');
-        $this->db->join('data_customer', 'data_aktivasi.id_customer = data_customer.id_customer', 'left');
-        $this->db->join('data_stockbarang', 'data_aktivasi.id_stockBarang = data_stockbarang.id_stockBarang', 'left');
-        $this->db->join('data_namabarang', 'data_stockbarang.id_barang = data_namabarang.id_barang', 'left');
-        $this->db->where('data_aktivasi.id_aktivasi', $id_aktivasi);
+        $this->db->select('data_purchase_request.id_purchase_request, data_purchase_request.no_purchase_request, data_purchase_request.jumlah_request, data_purchase_request.tanggal,
+                        data_purchase_request.keterangan, data_purchase_request.id_status, data_purchase_request.id_pegawai, data_purchase_request.id_barang, data_pegawai.nama_pegawai, data_namabarang.nama_barang,
+                        data_status.nama_status');
+        $this->db->join('data_status', 'data_purchase_request.id_status = data_status.id_status', 'left');
+        $this->db->join('data_pegawai', 'data_purchase_request.id_pegawai = data_pegawai.id_pegawai', 'left');
+        $this->db->join('data_namabarang', 'data_purchase_request.id_barang = data_namabarang.id_barang', 'left');
+        $this->db->where('data_purchase_request.no_purchase_request', $no_purchase_request);
 
         $this->db->limit(1);
-        $result = $this->db->get('data_aktivasi');
+        $result = $this->db->get('data_purchase_request');
 
         return $result->row();
         if ($result->num_rows() > 0) {
@@ -123,5 +83,25 @@ class M_DataRequest extends CI_Model
         } else {
             return false;
         }
+    }
+
+    // Invoice Request
+    public function InvoiceRequest()
+    {
+        $sql = "SELECT MAX(MID(no_purchase_request,8,4)) AS invoiceID 
+            FROM data_purchase_request
+            WHERE MID(no_purchase_request,4,4) = DATE_FORMAT(CURDATE(), '%y%m')";
+        $query = $this->db->query($sql);
+
+        if ($query->num_rows() > 0) {
+            $dataRow    = $query->row();
+            $dataN      = ((int)$dataRow->invoiceID) + 1;
+            $no         = sprintf("%'.04d", $dataN);
+        } else {
+            $no         = "0001";
+        }
+
+        $invoice = "INR" . date('ym') . $no;
+        return $invoice;
     }
 }

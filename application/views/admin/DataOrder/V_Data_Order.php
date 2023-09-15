@@ -120,12 +120,14 @@
                             <thead>
                                 <tr>
                                     <th width="5%">No</th>
-                                    <th width="20%">Status Pembelian</th>
+                                    <th width="10%">Status Pembelian</th>
                                     <th width="10%">Nama Pegawai</th>
                                     <th width="10%">Nama Barang</th>
+                                    <th width="10%">Nama Supplier</th>
+                                    <th width="10%">Harga Barang</th>
                                     <th width="10%">Tanggal</th>
                                     <th width="10%">Jumlah</th>
-                                    <th width="20%">Keterangan</th>
+                                    <th width="10%">Keterangan</th>
                                     <th width="15%">Action</th>
                                 </tr>
                             </thead>

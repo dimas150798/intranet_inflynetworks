@@ -23,6 +23,23 @@ class M_DataPegawai extends CI_Model
     }
 
     // Check Data Pegawai
+    public function CheckIDPegawai($id_pegawai)
+    {
+        $this->db->select('id_pegawai, NIK, nama_pegawai, no_telpon, alamat_pegawai, pendidikan_pegawai, jabatan, tanggal_masuk, gaji, photo');
+        $this->db->where('id_pegawai', $id_pegawai);
+
+        $this->db->limit(1);
+        $result = $this->db->get('data_pegawai');
+
+        return $result->row();
+        if ($result->num_rows() > 0) {
+            return $result->row();
+        } else {
+            return false;
+        }
+    }
+
+    // Check Data Pegawai
     public function CheckDataPegawai($nama_pegawai)
     {
         $this->db->select('id_pegawai, NIK, nama_pegawai, no_telpon, alamat_pegawai, pendidikan_pegawai, jabatan, tanggal_masuk, gaji, photo');
