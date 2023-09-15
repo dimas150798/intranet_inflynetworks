@@ -52,7 +52,7 @@
                         <div class="form-group row">
                             <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Nama Pegawai Order <span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
-                                <select id="id_pegawai_order" name="id_pegawai_order" class="form-control" required>
+                                <select id="id_pegawai_request" name="id_pegawai_order" class="form-control" required>
                                     <option value="">Pilih Pegawai :</option>
                                     <?php foreach ($DataPegawai as $dataPegawai) : ?>
                                         <option value="<?php echo $dataPegawai['id_pegawai']; ?>">
