@@ -57,6 +57,8 @@ class C_Done_Order extends CI_Controller
         $Stock_Barang           = $CheckBarang->jumlah_stockBarang + $jumlah_order;
 
         $DataOrder = array(
+            'tanggal_diterima'  => $tanggal_diterima,
+            'id_pegawai_terima' => $id_pegawai,
             'id_status'         => $id_status
         );
 
