@@ -338,6 +338,15 @@
             dropdownParent: $(this).parent(),
         });
     });
+
+    // Id Barang
+    $('#nama_pembelian').each(function() {
+        $(this).select2({
+            placeholder: 'Pilih Nama Pembelian',
+            theme: 'bootstrap-5',
+            dropdownParent: $(this).parent(),
+        });
+    });
 </script>
 
 </body>

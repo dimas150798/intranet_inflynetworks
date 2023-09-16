@@ -43,7 +43,7 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Nama Barang<span class="text-danger">*</span></label>
+                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Nama Pembelian<span class="text-danger">*</span></label>
                         <div class="col-sm-12 col-md-9">
                             <input class="form-control" value="<?php echo $nama_barang ?>" placeholder="" readonly>
                         </div>

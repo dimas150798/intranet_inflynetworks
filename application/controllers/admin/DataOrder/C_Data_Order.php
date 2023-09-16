@@ -98,9 +98,9 @@ class C_Data_Order extends CI_Controller
                 }
 
                 $row[] = '<div>' . 'Invoice : ' . $dataOrder['no_purchase_order'] . '<br>' . 'No Pesanan : ' . $dataOrder['no_pesanan'] . '</div>';
-                $row[] = $dataOrder['nama_pegawai'];
-                $row[] = $dataOrder['nama_barang'];
                 $row[] = $dataOrder['nama_supplier'];
+                $row[] = $dataOrder['nama_barang'];
+                $row[] = $dataOrder['nama_pegawai'];
                 $row[] = $dataOrder['harga_barang'];
                 $row[] = changeDateFormat('d-m-Y', $dataOrder['tanggal']);
                 $row[] = $dataOrder['jumlah_order'];
@@ -156,9 +156,9 @@ class C_Data_Order extends CI_Controller
                 }
 
                 $row[] = '<div>' . 'Invoice : ' . $dataOrder['no_purchase_order'] . '<br>' . 'No Pesanan : ' . $dataOrder['no_pesanan'] . '</div>';
-                $row[] = $dataOrder['nama_pegawai'];
-                $row[] = $dataOrder['nama_barang'];
                 $row[] = $dataOrder['nama_supplier'];
+                $row[] = $dataOrder['nama_barang'];
+                $row[] = $dataOrder['nama_pegawai'];
                 $row[] = $dataOrder['harga_barang'];
                 $row[] = changeDateFormat('d-m-Y', $dataOrder['tanggal']);
                 $row[] = $dataOrder['jumlah_order'];

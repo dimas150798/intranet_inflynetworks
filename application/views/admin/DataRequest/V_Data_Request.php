@@ -122,7 +122,7 @@
                                     <th width="5%">No</th>
                                     <th width="15%">Status Pembelian</th>
                                     <th width="20%">Nama Pegawai</th>
-                                    <th width="20%">Nama Barang</th>
+                                    <th width="20%">Nama Pembelian</th>
                                     <th width="10%">Tanggal</th>
                                     <th width="10%">Jumlah</th>
                                     <th width="20%">Keterangan</th>
