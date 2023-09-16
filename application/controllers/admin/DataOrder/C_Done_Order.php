@@ -52,6 +52,12 @@ class C_Done_Order extends CI_Controller
         $id_pegawai             = $this->input->post('id_pegawai');
         $id_status              = $this->input->post('id_status');
 
+        // Mengambil data request untuk update id_status
+        $CheckDone_Request       = $this->M_DataOrder->CheckOrder($id_purchase_order);
+
+        // Mengambil data request untuk update id_status
+        $CheckACC_Request       = $this->M_DataRequest->CheckACCRequest($CheckDone_Request->no_purchase_request, $id_barang);
+
         // Check Barang
         $CheckBarang            = $this->M_StockBarang->CheckStocBarang($id_stockBarang);
         $Stock_Barang           = $CheckBarang->jumlah_stockBarang + $jumlah_order;
@@ -64,6 +70,14 @@ class C_Done_Order extends CI_Controller
 
         $IdOrder = array(
             'id_purchase_order' => $id_purchase_order
+        );
+
+        $DataRequest = array(
+            'id_status'         => $id_status
+        );
+
+        $IdRequest = array(
+            'id_purchase_request' => $CheckACC_Request->id_purchase_request
         );
 
         $StockBarangInsert = array(
@@ -97,12 +111,14 @@ class C_Done_Order extends CI_Controller
 
         if ($CheckBarang == NULL) {
             $this->M_CRUD->updateData('data_purchase_order', $DataOrder, $IdOrder);
+            $this->M_CRUD->updateData('data_purchase_request', $DataRequest, $IdRequest);
             $this->M_CRUD->insertData($StockBarangInsert, 'data_stockbarang');
             $this->M_CRUD->insertData($StockBarangMasuk, 'data_stockmasuk');
 
             redirect('admin/DataOrder/C_Data_Order');
         } else {
             $this->M_CRUD->updateData('data_purchase_order', $DataOrder, $IdOrder);
+            $this->M_CRUD->updateData('data_purchase_request', $DataRequest, $IdRequest);
             $this->M_CRUD->updateData('data_stockbarang', $StockBarangUpdate, $IdStockBarang);
             $this->M_CRUD->insertData($StockBarangMasuk, 'data_stockmasuk');
 
