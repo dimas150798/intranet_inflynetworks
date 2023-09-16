@@ -1,6 +1,13 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
+if (!function_exists('changeDateFormat')) {
+    function changeDateFormat($format = 'd-m-Y', $givenDate = null)
+    {
+        return date($format, strtotime($givenDate));
+    }
+}
+
 class C_Data_Request extends CI_Controller
 {
     public function __construct()
@@ -66,15 +73,35 @@ class C_Data_Request extends CI_Controller
             $no = 0;
 
             foreach ($result as $dataRequest) {
-
+                $KeteranganSelesai1 = ['DITERIMA WEREHOUSE'];
+                $KeteranganSelesai2 = ['DITERIMA PURCHASE'];
+                $KeteranganLama1 = ['DITERIMA'];
+                $KeteranganLama2 = ['PURCHASE'];
+                $KeteranganRequest = ['REQUEST'];
+                $StatusRequest = $dataRequest['nama_status'];
                 $row = array();
+
                 $row[] = ++$no;
+
+                if (in_array($StatusRequest, $KeteranganLama1)) {
+                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
+                } elseif (in_array($StatusRequest, $KeteranganLama2)) {
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
+                } elseif (in_array($StatusRequest, $KeteranganSelesai1)) {
+                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
+                } elseif (in_array($StatusRequest, $KeteranganSelesai2)) {
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
+                } elseif (in_array($StatusRequest, $KeteranganRequest)) {
+                    $row[] = '<div><span class="badge bg-warning text-white">' . 'REQUEST' . '</span></div>';
+                } else {
+                    $row[] = '<div><span class="badge bg-danger text-white">' . 'ORDER' . '</span></div>';
+                }
+
                 $row[] = $dataRequest['nama_pegawai'];
                 $row[] = $dataRequest['nama_barang'];
-                $row[] = $dataRequest['tanggal'];
+                $row[] = changeDateFormat('d-m-Y', $dataRequest['tanggal']);
                 $row[] = $dataRequest['jumlah_request'];
                 $row[] = $dataRequest['keterangan'];
-                $row[] = $dataRequest['id_status'];
                 // $row[] =
                 //     '<div class="text-center">
                 //         <a class="btn btn-info btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown">
@@ -100,15 +127,34 @@ class C_Data_Request extends CI_Controller
             $no = 0;
 
             foreach ($result as $dataRequest) {
-
+                $KeteranganSelesai1 = ['DITERIMA WEREHOUSE'];
+                $KeteranganSelesai2 = ['DITERIMA PURCHASE'];
+                $KeteranganLama1 = ['DITERIMA'];
+                $KeteranganLama2 = ['PURCHASE'];
+                $KeteranganRequest = ['REQUEST'];
+                $StatusRequest = $dataRequest['nama_status'];
                 $row = array();
+
                 $row[] = ++$no;
+
+                if (in_array($StatusRequest, $KeteranganLama1)) {
+                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
+                } elseif (in_array($StatusRequest, $KeteranganLama2)) {
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
+                } elseif (in_array($StatusRequest, $KeteranganSelesai1)) {
+                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
+                } elseif (in_array($StatusRequest, $KeteranganSelesai2)) {
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
+                } elseif (in_array($StatusRequest, $KeteranganRequest)) {
+                    $row[] = '<div><span class="badge bg-warning text-white">' . 'REQUEST' . '</span></div>';
+                } else {
+                    $row[] = '<div><span class="badge bg-danger text-white">' . 'ORDER' . '</span></div>';
+                }
                 $row[] = $dataRequest['nama_pegawai'];
                 $row[] = $dataRequest['nama_barang'];
-                $row[] = $dataRequest['tanggal'];
+                $row[] = changeDateFormat('d-m-Y', $dataRequest['tanggal']);
                 $row[] = $dataRequest['jumlah_request'];
                 $row[] = $dataRequest['keterangan'];
-                $row[] = $dataRequest['id_status'];
                 // $row[] =
                 //     '<div class="text-center">
                 //         <a class="btn btn-info btn-sm dropdown-toggle" href="#" role="button" data-toggle="dropdown">
