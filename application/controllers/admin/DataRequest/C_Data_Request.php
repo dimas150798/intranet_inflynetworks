@@ -97,6 +97,7 @@ class C_Data_Request extends CI_Controller
                     $row[] = '<div><span class="badge bg-danger text-white">' . 'ORDER' . '</span></div>';
                 }
 
+                $row[] = '<div>' . 'Invoice : ' . $dataRequest['no_purchase_request'] . '</div>';
                 $row[] = $dataRequest['nama_pegawai'];
                 $row[] = $dataRequest['nama_barang'];
                 $row[] = changeDateFormat('d-m-Y', $dataRequest['tanggal']);
@@ -150,6 +151,8 @@ class C_Data_Request extends CI_Controller
                 } else {
                     $row[] = '<div><span class="badge bg-danger text-white">' . 'ORDER' . '</span></div>';
                 }
+
+                $row[] = '<div>' . 'Invoice : ' . $dataRequest['no_purchase_request'] . '</div>';
                 $row[] = $dataRequest['nama_pegawai'];
                 $row[] = $dataRequest['nama_barang'];
                 $row[] = changeDateFormat('d-m-Y', $dataRequest['tanggal']);
