@@ -84,19 +84,20 @@ class C_Data_Order extends CI_Controller
                 $row[] = ++$no;
 
                 if (in_array($StatusOrder, $KeteranganLama1)) {
-                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA WEREHOUSE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
                 } elseif (in_array($StatusOrder, $KeteranganLama2)) {
-                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA PURCHASE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
                 } elseif (in_array($StatusOrder, $KeteranganSelesai1)) {
-                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA WEREHOUSE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
                 } elseif (in_array($StatusOrder, $KeteranganSelesai2)) {
-                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA PURCHASE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
                 } elseif (in_array($StatusOrder, $KeteranganRequest)) {
                     $row[] = '<div><span class="badge bg-warning text-white">' . 'REQUEST' . '</span></div>';
                 } else {
                     $row[] = '<div><span class="badge bg-danger text-white">' . 'ORDER' . '</span></div>';
                 }
 
+                $row[] = '<div>' . 'Invoice : ' . $dataOrder['no_purchase_order'] . '<br>' . 'No Pesanan : ' . $dataOrder['no_pesanan'] . '</div>';
                 $row[] = $dataOrder['nama_pegawai'];
                 $row[] = $dataOrder['nama_barang'];
                 $row[] = $dataOrder['nama_supplier'];
@@ -141,19 +142,20 @@ class C_Data_Order extends CI_Controller
                 $row[] = ++$no;
 
                 if (in_array($StatusOrder, $KeteranganLama1)) {
-                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA WEREHOUSE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
                 } elseif (in_array($StatusOrder, $KeteranganLama2)) {
-                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA PURCHASE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
                 } elseif (in_array($StatusOrder, $KeteranganSelesai1)) {
-                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA WEREHOUSE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
                 } elseif (in_array($StatusOrder, $KeteranganSelesai2)) {
-                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA PURCHASE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
                 } elseif (in_array($StatusOrder, $KeteranganRequest)) {
                     $row[] = '<div><span class="badge bg-warning text-white">' . 'REQUEST' . '</span></div>';
                 } else {
                     $row[] = '<div><span class="badge bg-danger text-white">' . 'ORDER' . '</span></div>';
                 }
 
+                $row[] = '<div>' . 'Invoice : ' . $dataOrder['no_purchase_order'] . '<br>' . 'No Pesanan : ' . $dataOrder['no_pesanan'] . '</div>';
                 $row[] = $dataOrder['nama_pegawai'];
                 $row[] = $dataOrder['nama_barang'];
                 $row[] = $dataOrder['nama_supplier'];
