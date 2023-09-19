@@ -446,7 +446,10 @@ class C_Barang_Keluar extends CI_Controller
 
                         $this->M_CRUD->insertData($LaporanBarang_KeluarModem, 'data_stockkeluar');
                         $this->M_CRUD->insertData($LaporanBarang_KeluarAdaptor, 'data_stockkeluar');
-                        $this->M_CRUD->insertData($Laporan_Kabel, 'data_stockkeluar');
+
+                        if ($ukuran_kabel != 0) {
+                            $this->M_CRUD->insertData($Laporan_Kabel, 'data_stockkeluar');
+                        }
 
                         if ($Hitam_UPC != 0) {
                             $this->M_CRUD->insertData($Laporan_HitamUPC, 'data_stockkeluar');
@@ -490,6 +493,10 @@ class C_Barang_Keluar extends CI_Controller
                         $this->M_CRUD->insertData($LaporanBarang_KeluarModem, 'data_stockkeluar');
                         $this->M_CRUD->insertData($LaporanBarang_KeluarAdaptor, 'data_stockkeluar');
                         $this->M_CRUD->insertData($Laporan_Kabel, 'data_stockkeluar');
+
+                        if ($ukuran_kabel != 0) {
+                            $this->M_CRUD->insertData($Laporan_Kabel, 'data_stockkeluar');
+                        }
 
                         if ($Hitam_UPC != 0) {
                             $this->M_CRUD->insertData($Laporan_HitamUPC, 'data_stockkeluar');

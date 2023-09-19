@@ -45,16 +45,9 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Kode Barang / SN Modem <span class="text-danger">*</span></label>
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> SN Modem <span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
-                                <select id="kode_barang" name="kode_barang" class="form-control" required>
-                                    <option value="">Pilih SN Modem :</option>
-                                    <?php foreach ($DataAktivasi as $dataAktivasi) : ?>
-                                        <option value="<?php echo $dataAktivasi['kode_barang']; ?>">
-                                            <?php echo $dataAktivasi['kode_barang']; ?>
-                                        </option>
-                                    <?php endforeach; ?>
-                                </select>
+                                <input class="form-control" name="kode_barang" value="" placeholder="Masukkan SN Modem..." required />
                             </div>
                         </div>
 
