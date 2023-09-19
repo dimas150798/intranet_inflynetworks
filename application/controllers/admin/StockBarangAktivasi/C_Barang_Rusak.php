@@ -35,16 +35,32 @@ class C_Barang_Rusak extends CI_Controller
         $StockBarang            = $this->M_StockBarang->CheckStocBarang($id_stockBarang);
         $data['JumlahStock']    = $StockBarang->jumlah_stockBarang;
 
+        // Check Jumlah Data Barang Patch Core
+        $CheckStock             = $this->M_StockBarang->CheckStocBarang($id_stockBarang);
+        $JumlahStock            = $CheckStock->jumlah_stockBarang;
+
         if ($id_stockBarang == 49 or $id_stockBarang == 50 or $id_stockBarang == 51 or $id_stockBarang == 30 or $id_stockBarang == 29 or $id_stockBarang == 31) {
-            $this->load->view('template/DataBarang/V_Header_Barang', $data);
-            $this->load->view('template/V_Sidebar_Admin', $data);
-            $this->load->view('admin/StockBarangAktivasi/V_Barang_Rusak', $data);
-            $this->load->view('template/DataBarang/V_Footer_Barang', $data);
+            if ($JumlahStock != 0) {
+                $this->load->view('template/DataBarang/V_Header_Barang', $data);
+                $this->load->view('template/V_Sidebar_Admin', $data);
+                $this->load->view('admin/StockBarangAktivasi/V_Barang_Rusak', $data);
+                $this->load->view('template/DataBarang/V_Footer_Barang', $data);
+            } else {
+                $this->session->set_flashdata('gagal_icon', 'warning');
+                $this->session->set_flashdata('gagal_title', 'Stock Barang Tidak Ada');
+                redirect('admin/StockBarangAktivasi/C_Barang_Aktivasi');
+            }
         } else {
-            $this->load->view('template/DataBarang/V_Header_Barang', $data);
-            $this->load->view('template/V_Sidebar_Admin', $data);
-            $this->load->view('admin/StockBarangAktivasi/V_Barang_RusakModem', $data);
-            $this->load->view('template/DataBarang/V_Footer_Barang', $data);
+            if ($JumlahStock != 0) {
+                $this->load->view('template/DataBarang/V_Header_Barang', $data);
+                $this->load->view('template/V_Sidebar_Admin', $data);
+                $this->load->view('admin/StockBarangAktivasi/V_Barang_RusakModem', $data);
+                $this->load->view('template/DataBarang/V_Footer_Barang', $data);
+            } else {
+                $this->session->set_flashdata('gagal_icon', 'warning');
+                $this->session->set_flashdata('gagal_title', 'Stock Barang Tidak Ada');
+                redirect('admin/StockBarangAktivasi/C_Barang_Aktivasi');
+            }
         }
     }
     // End Data Barang Rusak
