@@ -84,7 +84,7 @@ class M_StockBarang extends CI_Model
                             LEFT JOIN data_namabarang ON data_stockbarang.id_barang = data_namabarang.id_barang
                             LEFT JOIN data_peralatan ON data_namabarang.id_peralatan = data_peralatan.id_peralatan
 
-                            WHERE data_stockbarang.id_barang = 50 OR data_stockbarang.id_barang BETWEEN 200 AND 201
+                            WHERE data_stockbarang.id_barang = 50 OR data_stockbarang.id_barang = 200 OR data_stockbarang.id_barang = 201
                             
                             ORDER BY data_namabarang.nama_barang ASC");
 

@@ -55,7 +55,6 @@
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
-
                             </div>
                         </div>
 
@@ -67,13 +66,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Pilih Adaptor <span class="text-danger">*</span></label>
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Pilih Adaptor</label>
                             <div class="col-sm-12 col-md-9">
-                                <select id="adaptor" name="adaptor" class="form-control" required>
+                                <select id="adaptor" name="adaptor" class="form-control">
                                     <option value="">Pilih Adaptor :</option>
                                     <?php foreach ($DataAdaptor as $dataAdaptor) : ?>
                                         <option value="<?php echo $dataAdaptor['id_stockBarang']; ?>">
-                                            <?php echo $dataAdaptor['nama_barang']; ?>
+                                            <?php echo $dataAdaptor['nama_barang'] . ' = ' . $dataAdaptor['jumlah_stockBarang']; ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
@@ -81,13 +80,13 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Pilih Kabel <span class="text-danger">*</span></label>
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Pilih Kabel</label>
                             <div class="col-sm-12 col-md-9">
                                 <select id="id_kabel" name="id_kabel" class="form-control" required>
                                     <option value="">Pilih Kabel :</option>
                                     <?php foreach ($DataKabel as $dataKabel) : ?>
                                         <option value="<?php echo $dataKabel['id_stockBarang']; ?>">
-                                            <?php echo $dataKabel['nama_barang']; ?>
+                                            <?php echo $dataKabel['nama_barang'] . ' = ' . $dataKabel['jumlah_stockBarang']; ?>
                                         </option>
                                     <?php endforeach; ?>
                                 </select>
@@ -95,7 +94,7 @@
                         </div>
 
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Ukuran Kabel<span class="text-danger">*</span></label>
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Ukuran Kabel </label>
                             <div class="col-sm-12 col-md-9">
                                 <input class="form-control" type="number" name="ukuran_kabel" id="ukuran_kabel" min="0" max="" value="0" />
                             </div>
