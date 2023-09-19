@@ -51,6 +51,7 @@ class C_Done_Order extends CI_Controller
         $tanggal_diterima       = $this->input->post('tanggal_diterima');
         $id_pegawai             = $this->input->post('id_pegawai');
         $id_status              = $this->input->post('id_status');
+        $keterangan             = $this->input->post('keterangan');
 
         // Mengambil data request untuk update id_status
         $CheckDone_Request       = $this->M_DataOrder->CheckOrder($id_purchase_order);
@@ -106,7 +107,8 @@ class C_Done_Order extends CI_Controller
             'jumlah'            => $jumlah_order,
             'tanggal'           => $tanggal_diterima,
             'id_pegawai'        => $id_pegawai,
-            'id_status'         => 14
+            'id_status'         => 14,
+            'keterangan'        => $keterangan
         );
 
         if ($CheckBarang == NULL) {

@@ -36,6 +36,7 @@
                                 <input type="hidden" class="form-control" name="id_purchase_order" value="<?php echo $data['id_purchase_order'] ?>" readonly>
                                 <input type="hidden" class="form-control" name="id_stockBarang" value="<?php echo $data['id_stockBarang'] ?>" readonly>
                                 <input type="hidden" class="form-control" name="id_barang" value="<?php echo $data['id_barang'] ?>" readonly>
+                                <input type="hidden" class="form-control" name="keterangan" value="<?php echo $data['keterangan'] ?>" readonly>
                             </div>
                         </div>
 
