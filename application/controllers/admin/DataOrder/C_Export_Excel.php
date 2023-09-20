@@ -285,18 +285,12 @@ class C_Export_Excel extends CI_Controller
                 exit($e->getMessage());
             }
 
-
             // redirect output to client browser
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             header('Content-Disposition: attachment;filename="' . $filename . '.xls"');
             header('Cache-Control: max-age=0');
 
-            // Menyimpan hasil ekspor ke output langsung (tanpa menyimpan ke file)
-            $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
             $writer->save('php://output');
-
-            // Keluar dari skrip
-            exit;
         } else {
             $data = $this->M_DataOrder->DataOrderExcel($this->session->userdata('tahun'), $this->session->userdata('bulan'));
 
@@ -490,17 +484,13 @@ class C_Export_Excel extends CI_Controller
             } catch (Exception $e) {
                 exit($e->getMessage());
             }
+
             // redirect output to client browser
             header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
             header('Content-Disposition: attachment;filename="' . $filename . '.xls"');
             header('Cache-Control: max-age=0');
 
-            // Menyimpan hasil ekspor ke output langsung (tanpa menyimpan ke file)
-            $writer = \PhpOffice\PhpSpreadsheet\IOFactory::createWriter($spreadsheet, 'Xls');
             $writer->save('php://output');
-
-            // Keluar dari skrip
-            exit;
         }
     }
 }
