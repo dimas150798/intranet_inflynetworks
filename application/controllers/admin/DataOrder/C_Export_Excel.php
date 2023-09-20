@@ -355,7 +355,7 @@ class C_Export_Excel extends CI_Controller
 
             /* Excel Header */
             $sheet->setCellValue('A1', 'PT. Urban Teknologi Nusantara');
-            $sheet->setCellValue('A2', 'LAPORAN PEMBELIAN PADA ' . ' Bulan ' . $this->session->userdata('bulan') . ' Tahun ' . $this->session->userdata('tahun'));
+            $sheet->setCellValue('A2', 'Laporan Transaksi Pengeluaran Pada ' . ' Bulan ' . $this->session->userdata('bulan') . ' Tahun ' . $this->session->userdata('tahun'));
 
             // Merubah ukuran font
             $spreadsheet->getActiveSheet()->getStyle('A1')->getFont()->setSize(17);
