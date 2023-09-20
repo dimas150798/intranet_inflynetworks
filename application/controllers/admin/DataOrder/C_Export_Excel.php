@@ -369,6 +369,65 @@ class C_Export_Excel extends CI_Controller
             $spreadsheet->getActiveSheet()->getStyle('A1')->applyFromArray($styleJudul);
             $spreadsheet->getActiveSheet()->getStyle('A2')->applyFromArray($styleJudul);
 
+            $sheet->setCellValue('A4', 'No');
+            $sheet->setCellValue('B4', 'Invoice Order');
+            $sheet->setCellValue('C4', 'Nama Pembayaran');
+            $sheet->setCellValue('D4', 'Tanggal Transaksi');
+            $sheet->setCellValue('E4', 'Nama Toko / Supplier');
+            $sheet->setCellValue('F4', 'Jumlah Bayar');
+            $sheet->setCellValue('G4', 'Biaya Ongkir');
+            $sheet->setCellValue('H4', 'Biaya Penanganan');
+            $sheet->setCellValue('I4', 'Biaya Layanan');
+            $sheet->setCellValue('J4', 'Biaya Angsuran');
+            $sheet->setCellValue('K4', 'Biaya Angsuran');
+            $sheet->setCellValue('L4', 'Keterangan');
+
+
+            // Merubah huruf
+            $spreadsheet->getDefaultStyle()->getFont()->setName('Times New Roman');
+
+            // Merubah tampilan border
+            $spreadsheet->getActiveSheet()->getStyle('A4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('B4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('C4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('D4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('E4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('F4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('G4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('H4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('I4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('J4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('K4')->applyFromArray($styleHeader);
+            $spreadsheet->getActiveSheet()->getStyle('L4')->applyFromArray($styleHeader);
+
+            // Merubah ukuran font
+            $spreadsheet->getActiveSheet()->getStyle('A4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('B4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('C4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('D4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('E4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('F4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('G4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('H4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('I4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('J4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('K4')->getFont()->setSize(14);
+            $spreadsheet->getActiveSheet()->getStyle('L4')->getFont()->setSize(14);
+
+            // merubah ukuran border
+            $spreadsheet->getActiveSheet()->getColumnDimension('A')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('B')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('C')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('D')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('E')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('F')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('G')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('H')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('I')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('J')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('K')->setAutoSize(true);
+            $spreadsheet->getActiveSheet()->getColumnDimension('L')->setAutoSize(true);
+
             /* Excel Data */
             $sheet->setCellValue('A4', 'No');
             $sheet->setCellValue('B4', 'Invoice Order');
