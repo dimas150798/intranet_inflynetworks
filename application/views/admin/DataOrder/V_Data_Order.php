@@ -22,16 +22,16 @@
                         </nav>
                     </div>
 
-                    <!-- <div class="col-12 col-lg-auto col-xl-auto mt-2">
+                    <div class="col-12 col-lg-auto col-xl-auto mt-2">
                         <div class="dropdown">
                             <a class="btn btn-info dropdown-toggle" href="#" role="button" data-toggle="dropdown">
                                 Fitur
                             </a>
                             <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="<?php echo base_url('admin/DataRequest/C_Add_Request') ?>">Tambah Request</a>
+                                <a class="dropdown-item" href="<?php echo base_url('admin/DataOrder/C_Export_Excel') ?>">Export Excel</a>
                             </div>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
 
                 <div class="container card bg-secondary mt-2">

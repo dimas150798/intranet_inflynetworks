@@ -24,6 +24,27 @@ class M_DataOrder extends CI_Model
         return $query->result_array();
     }
 
+    // Menampilkan Data Request
+    public function DataOrderExcel($tahun, $bulan)
+    {
+        $query   = $this->db->query("SELECT data_purchase_order.id_purchase_order, data_purchase_order.no_purchase_order, data_purchase_order.jumlah_order, data_purchase_order.tanggal, data_purchase_order.tanggal_diterima,
+                                        data_purchase_order.no_pesanan, data_purchase_order.nama_supplier, data_purchase_order.harga_barang, data_purchase_order.keterangan, data_purchase_order.foto_order, data_purchase_order.biaya_ongkir,
+                                        data_purchase_order.biaya_penanganan, data_purchase_order.biaya_layanan, data_purchase_order.biaya_angsuran, data_purchase_order.biaya_lainnya, data_purchase_order.id_status,
+                                        data_purchase_order.id_pegawai_order, data_purchase_order.id_pegawai_terima, data_purchase_order.id_barang, data_pegawai.nama_pegawai, data_namabarang.nama_barang, data_status.nama_status
+    
+                                        FROM data_purchase_order
+    
+                                        LEFT JOIN data_status ON data_purchase_order.id_status = data_status.id_status 
+                                        LEFT JOIN data_pegawai ON data_purchase_order.id_pegawai_order = data_pegawai.id_pegawai 
+                                        LEFT JOIN data_namabarang ON data_purchase_order.id_barang = data_namabarang.id_barang
+    
+                                        WHERE YEAR(data_purchase_order.tanggal) = '$tahun' AND MONTH(data_purchase_order.tanggal) = '$bulan'
+    
+                                        ORDER BY data_purchase_order.tanggal ASC");
+
+        return $query->result_array();
+    }
+
     // Menampilkan Data Order Purchase Yang Ingin Diterima
     public function DoneOrder($id_purchase_order)
     {
