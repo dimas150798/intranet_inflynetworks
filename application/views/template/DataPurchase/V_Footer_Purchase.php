@@ -181,6 +181,25 @@
     <?php } ?>
 </script>
 
+<!-- Edit Order -->
+<script>
+    function EditOrder(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melakukan Edit Data Order ?',
+            // text: "Jumlah Stock Barang Akan Bertambah",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Edit Order!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/DataOrder/C_Edit_Order/EditOrder') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
 <!-- Done Order -->
 <script>
     function DoneOrder(parameter_id) {

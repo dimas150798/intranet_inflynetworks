@@ -84,17 +84,17 @@ class C_Data_Request extends CI_Controller
                 $row[] = ++$no;
 
                 if (in_array($StatusRequest, $KeteranganLama1)) {
-                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
                 } elseif (in_array($StatusRequest, $KeteranganLama2)) {
-                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-secondary text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
                 } elseif (in_array($StatusRequest, $KeteranganSelesai1)) {
-                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
                 } elseif (in_array($StatusRequest, $KeteranganSelesai2)) {
-                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-secondary text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
                 } elseif (in_array($StatusRequest, $KeteranganRequest)) {
                     $row[] = '<div><span class="badge bg-warning text-white">' . 'REQUEST' . '</span></div>';
                 } else {
-                    $row[] = '<div><span class="badge bg-danger text-white">' . 'ORDER' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-success text-white">' . 'ORDER' . '<br>' . 'PURCHASE' . '</span></div>';
                 }
 
                 $row[] = '<div>' . 'Invoice : ' . $dataRequest['no_purchase_request'] . '</div>';
@@ -139,17 +139,17 @@ class C_Data_Request extends CI_Controller
                 $row[] = ++$no;
 
                 if (in_array($StatusRequest, $KeteranganLama1)) {
-                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
                 } elseif (in_array($StatusRequest, $KeteranganLama2)) {
-                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-secondary text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
                 } elseif (in_array($StatusRequest, $KeteranganSelesai1)) {
-                    $row[] = '<div><span class="badge bg-success text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'WEREHOUSE' . '</span></div>';
                 } elseif (in_array($StatusRequest, $KeteranganSelesai2)) {
-                    $row[] = '<div><span class="badge bg-info text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-secondary text-white">' . 'DITERIMA' . '<br>' . 'PURCHASE' . '</span></div>';
                 } elseif (in_array($StatusRequest, $KeteranganRequest)) {
-                    $row[] = '<div><span class="badge bg-warning text-white">' . 'REQUEST' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-warning text-white">' . 'REQUEST' . '<br>' . 'PURCHASE' . '</span></div>';
                 } else {
-                    $row[] = '<div><span class="badge bg-danger text-white">' . 'ORDER' . '</span></div>';
+                    $row[] = '<div><span class="badge bg-success text-white">' . 'ORDER' . '<br>' . 'PURCHASE' . '</span></div>';
                 }
 
                 $row[] = '<div>' . 'Invoice : ' . $dataRequest['no_purchase_request'] . '</div>';
