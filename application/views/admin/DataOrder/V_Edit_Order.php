@@ -37,13 +37,20 @@
                                 <input type="hidden" class="form-control" name="no_purchase_request" value="<?php echo $data['no_purchase_request'] ?>" readonly>
                                 <input type="hidden" class="form-control" name="id_stockBarang" value="<?php echo $data['id_stockBarang'] ?>" readonly>
                                 <input type="hidden" class="form-control" name="id_barang" value="<?php echo $data['id_barang'] ?>" readonly>
+                                <input type="hidden" class="form-control" name="jumlah_pembelian_awal" value="<?php echo $data['jumlah_order'] ?>" readonly>
                             </div>
                         </div>
 
+
                         <div class="form-group row">
-                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Nama Pembelian<span class="text-danger">*</span></label>
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Nama Pembelian <span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
-                                <input class="form-control" value="<?php echo $data['nama_barang'] ?>" placeholder="" readonly>
+                                <select id="nama_pembelian" name="nama_pembelian" class="form-control" required>
+                                    <option value="" disabled selected>Pilih Paket :</option>
+                                    <?php foreach ($NamaBarang as $namabarang) : ?>
+                                        <option value="<?php echo $namabarang['id_barang']; ?>" <?= $data['id_barang'] == $namabarang['id_barang'] ? 'selected' : null ?>><?php echo $namabarang['nama_barang']; ?></option>
+                                    <?php endforeach; ?>
+                                </select>
                             </div>
                         </div>
 
@@ -72,6 +79,13 @@
                             <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Harga Barang<span class="text-danger">*</span></label>
                             <div class="col-sm-12 col-md-9">
                                 <input class="form-control" type="number" min="0" name="harga_barang" value="<?php echo $data['harga_barang'] ?>" placeholder="Masukkan harga barang..." required>
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Jumlah Pembelian<span class="text-danger">*</span></label>
+                            <div class="col-sm-12 col-md-9">
+                                <input class="form-control" type="number" min="0" name="jumlah_pembelian" value="<?php echo $data['jumlah_order'] ?>" placeholder="Masukkan harga barang..." required>
                             </div>
                         </div>
 

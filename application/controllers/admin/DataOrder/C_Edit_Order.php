@@ -20,6 +20,7 @@ class C_Edit_Order extends CI_Controller
     {
         $data['DoneOrder']      = $this->M_DataOrder->DoneOrder($id_purchase_order);
         $data['DataPegawai']    = $this->M_DataPegawai->DataPegawai();
+        $data['NamaBarang']     = $this->M_NamaBarang->NamaBarang();
 
         $CheckACC               = $this->M_DataOrder->CheckOrder($id_purchase_order);
 
@@ -43,6 +44,9 @@ class C_Edit_Order extends CI_Controller
         $no_purchase_request    = $this->input->post('no_purchase_request');
         $id_stockBarang         = $this->input->post('id_stockBarang');
         $id_barang              = $this->input->post('id_barang');
+        $nama_pembelian         = $this->input->post('nama_pembelian');
+        $jumlah_pembelian       = $this->input->post('jumlah_pembelian');
+        $jumlah_pembelian_awal  = $this->input->post('jumlah_pembelian_awal');
 
         // Step 2 Form
         $no_pesanan             = $this->input->post('no_pesanan');
@@ -60,28 +64,26 @@ class C_Edit_Order extends CI_Controller
 
         // Update Status Request Purchase
         $DataRequest = array(
+            'id_barang'         => $nama_pembelian,
+            'jumlah_request'    => $jumlah_pembelian,
             'keterangan'        => $keterangan
         );
 
         $IdRequest = array(
-            'no_purchase_request' => $no_purchase_request
+            'no_purchase_request'   => $no_purchase_request,
+            'jumlah_request'        => $jumlah_pembelian_awal,
+            'id_barang'             => $id_barang
         );
         // End Update Status Request Purchase
 
         // Update Status Order Purchase
-        $OrderWithPurchaseOrder = array(
+        $DataOrder = array(
             'no_pesanan'        => $no_pesanan,
             'nama_supplier'     => $nama_supplier,
+            'jumlah_order'      => $jumlah_pembelian,
             'tanggal'           => $tanggal_order,
-            'keterangan'        => $keterangan
-        );
-
-        $NoPurchaseOrder = array(
-            'no_purchase_order' => $no_purchase_order
-        );
-
-        $DataOrder = array(
-            'harga_barang'      => $harga_barang
+            'keterangan'        => $keterangan,
+            'id_barang'         => $nama_pembelian
         );
 
         $IdOrder = array(
@@ -91,7 +93,6 @@ class C_Edit_Order extends CI_Controller
 
         $this->M_CRUD->updateData('data_purchase_request', $DataRequest, $IdRequest);
         $this->M_CRUD->updateData('data_purchase_order', $DataOrder, $IdOrder);
-        $this->M_CRUD->updateData('data_purchase_order', $OrderWithPurchaseOrder, $NoPurchaseOrder);
 
         redirect('admin/DataOrder/C_Data_Order');
     }
