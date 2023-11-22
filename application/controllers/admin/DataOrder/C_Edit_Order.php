@@ -61,6 +61,8 @@ class C_Edit_Order extends CI_Controller
         $this->session->set_userdata('tanggal_order', $tanggal_order);
         $this->session->set_userdata('harga_barang', $harga_barang);
         $this->session->set_userdata('keterangan', $keterangan);
+        $this->session->set_userdata('no_purchase_order', $no_purchase_order);
+
 
         // Update Status Request Purchase
         $DataRequest = array(
@@ -94,6 +96,7 @@ class C_Edit_Order extends CI_Controller
         $this->M_CRUD->updateData('data_purchase_request', $DataRequest, $IdRequest);
         $this->M_CRUD->updateData('data_purchase_order', $DataOrder, $IdOrder);
 
-        redirect('admin/DataOrder/C_Data_Order');
+        // redirect('admin/DataOrder/C_Data_Order');
+        redirect('admin/DataOrder/C_Biaya_Layanan/EditBiayaLayanan');
     }
 }
