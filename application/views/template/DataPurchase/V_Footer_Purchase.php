@@ -219,6 +219,25 @@
     }
 </script>
 
+<!-- Foto Kwitansi -->
+<script>
+    function FotoKwitansi(parameter_id) {
+        Swal.fire({
+            title: 'Yakin Melihat Foto Kwitansi?',
+            // text: "Jumlah Stock Barang Akan Bertambah",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Ya, Lihat!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = "<?php echo site_url('admin/DataOrder/C_Foto_Kwitansi/ShowKwitansi') ?>/" + parameter_id;
+            }
+        })
+    }
+</script>
+
 <!-- ACC Order -->
 <script>
     function ACCOrder(parameter_id) {

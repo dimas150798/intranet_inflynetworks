@@ -115,6 +115,7 @@ class C_Data_Order extends CI_Controller
                             <a onclick="ACCOrder(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-bag-check"></i> Acc Request</a>
                             <a onclick="EditOrder(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit Order</a>
                             <a onclick="DoneOrder(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-check2-square"></i> Barang Diterima</a>
+                            <a onclick="FotoKwitansi(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-receipt-cutoff"></i> Foto Kwitansi</a>
                         </div>
                     </div>';
 
@@ -173,6 +174,7 @@ class C_Data_Order extends CI_Controller
                             <a onclick="ACCOrder(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-bag-check"></i> Acc Request</a>
                             <a onclick="EditOrder(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-pencil-square"></i> Edit Order</a>
                             <a onclick="DoneOrder(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-check2-square"></i> Barang Diterima</a>
+                            <a onclick="FotoKwitansi(' . $dataOrder['id_purchase_order'] . ')"class="dropdown-item text-black"><i class="bi bi-receipt-cutoff"></i> Foto Kwitansi</a>
                         </div>
                     </div>';
 
