@@ -84,6 +84,7 @@ class C_Edit_Order extends CI_Controller
             'nama_supplier'     => $nama_supplier,
             'jumlah_order'      => $jumlah_pembelian,
             'tanggal'           => $tanggal_order,
+            'harga_barang'      => $harga_barang,
             'keterangan'        => $keterangan,
             'id_barang'         => $nama_pembelian
         );
