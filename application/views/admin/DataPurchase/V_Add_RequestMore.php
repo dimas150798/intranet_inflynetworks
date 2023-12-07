@@ -42,11 +42,11 @@
                     </div>
 
                     <div class="form-group row">
-                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Nama Barang <span class="text-danger">*</span></label>
+                        <label for="" class="col-sm-12 col-md-3 col-form-label" style="font-weight: bold;"> Nama Pembelian <span class="text-danger">*</span></label>
                         <div class="col-sm-12 col-md-9">
                             <select id="nama_pembelian" name="id_barang" class="form-control" required>
                                 <option value="">Pilih Barang :</option>
-                                <?php foreach ($StockBarang as $dataStock) : ?>
+                                <?php foreach ($DataBarang as $dataStock) : ?>
                                     <option value="<?php echo $dataStock['id_barang']; ?>">
                                         <?php echo $dataStock['nama_barang']; ?>
                                     </option>

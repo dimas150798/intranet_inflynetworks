@@ -20,6 +20,8 @@ class C_Add_RequestMore extends CI_Controller
     {
         $data['StockBarang']    = $this->M_StockBarang->StockBarang();
         $data['DataPegawai']    = $this->M_DataPegawai->DataPegawai();
+        $data['DataBarang']     = $this->M_NamaBarang->NamaBarang();
+
 
         $this->load->view('template/DataPurchase/V_Header_Purchase', $data);
         $this->load->view('template/V_Sidebar_Admin', $data);
